@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC>
+<!--[if IE 7]><html class="ie7 oldie" lang="ru"><![endif]-->
+<!--[if IE 8]><html class="ie8 oldie" lang="ru"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="RU"><!--<![endif]-->
+
+<!--?php
+	//Кодировка//
+	// Вывод заголовка с данными о кодировке страницы
+	//header('Content-Type: text/html; charset=utf-8'); //we really need this?
+	// Настройка локали
+	//setlocale(LC_ALL, 'ru_RU.65001', 'rus_RUS.65001', 'Russian_Russia. 65001', 'russian'); //we really need this?
+	// Настройка подключения к базе данных
+	//mysql_query('SET names "utf8"'); //we really need this?
+	//--//
+?-->
+
+<html>
+	<Head>
+		<meta http-equiv="Content-Language" content="ru">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<Title>AviaMap</Title>
+		
+		<meta name="viewport" content="width=device-width">
+		
+		<link href="style.css" media="all" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="Map.js"></script>
+		<!--script type="text/javascript" src="Login.js"></script-->
+		<script type="text/javascript" src="1.7.2.jquery.min.js"></script>
+    
+		<meta name='description' content='A modern, open coworking environment for free-range humans. From collaborative space to private conference rooms, Grind has everything you need to work liquid.' />
+		<meta name='keywords' content='New York, co-work, New York city, coworking chicago, grind, grindspaces, team, collaboration, freelancer, workspace, shared space chicago, free-radical, office space, chicago office space, freelancer space, collaboration space nyc, grind, grind space, chicago workspace, shared office, office space nyc, boutique office space, sustainable office space, intelligentsia coffee' />
+		<link rel="canonical" href="www.simscenerymap.com" />
+			
+	</Head>
+	
+	
+<Body onload="load()">
+		<div id="wrap">
+			<div id="Menu">
+				<img src="./LOGO.png" id = "Logo"></img>
+				<!--a href="#" id = "Login" onclick = "ShowLogin()"> Login </a-->
+			</div>
+			<div id="map"></div>
+		<div id="panel">
+		    <div id="panel-content">
+		    </div>
+		    <!--div id="panel-sticker">
+			<span onclick="jQuery.Panel()"><==</span>
+			<!--div class="close">×</div-->    
+		    <!--/div-->
+		</div>
+		</div>
+
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function() {
+        jQuery.infopanel = $('#panel');	
+	var $map = $('#map');
+        if (jQuery.infopanel.length) {
+            var $sticker = jQuery.infopanel.children('#panel-sticker');
+	    var $panelContent = jQuery.infopanel.children('panel-content');
+
+            jQuery.Panel = function(names) {
+		if (jQuery.infopanel.hasClass('visible')) {
+                        jQuery.infopanel.animate({
+                    right: '-=212',
+                }, 200, function() {
+                    $(this).removeClass('visible');
+                });
+		$map.width('+=212');
+                    }
+                    else {
+			 document.getElementById("panel-content").firstChild.nodeValue+=names;			 
+			 window.loadDataInfoPanel(names);
+                         jQuery.infopanel.animate({
+                    right: '+=212',
+                }, 200, function() {
+                    $(this).addClass('visible').delay(200);
+                });
+		setTimeout(function() { $map.width('-=212') }, 180)
+                    }
+               
+            };           
+            /*$sticker
+                .children('span').click(function() {
+                    if ($panel.hasClass('visible')) {
+                        hidePanel();
+                    }
+                    else {
+                        showPanel();
+                    }
+                }).andSelf()
+                /*.children('.close').click(function() {
+                    $panel.remove();
+                });*/	             
+        }
+    });
+})(jQuery);
+</script>
+
+<script type="text/javascript">
+	function loadDataInfoPanel(name)
+		{
+			downloadInfoWindow("/PHP/phpsqlajax_genxml_panel.php?name=" + name, function(data) {
+			var xml = data.responseXML;
+			var markers = xml.documentElement.getElementsByTagName("marker");
+			var description = markers[0].getAttribute("description");
+			var sim = markers[0].getAttribute("sim");
+			var type = markers[0].getAttribute("type");
+			document.getElementById("panel-content").firstChild.nodeValue+='<br/>' + sim + '<br/>' +  type + '<br/>' + description;
+		});
+		}
+
+function downloadInfoWindow(url, callback) {
+      var request = window.ActiveXObject ?
+          new ActiveXObject('Microsoft.XMLHTTP') :
+          new XMLHttpRequest;
+
+      request.onreadystatechange = function() {
+        if (request.readyState == 4) {
+          request.onreadystatechange = doNothing;
+          callback(request, request.status);
+        }
+      };
+
+      request.open('GET', url, true);
+      request.send(null);
+    }
+</script>
+	</Body>
+</HTML>
