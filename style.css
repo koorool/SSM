@@ -2,7 +2,7 @@ footer, header, nav, section, article {
 display: block; 
 }
 
-footer {}
+/*footer {}*/
 
 html { 
 font-size: 100%; 
@@ -12,7 +12,9 @@ overflow: hidden;
 -webkit-text-size-adjust: 100%; 
 -ms-text-size-adjust: 100%;*/ 
 height: 100%; 
-min-height: 100%
+min-height: 100%;
+position: fixed;
+width: 100%;
 }
 
 body {
@@ -24,7 +26,7 @@ color: #58595B;
 min-width: 939px; 
 background: #5f6260; 
 height: 100%; 
-min-height: 100%
+min-height: (100% - 40px)
 } 
 
 /* default links */
@@ -76,7 +78,6 @@ h2, #apply, h4, #email-list-form-wrapper { padding-left: 160px; }
 }
 
 #Logo {
-
 	background-color:white; 
 	height:40px; 
 	width:160px;
@@ -89,9 +90,10 @@ h2, #apply, h4, #email-list-form-wrapper { padding-left: 160px; }
 	right: 10px;
 	top: 10px;
 }
-/* nav */
+
+/* nav 
 #primary { position: fixed; top: 0px; left: 0; }
-/*#primary li.logo { margin-left: 0px; text-indent: -999em; background: url("LOGO.jpg") no-repeat; width: 200px; line-height: 100px }*/
+#primary li.logo { margin-left: 0px; text-indent: -999em; background: url("LOGO.jpg") no-repeat; width: 200px; line-height: 100px }
 #primary li.logo a { display: block; width: 200px; }
 #primary li { font-family: 'Belizio'; font-size: 48px; line-height: 66px; }
 #primary li a { padding-left: 27px; color: #fff; display: block; }
@@ -107,33 +109,38 @@ h2, #apply, h4, #email-list-form-wrapper { padding-left: 160px; }
 	height: 40px;
 	vertical-align:middle;
 }
+ nav */
 
 #map {
 	width: 100%;
 	position: absolute;
 	top: 40px;
 	bottom: 0px;
-	margin-right: 0px;
+  height: ( 100% - 40px);
+	/*margin-right: 0px;*/
 	/*left: 200px;*/	
 }
 
 #panel {
+    background: #EEE;
     position: absolute;
     /*top: 40px;*/
-    right: -212px;
-    margin: 0 0 0 0;
+    right: -200px;
+    /*margin: 0 0 0 0;*/
     overflow: hidden;
     height: 100%;
-    min-height: 100%;
-    width: 212px
+    /*min-height: 100%;*/
+    width: 200px
+    
 }
 #panel-content {
     background: #EEE;
-    border: 1px solid #CCC;
-    width: 200px;
+    /*border: 3px solid #CCC;*/
+    /*border-left: 3px solid #CCC;*/
+    width: 100%;
     height: 100%;
-    float: right;
-    padding: 3px 5px;
+    /*float: right;*/
+    /*padding: 10px 5px;*/
 }
 /*#panel-sticker {
     float: right;
@@ -151,8 +158,15 @@ h2, #apply, h4, #email-list-form-wrapper { padding-left: 160px; }
 }*/
 
 #scrollFix {
-    line-height: 1.35;
+    /*line-height: 1.35;*/
     overflow: hidden;
     white-space: nowrap;
 }
 #additional{ color:orange; }
+
+#close{
+  cursor:pointer;
+  width:8px;
+  height: 100%;
+  background: #CCC
+}
