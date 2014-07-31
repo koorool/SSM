@@ -1,6 +1,10 @@
 <?php  
 
-require("phpsqlajax_dbinfo.php"); 
+require("phpsqlajax_dbinfo.php");
+
+header("Content-type: text/xml"); 
+//header("Cache-Control: no-store, no-cache, must-revalidate");
+//header("Cache-Control: post-check=0, pre-check=0", false); 
 
 // Start XML file, create parent node
 
@@ -25,12 +29,12 @@ function utf8_urldecode($str) {
   }
  
 // Gets data from URL parameters
-$name = utf8_urldecode($_GET['name']);
+$name = $_GET['name'];
 
 $query = "SELECT address, city, country FROM marker_window WHERE name ='".$name."'";
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
-header("Content-type: text/xml"); 
+
 
 // Iterate through the rows, adding XML nodes for each
 
