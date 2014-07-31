@@ -1,26 +1,33 @@
+//Global Variables    
     var customIcons = {
       1: {
-        icon: 'http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_green.png'
+        icon: 'green_marker.png'
       },
       0: {
-        icon: 'http://labs.google.com/ridefinder/images/mm_20_red.png'
+        icon: 'http://www.google.com/mapfiles/marker.png'
       }
     };
 var names = "";
+var infowindow = null;
+var infotext="";
 
+//Initialise function, on load
     function load() {
       var map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(50.0779, 14.4533),
-        zoom: 7,
-        mapTypeId: 'terrain'
+        zoom: 10,
+        mapTypeId: 'terrain',
+	streetViewControl: false,
+	mapTypeControl: false
       });
-      //var infoWindow = new google.maps.InfoWindow;
-      // Load markers from DataBase
+      infowindow = new google.maps.InfoWindow();
+
+// Load markers from DataBase
 
       downloadUrl("/PHP/phpsqlajax_genxml.php", function(data) {
         var xml = data.responseXML;
         var markers = xml.documentElement.getElementsByTagName("marker");
-        for (var i = 0; i < markers.length; ++i) {
+        for (var i = 0; i < markers.length; i++) { 
           name = markers[i].getAttribute("name");          
           var type = markers[i].getAttribute("type");
           var point = new google.maps.LatLng(
@@ -31,11 +38,45 @@ var names = "";
             map: map,
             position: point,
             icon: icon.icon,
-	    title: name
+	          title: name
           });
-          bindInfoWindow(marker, map, name);
-        }
-      });
+
+	google.maps.event.addListener(marker, 'click', function (event)
+	{
+    if(jQuery.infopanel.hasClass('visible'))
+  {
+      loadDataInfoPanel(this.title);
+      //jQuery.panelContent.html(this.title); //add info from base
+  } 
+    //infotext = loaddata(this.title);
+    //alert(infotext);
+		//window.infotext = loaddata(this.title);
+		// where I have added .html to the marker object.
+		infowindow.setContent(loaddata(this.title));
+		infowindow.open(map, this);
+	});	
+
+        /* google.maps.event.addListener(marker, 'click', function() 
+       		{			
+		
+		window.names = name;	
+		downloadInfoWindow("/PHP/phpsqlajax_genxml_InfoWindow.php?name=" + name, function(data) {
+		var xml = data.responseXML
+		var markers = xml.documentElement.getElementsByTagName("marker");	
+		//var name1 = markers[0].getAttribute("name");	
+    	    var address = markers[0].getAttribute("address");
+		var city = markers[0].getAttribute("city");
+		var country = markers[0].getAttribute("country");
+		window.text = '<div id="scrollFix">' + "<b>" + name + "</b> <br/>" + address +"</b> <br/>"+ city +"</b> <br/>"+ country + "</b> <br/>" +'<div id="additional">'+ '<span onclick="click_add ()">Дополнительно</span>'+'</div>'+ '</div>';		
+		});	
+     	  	infoWindow.setOptions({
+position: point,
+size: new google.maps.Size(50, 50),
+content:window.text});
+    	    	infoWindow.open(map, marker);
+        	});*/
+         }
+      }, true);
 	  
 	  //
 	  
@@ -59,7 +100,7 @@ var names = "";
           }
         });*/
  
-    }
+}
 	
 	/*function saveData() {
       var name = escape(document.getElementById("name").value);
@@ -73,32 +114,38 @@ var names = "";
     }*/
 
 //InfoWindow work only after second click//
-var infoWindow = new google.maps.InfoWindow;
-    function bindInfoWindow(marker, map, name) 
-    { //infoWindow,
-	//
-      	google.maps.event.addListener(marker, 'click', function() 
-        {			
-		var text;
-		window.names = name;	
-		downloadInfoWindow("/PHP/phpsqlajax_genxml_InfoWindow.php?name=" + name, function(data) {
-		var xml = data.responseXML
-		var markers = xml.documentElement.getElementsByTagName("marker");//спростити запит, в файлі лише 1 маркер	
-		//var name1 = markers[0].getAttribute("name");	
-    	    var address = markers[0].getAttribute("address");
-		var city = markers[0].getAttribute("city");
-		var country = markers[0].getAttribute("country");
-		window.text = '<div id="scrollFix">' + "<b>" + name + "</b> <br/>" + address +"</b> <br/>"+ city +"</b> <br/>"+ country + "</b> <br/>" +'<div id="additional">'+ '<span onclick="click_add ()">Дополнительно</span>'+'</div>'+ '</div>';//add name
-		//document.getElementById("panel-content").firstChild.nodeValue+=name;
-		});	
-     	  	 infoWindow.setContent(window.text);
-    	    infoWindow.open(map, marker);
-        });
+var text;
+function loaddata(name) 
+    {      				    		
+    		window.names = name;	
+    		downloadUrl("/PHP/phpsqlajax_genxml_InfoWindow.php?name=" + name, function(data) {
+    		var xml = data.responseXML
+    		var markers = xml.documentElement.getElementsByTagName("marker");	
+    		//var name1 = markers[0].getAttribute("name");	
+        var address = markers[0].getAttribute("address");
+    		var city = markers[0].getAttribute("city");
+    		var country = markers[0].getAttribute("country");
+    		window.text = '<div id="scrollFix">' + "<b>" + name + "</b> <br/>" + address +"</b>, <br/>"+ city +"</b>, <br/>"+ country + "</b> <br/>" +'<div id="additional">'+ '<span onclick="click_add ()">Дополнительно</span>'+'</div>'+ '</div>';		
+    		}, false);
+        //alert(window.text);
+        //while(requestDoneAndOK==false){doNothing();}
+        return  window.text;        
     }
-function click_add(){jQuery.Panel(window.names)}
+
+function click_add(){
+/*if(jQuery.infopanel.hasClass('visible'))
+  {
+      jQuery.panelContent.html(window.names);
+  }
+else
+  {*/
+
+      jQuery.Panel(window.names);
+  //}
+}
 
 
-function downloadInfoWindow(url, callback) {
+/*function downloadInfoWindow(url, callback) {
       var request = window.ActiveXObject ?
           new ActiveXObject('Microsoft.XMLHTTP') :
           new XMLHttpRequest;
@@ -112,10 +159,29 @@ function downloadInfoWindow(url, callback) {
 
       request.open('GET', url, true);
       request.send(null);
-    }
-//InfoWindow//
+    }*/
+//InfoWindow//	
+var requestDoneAndOK = false;
+    function downloadUrl(url, callback, bool) {
+      var request = window.ActiveXObject ?
+          new ActiveXObject('Microsoft.XMLHTTP') :
+          new XMLHttpRequest;
 
-	/*function addRow(url)
+      request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+          
+                requestDoneAndOK = true;
+                callback(request, request.status);
+                    
+        }
+      };
+
+      request.open('GET', url, bool); //async == true, speed the system
+      request.send(null);
+    }
+
+//Addrowfunction
+/*function addRow(url)
 	{
 		var req ;
 
@@ -142,21 +208,5 @@ function downloadInfoWindow(url, callback) {
 
 		req.send(null);
 	}*/
-
-    function downloadUrl(url, callback) {
-      var request = window.ActiveXObject ?
-          new ActiveXObject('Microsoft.XMLHTTP') :
-          new XMLHttpRequest;
-
-      request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-          request.onreadystatechange = doNothing;
-          callback(request, request.status);
-        }
-      };
-
-      request.open('GET', url, true);
-      request.send(null);
-    }
 
     function doNothing() {}
