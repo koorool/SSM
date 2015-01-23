@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<!--[if IE 7]><html class="ie7 oldie" lang="ru"><![endif]-->
+<!--[if IE 8]><html class="ie8 oldie" lang="ru"><![endif]-->
+<!--[if gt IE 8]><!--><!--<![endif]--><!--html lang="RU"-->
+<!--[if IEMobile 7 ]> <html class="iem7" lang="ru"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html lang="ru" manifest="default.appcache"> <!--<![endif]-->
+
+<!--html lang="RU" manifest="default.appcache"-->
+<Head>
+		<!--meta http-equiv="Content-Language" content="ru"-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--Optimisation for tablets-->
+		<meta name="HandheldFriendly" content="True">
+		<!--meta name="MobileOptimized" content="320"-->
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="default">
+		<meta name="format-detection" content="address=no">
+		<meta name="viewport" content="target-densitydpi=high-dpi">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<link rel="shortcut icon" href="/aviamap/favicon.ico"><!--type="image/x-icon"-->
+		<meta name="author" content="Karlov Kyrylo">
+    	<meta name="copyright" content="All the right">
+
+		<!--SEO-->
+    	<Title>Simscenerymap - all sceneries for flight simulation on the one map</Title>
+		<meta name='description' content='A modern, open coworking environment for free-range humans. From collaborative space to private conference rooms, Grind has everything you need to work liquid.' />
+		<meta name='keywords' content='ICAO, scenery, simulator, microsoft flight simulator, АЫЧ, FSX Scenery, prepar3d, p3d, fsx'/>
+		<link rel="canonical" href="www.simscenerymap.com"/>
+		<!--SEO-->
+			
+		<!-- The stylesheet -->
+		<link href="/aviamap/style.css" media="all" rel="stylesheet" type="text/css" />
+		<script src="https://maps.google.com/maps/api/js?v=3.18&language=en"></script><!--client=AIzaSyB-NQCXIIa9EzYTUm3Tv4fECpJPn5-a6ko&-->
+        
+        <!--Javascript-->
+        <script src="/aviamap/js/Map.js"></script>
+        <script src="/aviamap/js/1.7.2.jquery.min.js"></script>
+
+		<!--script type="text/javascript">var switchTo5x=true;</script>
+		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+		<script type="text/javascript" src="http://s.sharethis.com/loader.js"></script-->
+		
+		<!--script type="text/javascript" src="/aviamap/js/autoresize.js"></script-->
+		<!--script src="/aviamap/js/galery.js"></script-->		
+</Head>	
+	
+<Body > <!--onload="load()"-->
+	<div id="wrap">
+		<div id="Menu">
+			<img src="./images/2.png" class = "Logo">
+			<iframe class="hidden" name="frame" id="frame" srcdoc="" seamless="seamless" width="120" height="40"></iframe>
+			<!--img src="./advertisment.jpg" class="Logo"-->			
+		</div>
+		<div id="input-group">
+			<input type="search" id="search" placeholder="Search"/> <button class="search" onclick="search()">Go</button>
+		</div>
+
+	<div id="map"></div>
+
+		<div id="panel">
+		    	<!--table--> <!--height="100%"-->
+		    		<!--td id="close"> </td-->
+			    	<!--td valign="top"-->
+			    	<!--table>
+			    		<tr-->
+			    		<div id="navigate">
+			    		<label class="radio" ><input id ="pay-free" onclick="check(2)" type="radio" name="filter"/>pay-free</label>
+						<label class="radio"><input id ="free" type="radio" onclick="check(0)" name="filter"/>free</label>
+						<label class="radio"><input id ="non-free" type="radio" onclick="check(1)" name="filter"/>pay</label>
+						<button id="refresh" onclick="check(-1)">Обновить</button>
+						</div>
+						<div id="checkbox"></div>
+				    	<div id="panel_content" class="paneltext">
+					    	<h3 id="marker_name" align="center"></h3></br>
+					    	<b>ICAO: </b><code id="code"></code></br> <!--class="paneltext"-->
+					    	<!--b>lat: </b><code id="lat"></code></br>
+					    	<b>lng: </b><code id="lng"></code></br-->
+					    	<b>city: </b><code id="city"></code></br>
+					    	<b>country: </b><code id="country"></code></br>
+					    	<b>Compatibility: </b><code id="description"></code></br>
+					    	<b>scenery_free: </b><a id="scenery_free" target="_blank"></a></br>
+					     <p><b>scenery: </b><a id="scenery" target="_blank"></a></p>
+					    	<hr>
+					    	<!--div id="for_city"></div-->
+					    </div>
+					    <!--/tr>
+					    <tr-->
+					    	<!--button id="startGalery">Show photoes</button-->
+					    	<div id="galery" class="thumbs">
+					        	<!--img id="galery0"-->
+					        	<!--img class="hidden" id="galery1">
+					        	<img class="hidden" id="galery2">
+					        	<img class="hidden" id="galery3"-->
+				        	</div>
+		        		<!--/tr>
+			    	</table>
+			    	</td>
+				</table-->				   
+				    <!--div id="panel-sticker">
+					<span onclick="jQuery.Panel()"><==</span>
+					<div class="close">×</div>    
+				    </div-->
+				<!--a class="twitter-follow-button"
+  				href="https://twitter.com/twitterdev"
+  				data-show-count="true"
+  				data-lang="en">
+				Follow
+				</a>
+				<script async>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script-->
+				<a id="twitt_line" class="twitter-timeline"  href="https://twitter.com/simscenerymap" data-widget-id="558524001463848960" data-lang="en">Tweets by @simscenerymap</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+				<div class="sidebar-footer">
+
+          
+		        	<!--div class="col-xs-4">
+		          		<a href="https://github.com/rdash/rdash-angular" target="_blank">
+		           		 Github
+		          		</a>
+		        	</div-->
+		        	<div class="col-xs-4">
+		          		<a href="about.html">About</a>
+		        	</div>
+		        	<div class="col-xs-4">
+		          		<a id = "Login" onclick = "ShowLogin()">Login</a>
+		        	</div>
+		      </div>
+      
+				    <!--a href="about.html">About</a-->
+		</div>		
+	</div>
+	<!--Correct-->
+<!--div id='bottom'>
+	<p>All rights reserved() 2015 made by Cupofcoffee, twitter, facebook etc.</p>
+	<div id="twitter">
+		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://brutaldesign.github.com/swipebox" data-text="Swipebox | A touchable jQuery lightbox" data-via="brutaldesign">Tweet</a>
+	</div>
+</div-->
+
+<script defer src="/aviamap/js/Login.js"></script>		
+<script async src="/aviamap/js/Panel.js"></script>
+<!--script defer scr="/aviamap/js/main_page.js"></script-->
+<script defer src="/aviamap/touchTouch/touchTouch.jquery.js"></script>
+
+<script src="/aviamap/js/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="/aviamap/jquery-ui.css">
+<link defer rel="stylesheet" href="/aviamap/touchTouch/touchTouch.css"/>
+
+<script defer type="text/javascript">
+	
+	//filter free/non-free/all markers//
+	function check(type){
+		switch (type){
+			case -1:
+			markers_load(-1);
+			document.getElementById('refresh').innerHTML = "Обновить";
+			document.getElementById("free").checked = false;
+			document.getElementById("pay-free").checked = false;
+			document.getElementById("non-free").checked = false;			
+			break;
+			case 0:
+			markers_load(0);
+			document.getElementById('refresh').innerHTML = "Сброс";
+			break;
+			case 1:
+			markers_load(1);
+			document.getElementById('refresh').innerHTML = "Сброс";
+			break;
+			case 2:
+			markers_load(2);
+			document.getElementById('refresh').innerHTML = "Сброс";
+			break;
+		} 
+		/*if(document.getElementById("pay-free").checked === true)
+		markers_load(-1);
+		else if(document.getElementById("free").checked === true)
+		markers_load(type);
+		else if(document.getElementById("non-free").checked === true)
+		markers_load(type);*/
+	}
+	//filter free/non-free/all//
+/*function city_checkbox(){
+	if(document.getElementById('city_check').checked){
+	var tbCity = document.createElement('input');
+ 	//tbCity.type = "text";
+ 	tbCity.name = 'city';
+ 	tbCity.id = 'city_field';
+ 	//tbCity.required = 'required';
+ 	tbCity.placeholder = 'city';
+ 	document.getElementById('for_city').appendChild(tbCity);
+ 	}
+ 	else document.getElementById('city_field').parentNode.removeChild(document.getElementById('city_field'));
+}*/
+
+	setTimeout(function() {
+	document.getElementById('frame').onload = function(){
+		if(document.getElementById('frame').contentWindow.document.body.innerHTML!="" && admin){
+		alert("marker with id: " + document.getElementById("frame").contentWindow.document.body.innerHTML +" Added!"); //можливо це не потрібно
+	    markers_load("-1", document.getElementById("frame").contentWindow.document.body.innerHTML);
+	    panelinformation(document.getElementById('code').value);
+		}
+		/*else if(document.getElementById('frame').contentWindow.document.body.innerHTML === 'true') 
+		{
+			admin = true;
+			//if (jQuery.infopanel.hasClass('visible')) jQuery.Panel();
+			var new_marker_field = document.createElement('input');
+			new_marker_field.type = "checkbox";
+			new_marker_field.id = "new_marker";
+			document.getElementById('checkbox').innerHTML = "Add new markers"
+			document.getElementById('checkbox').appendChild(new_marker_field);
+			     	//+'<b>Input new markers</b><input type="checkbox" id="new_marker">' 		
+			$('#panel_content').html(//'<div id="panel_content">' 
+				//+'<table height="100%">' 
+												//+'<td id="close" onclick="jQuery.Panel()"> </td>'
+				//+'<td id="content" valign="top">'
+				'<form action="/aviamap/PHP/insert.php" name="form" method="post" id="form" target="frame" enctype="multipart/form-data" >'
+				//+'<div align="left"><b>Code:</b>
+				+'<input id="code" type="text" name="code" required="required" placeholder="code" pattern="[A-Za-z]{4}"> </div>'
+				//+'<div align="left"><b>Название маркера: </b>
+				+'<input id="marker_name" name="name" required="required" placeholder="name"></div></br>'
+				+'<b>lat:</b> <input id="lat" class="number" type="number" name="lat" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!"></br>' //pattern="\d{2}+(\,\d{15})?"
+				+'<b>lng:</b> <input id="lng" class="number" type="number" name="lng" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!"></br>' //pattern="\d{2}+(\,\d{7})?"
+														   	//+'<div><b>type:</b> <input id="type" type="range" min="0" max="2" name="type" required step="1"	</div>'
+				+'<b>scenery:</b> <input id="scenery" name="scenery" placeholder="scenery"></br>'
+				+'<input id="scenery_label" name="scenery_label" placeholder="scenery label"></br>' //class="autogrow"
+				+'<b>free scenery:</b> <input id="scenery_free" name="scenery_free" placeholder="scenery_free"></br>'
+				+'<input id="scenery_free_label" name="scenery_free_label" placeholder="free scenery label"></br>'
+				//+'<input id="scenery_label" name="scenery_label"></br>' //class="autogrow"
+														   	//+'<div><b>address:</b> <input id="address" type="text" name="address">	</div>'
+				//+'<b>Add city box</b><input type="checkbox" id="city_check" onclick="city_checkbox()">'+'<div id="for_city"></div>' //<input id="city" type="text" name="city">
+				+'<b>City:</b></br>'
+				+'<input id="city" name="city"></br>'
+														   	//+'<div><b>country:</b> <input id="country" type="text" name="country">	</div>'
+				+'<textarea id="description" name="description" placeholder="description" ></textarea></br>' //class="autogrow"
+										//checkbox "change city"													 
+				+'<div id="files"><input id="filesend" type="file" name="filename[]" multiple accept="image"/></div>'
+				+'<input type="submit" id="submit" value="save"> <input type="button" id="reset_btn" value="reset" onclick="formReset()">  <input type="button" id="del" value="delete">'
+				+'</form>'
+														//+'<input type="button" id="update" value="update">
+				
+				//+'<button onclick="addcity()">Set city</button>'
+				//+'</td>'
+				//+'</table>'	
+				//+'</div>'
+				);
+
+				document.getElementById('form_login').parentNode.removeChild(document.getElementById('form_login'));
+			    alert('Добро пожаловать, Админ');
+			        		//make draggable
+			    for (var i = 0; i < markers_arr.length; i++) markers_arr[i].setDraggable(true);
+			    show = false;
+
+			         		//$("input.autogrow").autoGrowInput({minWidth:30,comfortZone:30});		
+		}
+			    else if(document.getElementById('frame').contentWindow.document.body.innerHTML === 'false')  alert('Неверное имя или пароль');*/
+	};
+	}, 4000);
+	
+
+	$( "#search" ).autocomplete({ source: source });
+
+</script>
+
+<!--script type="text/javascript">stLight.options({publisher: "5b01fbf5-cf76-4241-b041-c844f87e3cdb", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+<script>
+var options={ "publisher": "5b01fbf5-cf76-4241-b041-c844f87e3cdb", "logo": { "visible": true, "url": "http://localhost/aviamap/", "img": "http://sd.sharethis.com/disc/images/demo_logo.png", "height": 45}, "ad": { "visible": false, "openDelay": "5", "closeDelay": "0"}, "livestream": { "domain": "", "type": "sharethis"}, "ticker": { "visible": false, "domain": "", "title": "", "type": "sharethis"}, "facebook": { "visible": false, "profile": "sharethis"}, "fblike": { "visible": false, "url": ""}, "twitter": { "visible": false, "user": "sharethis"}, "twfollow": { "visible": false}, "custom": [{ "visible": false, "title": "Custom 1", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 2", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}, { "visible": false, "title": "Custom 3", "url": "", "img": "", "popup": false, "popupCustom": { "width": 300, "height": 250}}], "chicklets": { "items": ["facebook", "twitter", "googleplus", "email", "vkontakte", "sharethis"]}};
+var st_bar_widget = new sharethis.widgets.sharebar(options);
+</script-->
+
+	</Body>
+<!-- Google Fonts -->
+<!--link defer rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script"/-->	
+</HTML>
