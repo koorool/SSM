@@ -1,4 +1,0 @@
-SSM
-===
-
-simscenerymap.com
