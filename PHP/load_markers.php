@@ -2,23 +2,10 @@
 
 require "dbinfo.php";
 
-// Start XML file, create parent node
-
 $dom = new DOMDocument("1.0");
 $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
 
-// Opens a connection to a MySQL server
-
-$connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
-
-mysql_query("SET NAMES 'utf8'");
-//int mysql_errno([ resource $link_identifier = NULL ] );
-//if (!$connection) {  die('Not connected : ' . mysql_error());} //or die
-
-// Set the active MySQL database
-
-$db_selected = mysql_select_db($database) or die("Не могу соединиться с MySQLI.");
 $type = $_GET['type'];
 //$code = isset($_GET['code']);
 
@@ -32,6 +19,10 @@ $query = "SELECT code,name,lat,lng,type FROM marker WHERE code='" . $_GET['code'
 }
 
 //$query  = "SELECT name,lat,lng,Freeware FROM marker";
+$connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
+
+$db_selected = mysql_select_db($database) or die("Не могу соединиться с MySQLI.");
+mysql_query("SET NAMES 'utf8'");
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error()); //'SET NAMES "utf8"'
 /*if (!$result) {
 die('Invalid query: '.mysql_error());
@@ -57,8 +48,7 @@ while ($row = @mysql_fetch_assoc($result)) {
 	}
 
 }
-
-echo $dom->saveXML();
 mysql_close($connection);
+echo $dom->saveXML();
 
 ?>

@@ -1,32 +1,22 @@
 <?php
 require "dbinfo.php";
 
-// Opens a connection to a MySQL server
-$connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
-
-// Set the active MySQL database
-$db_selected = mysql_select_db($database) or die("Не могу соединиться с MySQLI.");
-
-/*if (!$db_selected) {
-die ('Can\'t use db : ' . mysql_error());
-}*/
-
-mysql_query('SET NAMES utf8');
-header("Content-type: text/html");
-
 // Gets data from URL parameters
 $code = $_POST['code'];
-$name = $_POST['name']; //utf8_urldecode()
-//$address = $_POST['address']; //utf8_urldecode(
-$lat = $_POST['lat']; // перевірити тип!
-$lng = $_POST['lng']; // перевірити тип!
+$name = $_POST['name'];
+$lat = $_POST['lat'];
+$lng = $_POST['lng'];
 if (isset($_POST['city'])) {
 	$city = $_POST['city'];
+} else {
+	$city = null;
 }
-// перевірити тип!
+
 $description = $_POST['description'];
 $scenery = $_POST['scenery'];
 $scenery_free = $_POST['scenery_free'];
+$scenery_label = $_POST['scenery_label'];
+$scenery_free_label = $_POST['scenery_free_label'];
 
 if (isset($scenery_free) && isset($scenery) && !empty($scenery) && !empty($scenery_free)) {
 	$type = 2;
@@ -66,46 +56,47 @@ if ($filetype == ",") {
 	$filetype = null;
 }
 
-// Insert new row with user data
-$query_marker = sprintf("INSERT INTO marker " .
-	" (code, name, lat, lng, type, images, city )" .
-	" VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');",
-	mysql_real_escape_string($code),
-	mysql_real_escape_string($name),
-	mysql_real_escape_string($lat),
-	mysql_real_escape_string($lng),
-	mysql_real_escape_string($type),
-	mysql_real_escape_string($filetype),
-	mysql_real_escape_string($city));
+// Opens a connection to a MySQL server
+$connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
 
-$result_marker = mysql_query($query_marker) or die('Invalid query: ' . mysql_error());
+// Set the active MySQL database
+$db_selected = mysql_select_db($database) or die("Не могу соединиться с MySQLI.");
+mysql_query('SET NAMES utf8');
 
-/*$sql = "SELECT max(id) FROM `marker`";
-$result = mysql_query($sql);
-$row = @mysql_fetch_array($result);
-$id = max($row);*/
-echo $code;
+$query = "INSERT INTO marker " .
+"(code, name, lat, lng, type, images, city )" .
+"VALUES('$code','$name','$lat','$lng', $filetype, $city)";
 
-/*$query_window = sprintf("INSERT INTO marker_window " .
-" (code, address, city, country )" .
-" VALUES ('%s', '%s', '%s','%s');",
+/*$query_marker = sprintf("INSERT INTO marker " .
+" (code, name, lat, lng, type, images, city )" .
+" VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');",
 mysql_real_escape_string($code),
-mysql_real_escape_string($address),
-mysql_real_escape_string($city),
-mysql_real_escape_string($country));*/
+mysql_real_escape_string($name),
+mysql_real_escape_string($lat),
+mysql_real_escape_string($lng),
+mysql_real_escape_string($type),
+mysql_real_escape_string($filetype),
+mysql_real_escape_string($city));*/
 
-//$result_window = mysql_query($query_window) or die('Invalid query: ' . mysql_error());
+$result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
-$queryinfo = sprintf("INSERT INTO markerinfo " .
-	" (code, description, scenery, scenery_free )" .
-	" VALUES ('%s', '%s', '%s', '%s');",
-	mysql_real_escape_string($code),
-	mysql_real_escape_string($description),
-	mysql_real_escape_string($scenery),
-	mysql_real_escape_string($scenery_free));
+$query = "INSERT INTO markerinfo " .
+"(code, description, scenery, scenery_free, scenery_label, scenery_free_label )" .
+"VALUES('$code','$description', '$scenery', '$scenery_free', '$scenery_label', '$scenery_free_label')";
 
-$resultinfo = mysql_query($queryinfo) or die('Invalid query: ' . mysql_error());
+/*$queryinfo = sprintf("INSERT INTO markerinfo " .
+" (code, description, scenery, scenery_free )" .
+" VALUES ('%s', '%s', '%s', '%s');",
+mysql_real_escape_string($code),
+mysql_real_escape_string($description),
+mysql_real_escape_string($scenery),
+mysql_real_escape_string($scenery_free));*/
+
+$result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
 mysql_close($connection);
+
+header("Content-type: text/html");
+echo $code;
 
 ?>

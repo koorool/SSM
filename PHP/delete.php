@@ -2,20 +2,18 @@
 require "dbinfo.php";
 
 // Opens a connection to a MySQL server
-$connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
-
-//if (!$connection) {  die('Not connected : ' . mysql_error());}
-
-// Set the active MySQL database
-$db_selected = mysql_select_db($database) or die("Не могу соединиться с MySQLI.");
-
-mysql_query('SET NAMES utf8');
 
 $code = $_POST['code'];
 //$name = $_POST['name']; // не потрібно сьогодні
 
 //get filetypes to delete
-$filetype;
+//$filetype;
+$connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
+
+$db_selected = mysql_select_db($database) or die("Не могу соединиться с MySQLI.");
+
+mysql_query('SET NAMES utf8');
+
 $query = "SELECT images FROM marker WHERE code='$code'";
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 while ($row = @mysql_fetch_assoc($result)) {
@@ -26,6 +24,7 @@ while ($row = @mysql_fetch_assoc($result)) {
 $query = "DELETE FROM marker WHERE code='" . $code . "'";
 
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+mysql_close($connection);
 
 /*$query = "DELETE FROM marker_window WHERE code='" . $code . "'";
 
@@ -43,7 +42,5 @@ for ($i = 0; $i < count($filetype) - 1; $i++) {
 	}
 }
 //}
-
-mysql_close($connection);
 
 ?>
