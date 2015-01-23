@@ -2,7 +2,7 @@ var admin = false;
 var show=false;
 
 //$(function(){
-function click_submit(){
+/*function click_submit(){
 		//var login = document.getElementById('tbLogin').value;
 		//var pass = document.getElementById('tbPassword').value;
 		$.ajax({
@@ -65,7 +65,7 @@ function click_submit(){
 
 		});
 	}
-//});
+//});*/
 
 function ShowLogin(){	
 if (show == false){

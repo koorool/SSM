@@ -378,7 +378,7 @@ $('#scenery_free').change(function(){
 	createfield('scenery_free');
 });*/
 
-function createfield(field){
+/*function createfield(field){
 	if(document.getElementById(field +'_label') == null){
 	var tbSceneryLabel = document.createElement('input');
 	//tbCity.type = "text";
@@ -387,11 +387,11 @@ function createfield(field){
  	tbSceneryLabel.placeholder = field + "_label";
  	document.getElementById('form').appendChild(tbSceneryLabel);
  	}
-}
+}*/
 
-function load_link(field){
+/*function load_link(field){
 	document.getElementById(field).href = markers[0].getAttribute(field);
 	if(markers[0].getAttribute(field + "_label").length && markers[0].getAttribute(field + "_label")!= null)
 	document.getElementById(field).textContent = markers[0].getAttribute(field + "_label");
 	else document.getElementById(field).textContent = markers[0].getAttribute(field);
-}
+}*/
