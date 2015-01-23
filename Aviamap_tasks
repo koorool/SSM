@@ -1,0 +1,56 @@
+			Aviamap tasks
+1. Код аэропорта - 4 символи, переважно великими літерами
+2. Название аэропорта
+4. Город
+5. Страна - geocoding
+6. 1-2 картинки
+7. Координаты
+8. гиперссылка на платный сценарий  (если есть)
+9. гиперссылка на фришный сценарий
+10. Тип (платный/бесплатный/оба) - тип маркера я думал будет 3 Тип маркера зависит от сценариев
+
+приклади
+http://simrussia.com/
+http://www.iflightplanner.com/AviationCharts/ пример рекламы вверху
+http://www.flightradar24.com/25,-15.2/3 ну или как здесь на месте твиттера, или банер снизу
+
+http://www.xpscenery.net - вот пример карты кстати, можно зарегистрироваться и глянуть, что то можно оттуда взять
+
+замовник skype: mirikamoari
+
+Запит sql
+SELECT marker.name, marker.lat, marker.lng, marker.type, markerinfo.description, markerinfo.sim, markerinfo.scenery, marker_window.city,marker_window.country, marker_window.address
+FROM marker join markerinfo ON marker.code = markerinfo.code
+join marker_window ON markerinfo.code = marker_window.code
+
+
+https://sites.google.com/site/simscenerymap/
+https://www.google.com/maps/d/edit?mid=zEn_pZnzWivQ.kuY1-wSU815w
+
+user: Admin;
+pass: 3qXGMD;
+
+1) нужно сделать защищенный пароль +- чи треба воно?
+2) api key потрібен лише для відслідковування користування - додам коли відновимо хостинг
+3) коли буде багато маркерів - розбити по регіонах та по країнах
+4) Розділити адмінські функції та функціїї користувача
+
+keywords: FSX Scenery prepar3d, fs9, simulator, microsoft flight simulator, АЫЧ, scenery, p3d, UKBB scenery, UKBB fsx
+
+1) UI
+2) розділ about
+	a) обратная связь
+	b) лінк до соц мереж
+3) видалення зображень через галерею
+4) Розділити адмінські функції та функціїї користувача
+5) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
+	a) echo ("file doesn't load") до користувача
+6) php find images with code="code"
+7) статично закрепить галерею, чтобы она не ерзала по панели
+8) возможность 2-х scenery/scenery_free
+9) SEO optimisation
+
+bugs
+1) не оновлюється іконка після зміни типу маркера
+2) або під час update або під час insert заносить зайву кому images
+3) 2 infowindow new marker
