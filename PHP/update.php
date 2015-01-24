@@ -29,7 +29,7 @@ $db_selected = mysql_select_db($database) or die("Не могу соединит
 
 mysql_query('SET NAMES utf8');
 
-$query = "UPDATE marker SET name='$name',lat='$lat',lng='$lng',type='$type', images='$filetype', city='$city' WHERE code='$code'";
+$query = "UPDATE marker SET name='$name',lat='$lat',lng='$lng',type='$type', city='$city' WHERE code='$code'";
 
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
@@ -50,7 +50,11 @@ while ($row = @mysql_fetch_assoc($result)) {
 $i = substr_count($row['images'], ",");
 $filetype = $row['images'];
 }*/
-//$i = 0;
+$i = 0;
+foreach (glob("../img/" . $code . "*") as $filename) {
+	$i++;
+}
+
 //$filetype_tmp = "";
 if (isset($_FILES['filename'])) {
 	foreach ($_FILES['filename']['name'] as $k => $f) {
@@ -62,7 +66,7 @@ if (isset($_FILES['filename'])) {
 		//if (($f + 1) != $k) {$filetype .= ",";}
 		move_uploaded_file($_FILES['filename']['tmp_name'][$k], "../img/" . $code . $i . $filetype_tmp);
 		//echo 'Файл: ' . $_FILES['filename']['name'][$k] . ' загружен.<br />';
-		//$i++;
+		$i++;
 		//}
 		//}
 	}

@@ -6,11 +6,11 @@ $code = $_POST['code'];
 $name = $_POST['name'];
 $lat = $_POST['lat'];
 $lng = $_POST['lng'];
-if (isset($_POST['city'])) {
-	$city = $_POST['city'];
-} else {
-	$city = null;
-}
+//if (isset($_POST['city'])) {
+$city = $_POST['city'];
+//} else {
+//$city = null;
+//}
 
 $description = $_POST['description'];
 $scenery = $_POST['scenery'];
@@ -64,8 +64,8 @@ $db_selected = mysql_select_db($database) or die("Не могу соединит
 mysql_query('SET NAMES utf8');
 
 $query = "INSERT INTO marker " .
-"(code, name, lat, lng, type, city )" .
-"VALUES('$code','$name','$lat','$lng', $city)";
+"(code, name, lat, lng, type, city)" .
+"VALUES('$code','$name','$lat','$lng', '$type', '$city')";
 
 /*$query_marker = sprintf("INSERT INTO marker " .
 " (code, name, lat, lng, type, images, city )" .
