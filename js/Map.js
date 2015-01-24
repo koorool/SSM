@@ -49,7 +49,7 @@ function markers_load(type, code){
   //if(free!= "-1") не брати з бази тип
       downloadUrl("/aviamap/PHP/load_markers.php?type="+ type +"&code=" + code, function(data) {
         //var xml = data.responseXML;
-        var markers = data.responseXML.documentElement.getElementsByTagName("marker");
+        var markers = data.responseXML.childNodes[0].childNodes;
         for (var i = 0; i < markers.length; i++) {
           //var code = markers[i].getAttribute("code"); 
           //var name = markers[i].getAttribute("name");          
@@ -71,7 +71,7 @@ function markers_load(type, code){
             draggable: admin,
 	          title: markers[i].getAttribute("name")
           });
-          marker.set('code', markers[i].getAttribute("code"));
+          marker.set('code', markers[i].tagName);
           if(markers[i].getAttribute("city").length) marker.set('city', markers[i].getAttribute("city"));
           marker.set('type', markers[i].getAttribute("type"));
           markers_arr.push(marker);

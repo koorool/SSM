@@ -34,14 +34,14 @@ $str = preg_replace("/%u([0-9a-f]{3,4})/i","&#x\1;",urldecode($str));
 return html_entity_decode($str,null,'UTF-8');
 }*/
 
-$filetype = "";
-$filetype_tmp = "";
+//$filetype = "";
+//$filetype_tmp = "";
 if (isset($_FILES['filename'])) {
 	foreach ($_FILES['filename']['name'] as $k => $f) {
 		$filetype_tmp = substr($_FILES['filename']['name'][$k], strripos($_FILES['filename']['name'][$k], ".", 0), 4);
-		$filetype .= substr($_FILES['filename']['name'][$k], strripos($_FILES['filename']['name'][$k], ".", 0) + 1, 4);
+		//$filetype .= substr($_FILES['filename']['name'][$k], strripos($_FILES['filename']['name'][$k], ".", 0) + 1, 4);
 		//перевірити й доробити
-		if (($f + 1) != $k) {$filetype .= ",";}
+		//if (($f + 1) != $k) {$filetype .= ",";}
 		//if (!$_FILES['filename']['error'][$k]) {
 		//if (iconv(in_charset, out_charset, str)s_uploaded_file($_FILES['filename']['tmp_name'][$k])) {
 		move_uploaded_file($_FILES['filename']['tmp_name'][$k], "../img/" . $code . $k . $filetype_tmp);
@@ -51,10 +51,10 @@ if (isset($_FILES['filename'])) {
 		//}
 	}
 } else {echo ("file doesn't load");}
-//коряво
-if ($filetype == ",") {
-	$filetype = null;
-}
+
+/*if ($filetype == ",") {
+$filetype = null;
+}*/
 
 // Opens a connection to a MySQL server
 $connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
@@ -64,8 +64,8 @@ $db_selected = mysql_select_db($database) or die("Не могу соединит
 mysql_query('SET NAMES utf8');
 
 $query = "INSERT INTO marker " .
-"(code, name, lat, lng, type, images, city )" .
-"VALUES('$code','$name','$lat','$lng', $filetype, $city)";
+"(code, name, lat, lng, type, city )" .
+"VALUES('$code','$name','$lat','$lng', $city)";
 
 /*$query_marker = sprintf("INSERT INTO marker " .
 " (code, name, lat, lng, type, images, city )" .

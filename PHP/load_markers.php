@@ -1,7 +1,6 @@
 <?php
 
 require "dbinfo.php";
-
 $dom = new DOMDocument("1.0");
 $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
@@ -34,9 +33,9 @@ header("Content-type: text/xml");
 
 while ($row = @mysql_fetch_assoc($result)) {
 	// ADD TO XML DOCUMENT NODE
-	$node = $dom->createElement("marker");
+	$node = $dom->createElement($row['code']);
 	$newnode = $parnode->appendChild($node);
-	$newnode->setAttribute("code", $row['code']);
+	//$newnode->setAttribute("code", $row['code']);
 	$newnode->setAttribute("name", $row['name']);
 	$newnode->setAttribute("lat", $row['lat']);
 	$newnode->setAttribute("lng", $row['lng']);

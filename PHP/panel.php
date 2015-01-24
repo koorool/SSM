@@ -27,7 +27,7 @@ $images = $row['images'];
 }*/
 
 foreach (glob("../img/" . $code . "*") as $filename) {
-	$images .= $filename . "\n";
+	$images .= basename($filename) . ";";
 }
 
 $connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
@@ -39,8 +39,8 @@ $query = "SELECT description, scenery_free, scenery, scenery_label, scenery_free
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
 header("Content-type: text/xml");
+$dom = new DOMDocument("1.0");
 while ($row = @mysql_fetch_assoc($result)) {
-	$dom = new DOMDocument("1.0");
 	$node = $dom->createElement("marker");
 	$newnode = $dom->appendChild($node);
 	$newnode->setAttribute("description", $row['description']);

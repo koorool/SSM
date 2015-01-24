@@ -243,27 +243,27 @@ function panelinformation(code, type){
 	empty_galery = false;
 	downloadUrl("/aviamap/PHP/panel.php?code=" + code + "&type=" + type, function(data) {
 		//var xml = data.responseXML;
-		var markers = data.responseXML.documentElement.getElementsByTagName("marker");
+		var markers = data.responseXML.firstChild; //documentElement.getElementsByTagName("marker")[0];
 			//переробити, враховуючи залежність між type and scenery			
 			if(admin){
 				switch(type){
 					case '0':
-					document.getElementById("scenery_free").value= markers[0].getAttribute("scenery_free");
-					document.getElementById('scenery_free_label').value = markers[0].getAttribute("scenery_free_label");
+					document.getElementById("scenery_free").value= markers.getAttribute("scenery_free");
+					document.getElementById('scenery_free_label').value = markers.getAttribute("scenery_free_label");
 					document.getElementById("scenery").value= "";
 					document.getElementById("scenery_label").value= "";
 					break;
 					case '1':
-					document.getElementById("scenery").value= markers[0].getAttribute("scenery");
-					document.getElementById('scenery_label').value = markers[0].getAttribute("scenery_label");
+					document.getElementById("scenery").value= markers.getAttribute("scenery");
+					document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
 					document.getElementById("scenery_free").value= "";
 					document.getElementById("scenery_free_label").value= "";
 					break;
 					case '2':
-					document.getElementById("scenery_free").value= markers[0].getAttribute("scenery_free");
-					document.getElementById('scenery_free_label').value = markers[0].getAttribute("scenery_free_label");
-					document.getElementById("scenery").value= markers[0].getAttribute("scenery");
-					document.getElementById('scenery_label').value = markers[0].getAttribute("scenery_label");
+					document.getElementById("scenery_free").value= markers.getAttribute("scenery_free");
+					document.getElementById('scenery_free_label').value = markers.getAttribute("scenery_free_label");
+					document.getElementById("scenery").value= markers.getAttribute("scenery");
+					document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
 					break;
 				}
 				/*if(markers[0].getAttribute("scenery")!=null && markers[0].getAttribute("scenery")!="")
@@ -277,33 +277,33 @@ function panelinformation(code, type){
 			 	//createfield('scenery_free');
 				document.getElementById('scenery_free_label').value = markers[0].getAttribute("scenery_free_label");
 				}*/
-			 	document.getElementById("description").value= markers[0].getAttribute("description");
+			 	document.getElementById("description").value= markers.getAttribute("description");
 			}
 			else{
 				switch(type){
 					case '0':
-					document.getElementById("scenery_free").href = markers[0].getAttribute("scenery_free");
-					if(markers[0].getAttribute("scenery_free_label").length && markers[0].getAttribute("scenery_free_label")!= null)
-					document.getElementById("scenery_free").textContent = markers[0].getAttribute("scenery_free_label");
-					else document.getElementById("scenery_free").textContent = markers[0].getAttribute("scenery_free");
+					document.getElementById("scenery_free").href = markers.getAttribute("scenery_free");
+					if(markers.getAttribute("scenery_free_label").length && markers.getAttribute("scenery_free_label")!= null)
+					document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free_label");
+					else document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free");
 					document.getElementById('scenery').textContent = "";
 					break;
 					case '1':
-					document.getElementById("scenery").href = markers[0].getAttribute("scenery");
-					if(markers[0].getAttribute("scenery_label").length && markers[0].getAttribute("scenery_label")!= null)
-					document.getElementById("scenery").textContent = markers[0].getAttribute("scenery_label");
-					else document.getElementById("scenery").textContent = markers[0].getAttribute("scenery");
+					document.getElementById("scenery").href = markers.getAttribute("scenery");
+					if(markers.getAttribute("scenery_label").length && markers.getAttribute("scenery_label")!= null)
+					document.getElementById("scenery").textContent = markers.getAttribute("scenery_label");
+					else document.getElementById("scenery").textContent = markers.getAttribute("scenery");
 					document.getElementById('scenery_free').textContent = "";
 					break;
 					case '2':
-					document.getElementById("scenery_free").href = markers[0].getAttribute("scenery_free");
-					if(markers[0].getAttribute("scenery_free_label").length && markers[0].getAttribute("scenery_free_label")!= null)
-					document.getElementById("scenery_free").textContent = markers[0].getAttribute("scenery_free_label");
-					else document.getElementById("scenery_free").textContent = markers[0].getAttribute("scenery_free");
-					document.getElementById("scenery").href = markers[0].getAttribute("scenery");
-					if(markers[0].getAttribute("scenery_label").length && markers[0].getAttribute("scenery_label")!= null)
-					document.getElementById("scenery").textContent = markers[0].getAttribute("scenery_label");
-					else document.getElementById("scenery").textContent = markers[0].getAttribute("scenery");
+					document.getElementById("scenery_free").href = markers.getAttribute("scenery_free");
+					if(markers.getAttribute("scenery_free_label").length && markers.getAttribute("scenery_free_label")!= null)
+					document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free_label");
+					else document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free");
+					document.getElementById("scenery").href = markers.getAttribute("scenery");
+					if(markers.getAttribute("scenery_label").length && markers.getAttribute("scenery_label")!= null)
+					document.getElementById("scenery").textContent = markers.getAttribute("scenery_label");
+					else document.getElementById("scenery").textContent = markers.getAttribute("scenery");
 					break;
 				}
 				/*if(markers[0].getAttribute("scenery")!="" && markers[0].getAttribute("scenery")!= null){ 
@@ -323,31 +323,31 @@ function panelinformation(code, type){
 					else document.getElementById("scenery_free").textContent = markers[0].getAttribute("scenery_free");
 				}
 				else document.getElementById("scenery").textContent = "";*/
-				document.getElementById("description").textContent= markers[0].getAttribute("description");
+				document.getElementById("description").textContent= markers.getAttribute("description");
 			}
 			document.getElementById('galery').innerHTML = "";
-			galery0 = document.createElement('img');
-			galery0.id = "galery0";
-			document.getElementById('galery').appendChild(galery0);
-			if(markers[0].getAttribute("images").indexOf(',')+1){
-				var arr = markers[0].getAttribute("images").split(',');				
-				document.getElementById('galery0').src ="/aviamap/img/"+ code +"0." + arr[0];
-				for(var i=1; i<arr.length; i++){
-					if(arr[i]!=" " && arr[i]!="," && arr[i].length && arr[i]!=null){
+			//if(markers.getAttribute("images").indexOf(';')+1){
+				galery0 = document.createElement('img');
+				galery0.id = "galery0";
+				document.getElementById('galery').appendChild(galery0);
+				var arr = markers.getAttribute("images").split(';');				
+				document.getElementById('galery0').src ="./img/" + arr[0];
+				for(var i=1; i<arr.length-1; i++){
+					//if(arr[i]!=" " && arr[i]!=";" && arr[i].length && arr[i]!=null){
 						galery[i] = document.createElement('img');
 						galery[i].className = 'hidden';
-						galery[i].src = "/aviamap/img/"+ code+ i +"." +arr[i];
-						galery[i].title = code;
+						galery[i].src = "./img/" + arr[i];
+						//galery[i].title = code;
 						document.getElementById('galery').appendChild(galery[i]);
 					//document.getElementById("galery"+i).src = "/aviamap/img/"+ code+ i +"." +arr[i];
 						//k++;
-					}
+					//}
 				};
 
 			//if(arr.length!=0) 
 			$('.thumbs img').touchTouch();
-			}
-			else empty_galery = true;
+			//}
+			//else empty_galery = true;
 	});
 }
 
