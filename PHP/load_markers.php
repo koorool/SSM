@@ -6,7 +6,8 @@ $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
 
 $type = $_GET['type'];
-//$code = isset($_GET['code']);
+$code = "";
+//if(isset($_GET['code'])) $code = isset($_GET['code']);
 
 // Select all the rows in the marker table
 if ($type == "-1") {

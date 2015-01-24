@@ -93,9 +93,29 @@ function loadDataInfoPanel(marker)
 			document.getElementById('form').action = '/aviamap/PHP/update.php';
 			document.getElementById('form').onsubmit = function(){
 				alert("marker with id: " + marker.get('code')+ " Updated!");
-           		marker.setMap(null);
+           		//marker.setMap(null);
            		//window.infowindow.setMap(null);
-           		markers_load("-1", marker.get('code'));
+           		if(document.getElementById('scenery_free').value && !document.getElementById('scenery').value){
+           			marker.setIcon(new google.maps.MarkerImage(customIcons[0].icon,
+            		new google.maps.Size(20, 20),
+            		null,//new google.maps.Point(0, 0),
+            		null,//new google.maps.Point(0, 0),
+            		new google.maps.Size(20, 20)));
+           		}
+           		else if(!document.getElementById('scenery_free').value && document.getElementById('scenery').value){
+           			marker.setIcon(new google.maps.MarkerImage(customIcons[1].icon,
+            		new google.maps.Size(20, 20),
+            		null,//new google.maps.Point(0, 0),
+            		null,//new google.maps.Point(0, 0),
+            		new google.maps.Size(20, 20)));
+           		}
+           		else{
+           			marker.setIcon(new google.maps.MarkerImage(customIcons[2].icon,
+            		new google.maps.Size(20, 20),
+            		null,//new google.maps.Point(0, 0),
+            		null,//new google.maps.Point(0, 0),
+            		new google.maps.Size(20, 20)));
+           		}
            		//incorrect
            		//marker.setIcon(customIcons[document.getElementById('type').value].icon);
 

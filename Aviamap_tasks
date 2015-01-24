@@ -40,9 +40,7 @@ keywords: FSX Scenery prepar3d, fs9, simulator, microsoft flight simulator, АЫ
 8) возможность 2-х scenery/scenery_free
 9) SEO optimisation
 10) оформлення пошуку - as flightradar
+11) panel.php make echo plaintext not xml
 11) переписати на jQuery
 12) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
 	a) echo ("file doesn't load") до користувача
-
-bugs
-1) не оновлюється іконка після зміни типу маркера
