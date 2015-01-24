@@ -23,7 +23,10 @@ function initialize() {
      });
      markers_load("-1");
      geocoder = new google.maps.Geocoder();
-
+     document.getElementById("free").checked = false;
+     document.getElementById("pay-free").checked = false;
+     document.getElementById("non-free").checked = false;
+     document.getElementById('search').value = "";
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

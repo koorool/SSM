@@ -14,13 +14,34 @@ $scenery_free_label = $_POST['scenery_free_label'];
 if (isset($_POST['city'])) {
 	$city = $_POST['city'];
 }
-//$country = $_POST['country'];
+
 if (isset($scenery_free) && isset($scenery) && !empty($scenery) && !empty($scenery_free)) {
 	$type = 2;
+	if (isset($_POST['scenery_free1']) && !empty($_POST['scenery_free1'])) {
+		$scenery_free .= ";" . $_POST['scenery_free1'];
+	}
+	if (isset($_POST['scenery_free_label1']) && !empty($_POST['scenery_free_label1'])) {
+		$scenery_free_label .= ";" . $_POST['scenery_free_label1'];
+	}
+
 } else if (isset($_POST['scenery_free']) && !empty($scenery_free)) {
 	$type = 0;
+	if (isset($_POST['scenery_free1']) && !empty($_POST['scenery_free1'])) {
+		$scenery_free .= ";" . $_POST['scenery_free1'];
+	}
+	if (isset($_POST['scenery_free_label1']) && !empty($_POST['scenery_free_label1'])) {
+		$scenery_free_label .= ";" . $_POST['scenery_free_label1'];
+	}
+
 } else if (isset($_POST['scenery']) && !empty($scenery)) {
 	$type = 1;
+	if (isset($_POST['scenery1']) && !empty($_POST['scenery1'])) {
+		$scenery_free .= ";" . $_POST['scenery1'];
+	}
+	if (isset($_POST['scenery_label1']) && !empty($_POST['scenery_label1'])) {
+		$scenery_free_label .= ";" . $_POST['scenery_label1'];
+	}
+
 }
 
 $connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
