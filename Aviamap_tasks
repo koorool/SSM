@@ -30,16 +30,18 @@ pass: 3qXGMD;
 
 keywords: FSX Scenery prepar3d, fs9, simulator, microsoft flight simulator, АЫЧ, scenery, p3d, UKBB scenery, UKBB fsx
 
+till Monday 26.01
 1) UI
-2) розділ about
+2) оформлення пошуку - as flightradar
+6) статично закрепить галерею, чтобы она не ерзала по панели
+8) возможность 2-х scenery/scenery_free
+4) видалення зображень через галерею
+9) SEO optimisation
+3) розділ about
 	a) обратная связь
 	b) лінк до соц мереж
-3) видалення зображень через галерею
-4) Розділити адмінські функції та функціїї користувача
-7) статично закрепить галерею, чтобы она не ерзала по панели
-8) возможность 2-х scenery/scenery_free
-9) SEO optimisation
-10) оформлення пошуку - as flightradar
+till Monday 2.02
+5) Розділити адмінські функції та функціїї користувача
 11) panel.php make echo plaintext not xml
 11) переписати на jQuery
 12) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
