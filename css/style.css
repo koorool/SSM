@@ -293,9 +293,7 @@ textarea {
     white-space: nowrap;
 }
 .hidden {
-  visibility: hidden;
-  height: 1px;
-  width: 1px;
+  display: none;
 }
 
 /*#autoresize{
