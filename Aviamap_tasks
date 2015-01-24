@@ -18,12 +18,6 @@ http://www.xpscenery.net - вот пример карты кстати, можн
 
 замовник skype: mirikamoari
 
-Запит sql
-SELECT marker.name, marker.lat, marker.lng, marker.type, markerinfo.description, markerinfo.sim, markerinfo.scenery, marker_window.city,marker_window.country, marker_window.address
-FROM marker join markerinfo ON marker.code = markerinfo.code
-join marker_window ON markerinfo.code = marker_window.code
-
-
 https://sites.google.com/site/simscenerymap/
 https://www.google.com/maps/d/edit?mid=zEn_pZnzWivQ.kuY1-wSU815w
 
@@ -33,7 +27,6 @@ pass: 3qXGMD;
 1) нужно сделать защищенный пароль +- чи треба воно?
 2) api key потрібен лише для відслідковування користування - додам коли відновимо хостинг
 3) коли буде багато маркерів - розбити по регіонах та по країнах
-4) Розділити адмінські функції та функціїї користувача
 
 keywords: FSX Scenery prepar3d, fs9, simulator, microsoft flight simulator, АЫЧ, scenery, p3d, UKBB scenery, UKBB fsx
 
@@ -43,12 +36,13 @@ keywords: FSX Scenery prepar3d, fs9, simulator, microsoft flight simulator, АЫ
 	b) лінк до соц мереж
 3) видалення зображень через галерею
 4) Розділити адмінські функції та функціїї користувача
-5) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
-	a) echo ("file doesn't load") до користувача
 7) статично закрепить галерею, чтобы она не ерзала по панели
 8) возможность 2-х scenery/scenery_free
 9) SEO optimisation
 10) оформлення пошуку - as flightradar
+11) переписати на jQuery
+12) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
+	a) echo ("file doesn't load") до користувача
 
 bugs
 1) не оновлюється іконка після зміни типу маркера
