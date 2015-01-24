@@ -38,6 +38,7 @@ var customIcons = {
 var markers_arr = [];
 //var this_marker;
 var source = [];
+var infowindow = new google.maps.InfoWindow();
 //Global Variables//
 
 // Load markers from DataBase
@@ -96,7 +97,7 @@ function markers_load(type, code){
 
       }
 });
-var infowindow = new google.maps.InfoWindow();
+
      //add markers on the map   
   google.maps.event.addListener(map, "click", function(event) {          
       if (admin && document.getElementById('new_marker').checked) { //event.latLng &&
@@ -106,62 +107,11 @@ var infowindow = new google.maps.InfoWindow();
             position: event.latLng, 
             draggable:true
             });
-        document.getElementById('city').placeholder = "";
+        mew_marker_clicked(marker); 
 
             //google.maps.event.addListener(marker, "click", function() {
                
-              markers_arr.push(marker);
-              //window.infowindow.close();
-              document.getElementById('galery').innerHTML = "";
-              $('.placeholder').remove();
-              var city;
-              var country;
-      
-              document.getElementById('form').reset();
-        //document.getElementById("description").textContent= "";
-              document.getElementById('submit').value = "save";
-              document.getElementById('del').disabled = true;
-              document.getElementById('reset_btn').disabled = false;
-              document.getElementById("lat").value = marker.getPosition().lat();
-              document.getElementById("lng").value = marker.getPosition().lng();
-              document.getElementById('form').action ="/aviamap/PHP/insert.php";
-              document.getElementById('form').onsubmit = function(){reload()};
-              //поліпшити! не results, but address format
-              geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
-                  if (status == google.maps.GeocoderStatus.OK) {
-                      if (results[0]) {
-                        var components=results[0].address_components;
-                    for (var component=0;component<(components.length);component++){
-
-                      if(results[0].address_components[component].types[0]=="country")
-                        country=results[0].address_components[component].long_name; 
-
-                      if(components[component].types[0]=="locality"){
-                        city = results[0].address_components[component].long_name;
-                        /*if(components[component].long_name=="undefined"){
-                          //якщо місто не знайшло, відобазити поле для вводу
-                          var tbCity = document.createElement('input');
-                          tbCity.type = "text";
-                          tbCity.name = 'city';
-                          tbCity.required = 'required';
-                          document.getElementById('form').appendChild(tbCity);
-                        }*/
-                        //results[0].address_components[component].long_name;
-                        /*else if(document.getElementById('tbCity')!=null)
-                        document.getElementById('tbCity').parentNode.removeChild(document.getElementById('tbCity'));*/
-                      }
-                    }
-                    infowindow.setContent("<b>"+city+', '+ country+'</b>');
-                    infowindow.open(map, marker);
-                  } else {
-                        infowindow.setContent('No results found');
-                        infowindow.open(map, marker);
-                          }
-                  } else {
-                      infowindow.setContent('Geocoder failed due to: ' + status);
-                      infowindow.open(map, marker);
-                    }
-                });
+              
               //if(!jQuery.infopanel.hasClass('visible'))
               //jQuery.Panel();
             //});
@@ -178,58 +128,7 @@ var infowindow = new google.maps.InfoWindow();
              google.maps.event.addListener(marker, 'click', function ()
               {
                 //markers_arr.push(marker);
-                document.getElementById('city').placeholder = "";
-              //window.infowindow.close();
-              document.getElementById('galery').innerHTML = "";
-              $('.placeholder').remove();
-              var city;
-              var country;
-      
-              document.getElementById('form').reset();
-        //document.getElementById("description").textContent= "";
-              document.getElementById('submit').value = "save";
-              document.getElementById('del').disabled = true;
-              document.getElementById('reset_btn').disabled = false;
-              document.getElementById("lat").value = marker.getPosition().lat();
-              document.getElementById("lng").value = marker.getPosition().lng();
-              document.getElementById('form').action ="/aviamap/PHP/insert.php";
-              document.getElementById('form').onsubmit = function(){reload()};
-              //поліпшити! не results, but address format
-              geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
-                  if (status == google.maps.GeocoderStatus.OK) {
-                      if (results[0]) {
-                        var components=results[0].address_components;
-                    for (var component=0;component<(components.length);component++){
-
-                      if(results[0].address_components[component].types[0]=="country")
-                        country=results[0].address_components[component].long_name; 
-
-                      if(components[component].types[0]=="locality"){
-                        city = results[0].address_components[component].long_name;
-                        /*if(components[component].long_name=="undefined"){
-                          //якщо місто не знайшло, відобазити поле для вводу
-                          var tbCity = document.createElement('input');
-                          tbCity.type = "text";
-                          tbCity.name = 'city';
-                          tbCity.required = 'required';
-                          document.getElementById('form').appendChild(tbCity);
-                        }*/
-                        //results[0].address_components[component].long_name;
-                        /*else if(document.getElementById('tbCity')!=null)
-                        document.getElementById('tbCity').parentNode.removeChild(document.getElementById('tbCity'));*/
-                      }
-                    }
-                    infowindow.setContent("<b>"+city+', '+ country+'</b>');
-                    infowindow.open(map, marker);
-                  } else {
-                        infowindow.setContent('No results found');
-                        infowindow.open(map, marker);
-                          }
-                  } else {
-                      infowindow.setContent('Geocoder failed due to: ' + status);
-                      infowindow.open(map, marker);
-                    }
-                });
+              mew_marker_clicked(marker); 
               });
       }
     });
@@ -306,6 +205,62 @@ function search(){
 function marker_animate(marker){
   marker.setAnimation(google.maps.Animation.BOUNCE);
   setTimeout(function(){marker.setAnimation(null)}, 2000);
+}
+
+function mew_marker_clicked(marker) {
+              document.getElementById('city').placeholder = "";
+              markers_arr.push(marker);
+              //window.infowindow.close();
+              document.getElementById('galery').innerHTML = "";
+              $('.placeholder').remove();
+              var city;
+              var country;
+      
+              document.getElementById('form').reset();
+        //document.getElementById("description").textContent= "";
+              document.getElementById('submit').value = "save";
+              document.getElementById('del').disabled = true;
+              document.getElementById('reset_btn').disabled = false;
+              document.getElementById("lat").value = marker.getPosition().lat();
+              document.getElementById("lng").value = marker.getPosition().lng();
+              document.getElementById('form').action ="/aviamap/PHP/insert.php";
+              document.getElementById('form').onsubmit = function(){reload()};
+              //поліпшити! не results, but address format
+              geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+                  if (status == google.maps.GeocoderStatus.OK) {
+                      if (results[0]) {
+                        var components=results[0].address_components;
+                    for (var component=0;component<(components.length);component++){
+
+                      if(results[0].address_components[component].types[0]=="country")
+                        country=results[0].address_components[component].long_name; 
+
+                      if(components[component].types[0]=="locality"){
+                        city = results[0].address_components[component].long_name;
+                        /*if(components[component].long_name=="undefined"){
+                          //якщо місто не знайшло, відобазити поле для вводу
+                          var tbCity = document.createElement('input');
+                          tbCity.type = "text";
+                          tbCity.name = 'city';
+                          tbCity.required = 'required';
+                          document.getElementById('form').appendChild(tbCity);
+                        }*/
+                        //results[0].address_components[component].long_name;
+                        /*else if(document.getElementById('tbCity')!=null)
+                        document.getElementById('tbCity').parentNode.removeChild(document.getElementById('tbCity'));*/
+                      }
+                    }
+                    infowindow.setContent("<b>"+city+', '+ country+'</b>');
+                    infowindow.open(map, marker);
+                  } else {
+                        infowindow.setContent('No results found');
+                        infowindow.open(map, marker);
+                          }
+                  } else {
+                      infowindow.setContent('Geocoder failed due to: ' + status);
+                      infowindow.open(map, marker);
+                    }
+                });
 }
 
 /*function getcity(code){
