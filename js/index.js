@@ -3,22 +3,22 @@
         switch (type){
             case -1:
             markers_load(-1);
-            document.getElementById('refresh').innerHTML = "Обновить";
+            document.getElementById('refresh').innerHTML = "Refresh";
             document.getElementById("free").checked = false;
             document.getElementById("pay-free").checked = false;
             document.getElementById("non-free").checked = false;            
             break;
             case 0:
             markers_load(0);
-            document.getElementById('refresh').innerHTML = "Сброс";
+            document.getElementById('refresh').innerHTML = "Reset";
             break;
             case 1:
             markers_load(1);
-            document.getElementById('refresh').innerHTML = "Сброс";
+            document.getElementById('refresh').innerHTML = "Reset";
             break;
             case 2:
             markers_load(2);
-            document.getElementById('refresh').innerHTML = "Сброс";
+            document.getElementById('refresh').innerHTML = "Reset";
             break;
         } 
         /*if(document.getElementById("pay-free").checked === true)

@@ -19,7 +19,7 @@
 		<meta name="format-detection" content="address=no">
 		<meta name="viewport" content="target-densitydpi=high-dpi">
 		<meta name="viewport" content="width=device-width, user-scalable=no">
-		<link rel="shortcut icon" href="./images/favicon.ico"><!--type="image/x-icon"-->
+		<link rel="shortcut icon" href="/aviamap/images/favicon.ico"><!--type="image/x-icon"-->
 		
 
 		<!--SEO-->
@@ -38,12 +38,19 @@
 		<link rel="stylesheet" href="./css/bootstrap.min.css">
 		<!--Javascript-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
+        <!--script src="/aviamap/js/1.7.2.jquery.min.js"></script-->
+		
 		<!--client=AIzaSyB-NQCXIIa9EzYTUm3Tv4fECpJPn5-a6ko&-->
         <script src="https://maps.google.com/maps/api/js?v=3.18&language=en"></script>
 
         <script src="./js/Map.js"></script>
 
+		<!--script type="text/javascript">var switchTo5x=true;</script>
+		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+		<script type="text/javascript" src="http://s.sharethis.com/loader.js"></script-->
+		
+		<!--script type="text/javascript" src="/aviamap/js/autoresize.js"></script-->
+		<!--script src="/aviamap/js/galery.js"></script-->		
 </Head>	
 	
 <Body>
@@ -82,11 +89,11 @@
 					    		<td>City:</td>
 					    		<td><b id="city"></b></td>
 					    	</tr>
-					    	<tr>
+					    	<!--tr>
 					    		<td>Cuntry:</td>
 					    		<td><b id="country"></b></td>
 					    	</tr>
-					    	<tr>
+					    	<tr-->
 					    		<td>Country:</td>
 					    		<td><b id="country"></b></td>
 					    	</tr>
@@ -98,14 +105,14 @@
 					    		<td>Free scenery:</td>
 					    		<td>
 					    			<a id="scenery_free" target="_blank" class="btn btn-primary"></a>
-					    			<a id="scenery_free1" target="_blank" class="btn btn-primary"></a>
+					    			<a id="scenery_free" target="_blank" class="btn btn-primary"></a>
 					    		</td>
 					    	</tr>
 					    	<tr>
 					    		<td>Scenery:</td>
 					    		<td>
 					    			<a id="scenery" target="_blank" class="btn btn-primary"></a>
-					    			<a id="scenery1" target="_blank" class="btn btn-primary"></a>
+					    			<a id="scenery" target="_blank" class="btn btn-primary"></a>
 					    		</td>
 					    	</tr>
 					    	<!--b>lat: </b><code id="lat"></code></br>
@@ -113,6 +120,7 @@
 					    		
 					    	
 					    </table>
+					    	<!--div id="for_city"></div-->
 				</div> <!--panel_content-->
 				<hr/>					    	
 				<div id="galery" class="thumbs"> <!-- JS Process it -->
@@ -150,9 +158,10 @@
 </html>
 <script defer src="./js/Login.js"></script>
 <script async src="./js/Panel.js"></script>
+<!--script defer scr="/aviamap/js/main_page.js"></script-->
 <script defer src="./touchTouch/touchTouch.jquery.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="./css/jquery-ui.css">
-<link rel="stylesheet" href="./touchTouch/touchTouch.css"/>
+<link defer rel="stylesheet" href="./touchTouch/touchTouch.css"/>
 <script defer type="text/javascript" src="./js/index.js"></script>
