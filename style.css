@@ -22,11 +22,16 @@ height: 100%;
 width: 90%;
 }
 
+a{
+  color: #B2BFDC;
+}
+
 .LoginBox{
   background-color: white;
   position: absolute;
   z-index: 2
 }
+
 .plaintext b{
   font-family: "Montserrat-Bold";
   font-size: 1.05em;
@@ -305,29 +310,7 @@ textarea {
   resize: horizontal;
 }*/
 
-/* highlight results */
-.ui-autocomplete span.hl_results {
-    background-color: #ffff66;
-}
- 
-/* loading - the AJAX indicator */
-.ui-autocomplete-loading {
-    background: white url('aviamap/imgages/ui-anim_basic_16x16.gif') right center no-repeat;
-}
- 
-/* scroll results */
-.ui-autocomplete {
-    max-height: 250px;
-    overflow-y: auto;
-    /* prevent horizontal scrollbar */
-    overflow-x: hidden;
-    /* add padding for vertical scrollbar */
-    padding-right: 5px;
-}
- 
-.ui-autocomplete li {
-    font-size: 16px;
-}
+
 /*new search*/
 #fr24_SearchContainer {
     z-index: 5;
@@ -367,9 +350,6 @@ textarea {
     font-size: 1.1em;
     min-height: 1.6em;
     min-width: 1.6em;
-}
-.bootstrap .pull-right {
-    float: right !important;
 }
 
 .smooth-tab.attach-top .tab-sweep.toright {
@@ -417,12 +397,6 @@ textarea {
   z-index: 2;
 }*/
 
-@font-face {
-  font-family: 'Merriweather';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Merriweather Light'), local('Merriweather-Light'), url(http://fonts.gstatic.com/s/merriweather/v8/ZvcMqxEwPfh2qDWBPxn6nk4GofcKVZz6wtzX_QUIqsI.woff2) format('woff2'), url(http://fonts.gstatic.com/s/merriweather/v8/ZvcMqxEwPfh2qDWBPxn6nmFp2sMiApZm5Dx7NpSTOZk.woff) format('woff');
-}
 /*@font-face {
   font-family: 'Merriweather';
   font-style: normal;
@@ -441,13 +415,6 @@ textarea {
   font-weight: 400;
   src: local('Merriweather Italic'), local('Merriweather-Italic'), url(http://fonts.gstatic.com/s/merriweather/v8/So5lHxHT37p2SS4-t60SlBMBlNeli-0RcAdOFWWLdxQ.woff2) format('woff2'), url(http://fonts.gstatic.com/s/merriweather/v8/So5lHxHT37p2SS4-t60SlHpumDtkw9GHrrDfd7ZnWpU.woff) format('woff');
 }*/
-
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Montserrat-Bold"), url("http://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcoWiMMZ7xLd792ULpGE4W_Y.woff2") format("woff2"), url("http://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcgFhaRv2pGgT5Kf0An0s4MM.woff") format("woff");
-}
 
 .sidebar-footer {
     position: absolute;
@@ -472,9 +439,7 @@ textarea {
 /**, *:after, *:before {
     box-sizing: border-box;
 }*/
-a{
-  color: #B2BFDC;
-}
+
 .sidebar-footer div a{
   font-size: 16px;
   line-height: 43px;
