@@ -390,24 +390,54 @@ function panelinformation(code, type){
  	}
 }*/
 
-/*$('#scenery').change(function() {
-   createfield('scenery');
-});
+/*(function($) { //In case jQuery no conflict is being used
+    $(document).ready(function() { //wait for document ready
+        var timer;
+        var delay = 600; // 0.6 seconds delay after last input
+ 
+        $('.scenery').bind('input', function() {
+            window.clearTimeout(timer);
+            timer = window.setTimeout(function(){
+                  //insert delayed input change action/event here
+                              createfield('scenery');
+ 
+            }, delay);
+        })
+    }); // END READY           
+})(jQuery);*/
 
-$('#scenery_free').change(function(){
-	createfield('scenery_free');
-});*/
-
-/*function createfield(field){
-	if(document.getElementById(field +'_label') == null){
-	var tbSceneryLabel = document.createElement('input');
-	//tbCity.type = "text";
- 	tbSceneryLabel.name = field + "_label";
- 	tbSceneryLabel.id = field + "_label";
- 	tbSceneryLabel.placeholder = field + "_label";
- 	document.getElementById('form').appendChild(tbSceneryLabel);
- 	}
-}*/
+function createfield(field){
+	//if(document.getElementById(field.id +'_chbx').checked){
+	if(document.getElementById(field.id).value && !document.getElementById(field.id + "_label")){//.id
+		var tbSceneryLabel = document.createElement('input');
+		//tbCity.type = "text";
+	 	tbSceneryLabel.name = field.id + "_label"; //.id
+	 	tbSceneryLabel.id = field.id + "_label";//.id
+	 	tbSceneryLabel.placeholder = field.id + "_label"; //.id
+	 	document.getElementById('form').insertBefore(tbSceneryLabel, document.getElementById('before_' + field.id));
+	 	document.getElementById('form').insertBefore(document.createElement('br'), document.getElementById('before_' + field.id));
+	 	tbSceneryLabel.focus();
+	 	tbSceneryLabel.onblur = function(){
+	 		var tbScenery = document.createElement('input');
+	 		tbScenery.name = field.id + "1"; //.id
+	 		tbScenery.id = field.id + "1";//.id
+	 		tbScenery.placeholder = field.id; //.id
+	 		document.getElementById('form').insertBefore(tbScenery, document.getElementById('before_' + field.id));
+	 		document.getElementById('form').insertBefore(document.createElement('br'), document.getElementById('before_' + field.id));
+	 		tbScenery.focus();
+	 		var tbSceneryLabel = document.createElement('input');
+	 		tbSceneryLabel.name = field.id + "_label1"; //.id
+	 		tbSceneryLabel.id = field.id + "_label1";//.id
+	 		tbSceneryLabel.placeholder = field.id; //.id
+	 		document.getElementById('form').insertBefore(tbSceneryLabel, document.getElementById('before_' + field.id));
+	 		document.getElementById('form').insertBefore(document.createElement('br'), document.getElementById('before_' + field.id));
+	 	}
+	} 	
+ 	/*else
+ 	{
+ 		document.getElementById('form').removeChild(document.getElementById(field.id + "_label"))
+ 	}*/
+}
 
 /*function load_link(field){
 	document.getElementById(field).href = markers[0].getAttribute(field);
