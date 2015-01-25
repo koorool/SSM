@@ -87,16 +87,16 @@
 
 			e.preventDefault();
 
-			var $this = $(this),
+			/*var $this = $(this),
 				galleryName,
 				selectorType,
-				$closestGallery = $this.parent().closest('[data-gallery]');
+				$closestGallery = $this.parent().closest('[data-gallery]');*/
 
 			// Find gallery name and change items object to only have
 			// that gallery
 
 			//If gallery name given to each item
-			if ($this.attr('data-gallery')) {
+			/*if ($this.attr('data-gallery')) {
 
 				galleryName = $this.attr('data-gallery');
 				selectorType = 'item';
@@ -107,7 +107,7 @@
 				galleryName = $closestGallery.attr('data-gallery');
 				selectorType = 'ancestor';
 
-			}
+			}*/
 
 			//These statements kept seperate in case elements have data-gallery on both
 			//items and ancestor. Ancestor will always win because of above statments.
@@ -136,7 +136,7 @@
 			preload(index+1);
 
 			// Preload the previous
-			preload(index-1);
+			//preload(index-1);
 		}
 		});
 
@@ -157,10 +157,16 @@
 			if(admin) overlay.append(deleteArrow);
 			//a function to delete the image from site
 			deleteArrow.click(function(e){
-				/*$.ajax({
-				url: '/aviamap/PHP/delete_image.php?name=' + ,*/
-				
-				//showPrevious();
+				$.ajax({
+						url:'/aviamap/PHP/delete_image.php?name=' + array[index],
+						success: function(){								
+								array.splice(index-1,1);
+								alert("Photo deleted");
+								$("touchtouch" + index).remove();
+								if(index+1 < array.length)showNext();							
+								else showPrevious();								
+						}
+				});
 			});
 		}
 
@@ -247,6 +253,7 @@
 			});
 
 			img.attr('src',src);
+			img.attr('id',"touchtouch" + index);
 		}
 
 		function showNext(){

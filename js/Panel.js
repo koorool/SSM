@@ -115,8 +115,7 @@ function loadDataInfoPanel(marker)
             		null,//new google.maps.Point(0, 0),
             		null,//new google.maps.Point(0, 0),
             		new google.maps.Size(20, 20)));
-           		}
-           		//incorrect
+           		}           		
            		//marker.setIcon(customIcons[document.getElementById('type').value].icon);
 
             	/*var content = '<div class="scrollFix"><b>' + document.getElementById("marker_name").value + "</b> <br/>" 
@@ -185,7 +184,6 @@ function loadDataInfoPanel(marker)
             }
         }
         if(admin && !document.getElementById('city').value.length && !document.getElementById('city').placeholder.length) document.getElementById('city').placeholder ="City is null!";
-        //коряво, переробити
         /*if(typeof city === 'undefined'){          
             
         }*/
@@ -461,11 +459,11 @@ function panelinformation(code, type){
 			}
 			//document.getElementById('galery').innerHTML = "";
 			$('.placeholder').remove();
-			var galery = [];
+			//var galery = [];
 			empty_galery = false;
-			while (document.getElementById('galery').lastChild.id !== 'galery0') {
+			/*while (document.getElementById('galery').lastChild.id !== 'galery0') {
     		document.getElementById('galery').removeChild(document.getElementById('galery').lastChild);
-			}
+			}*/
 			if(markers.getAttribute("images").indexOf(';')+1){
 				//galery0 = document.createElement('img');
 				//galery0.id = "galery0";
@@ -490,7 +488,10 @@ function panelinformation(code, type){
 			//if(arr.length!=0) 
 			$('').touchTouch(arr1);
 			}
-			else empty_galery = true;
+			else {
+				empty_galery = true;
+				document.getElementById('galery0').src = './images/2.png';
+			}
 	});
 }
 

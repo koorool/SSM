@@ -34,14 +34,13 @@ keywords: FSX Scenery prepar3d, fs9, simulator, microsoft flight simulator, АЫ
 till Monday 26.01
 0) ОЖИВИТЬ САЙТ
 1) UI
-3) статично закрепить галерею, чтобы она не ерзала по панели +-
-4) возможность 2-х scenery/scenery_free test
-5) видалення зображень через галерею
-6) SEO optimisation
-7) розділ about - напише Антон 
+2) статично закрепить галерею, чтобы она не ерзала по панели +-
+3) возможность 2-х scenery/scenery_free test
+4) SEO optimisation
+5) Всплывающие сообщения вместо модальных.
+6) розділ about - напише Антон 
 	a) обратная связь
 	b) лінк до соц мереж
-9) Всплывающие сообщения вместо модальных.
 till Monday 2.02
 1) Розділити адмінські функції та функціїї користувача
 2) panel.php make echo plaintext not xml
