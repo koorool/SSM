@@ -20,21 +20,21 @@
 
 	/* Creating the plugin */
 
-	$.fn.touchTouch = function(){
+	$.fn.touchTouch = function(array){
 
 		var placeholders = $([]), //додавання, формувати список вручну з папки img
-			index = 0,
-			allitems = this,
-			items = allitems;
+			index = 0;
+			//items = this;
 
 		// Appending the markup to the page
 		overlay.hide().appendTo('body');
 		slider.appendTo(overlay);
 
 		// Creating a placeholder for each image
-		items.each(function(){
-			placeholders = placeholders.add($('<div class="placeholder">'));
-		});
+		//array.each(function(){//items
+			for(var i=0; i<array.length; i++)
+			placeholders = placeholders.add($('<div class="placeholder">')); // переробити на array
+		//});
 
 		// Hide the gallery if the background is touched / clicked
 		slider.append(placeholders).on('click',function(e){
@@ -82,7 +82,7 @@
 
 		// Listening for clicks on the thumbnails
 		//items.on('click', function(e){
-		items.on('click', function(e){
+		$('#galery0').on('click', function(e){ //items
 			if(!empty_galery){
 
 			e.preventDefault();
@@ -111,7 +111,7 @@
 
 			//These statements kept seperate in case elements have data-gallery on both
 			//items and ancestor. Ancestor will always win because of above statments.
-			if (galleryName && selectorType == 'item') {
+			/*if (galleryName && selectorType == 'item') {
 
 				items = $('[data-gallery='+galleryName+']');
 
@@ -124,11 +124,11 @@
 
            		});
 
-			}
+			}*/
 
 			// Find the position of this image
 			// in the collection
-			index = items.index(this);
+			//index = 0;//items.index(this);
 			showOverlay(index);
 			showImage(index);
 
@@ -157,7 +157,9 @@
 			if(admin) overlay.append(deleteArrow);
 			//a function to delete the image from site
 			deleteArrow.click(function(e){
-				//e.preventDefault();
+				/*$.ajax({
+				url: '/aviamap/PHP/delete_image.php?name=' + ,*/
+				
 				//showPrevious();
 			});
 		}
@@ -208,13 +210,7 @@
 			overlayVisible = false;
 
 			//Clear preloaded items
-			$('.placeholder').empty();
-
-			//Reset possibly filtered items
-			/*var placeholders = $([]), //додавання, формувати список вручну з папки img
-			index = 0,
-			allitems = this,
-			items = allitems;*/
+			//$('.placeholder').empty();
 		}
 
 		function offsetSlider(index){
@@ -232,11 +228,11 @@
 		// Show image in the slider
 		function showImage(index){
 			// If the index is outside the bonds of the array
-			if(index < 0 || index >= items.length)
+			if(index < 0 || index >= array.length)
 				return false;
 
 			// Call the load function with the href attribute of the item
-			loadImage(items.eq(index).attr('src'), function(){ //'href'
+			loadImage(array[index], function(){ //hitems.eq(index).attr('src')
 				placeholders.eq(index).html(this);
 			});
 		}
@@ -256,7 +252,7 @@
 		function showNext(){
 
 			// If this is not the last image
-			if(index+1 < items.length){
+			if(index+1 < array.length){
 				index++;
 				offsetSlider(index);
 				preload(index+1);

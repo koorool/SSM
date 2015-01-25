@@ -298,16 +298,17 @@ function panelinformation(code, type){
 					}
 					else{
 					document.getElementById("scenery").value= markers.getAttribute("scenery");
+					if(document.getElementById('scenery_label')!==null)
 					document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
-					document.getElementById('form').removeChild(document.getElementById('scenery1'));
-					document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
+					if(document.getElementById('scenery1')!==null){document.getElementById('form').removeChild(document.getElementById('scenery1'));
+					document.getElementById('form').removeChild(document.getElementById('scenery_label1'));}
 					}				
 					if(document.getElementById('scenery_free1')!==null && document.getElementById('scenery_free_label1')!==null){
 						document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
 						document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
 					}
 					document.getElementById("scenery_free").value= "";
-					document.getElementById("scenery_free_label").value= "";
+					if(document.getElementById("scenery_free_label")!==null)document.getElementById("scenery_free_label").value= "";
 					break;
 					case '2':
 					if(markers.getAttribute("scenery_free").indexOf(';')+1){
@@ -320,9 +321,10 @@ function panelinformation(code, type){
 					}
 					else{
 					document.getElementById("scenery_free").value= markers.getAttribute("scenery_free");
+					if(document.getElementById('scenery_free_label')!==null)
 					document.getElementById('scenery_free_label').value = markers.getAttribute("scenery_free_label");
-					document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
-					document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
+					if(document.getElementById("scenery_free1")!==null)document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+					if(document.getElementById("scenery_free_label1")!==null)document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
 					}					
 					if(markers.getAttribute("scenery").indexOf(';')+1){
 					var arr_scenery = markers.getAttribute("scenery").split(';');
@@ -334,9 +336,9 @@ function panelinformation(code, type){
 					}
 					else{
 					document.getElementById("scenery").value= markers.getAttribute("scenery");
-					document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
-					document.getElementById('form').removeChild(document.getElementById('scenery_1'));
-					document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
+					if(document.getElementById("scenery_label")!==null)document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
+					if(document.getElementById("scenery1")!==null){document.getElementById('form').removeChild(document.getElementById('scenery1'));
+					document.getElementById('form').removeChild(document.getElementById('scenery_label1'));}
 					}
 					break;
 				}
@@ -468,22 +470,25 @@ function panelinformation(code, type){
 				//galery0 = document.createElement('img');
 				//galery0.id = "galery0";
 				//document.getElementById('galery').appendChild(galery0);
-				var arr = markers.getAttribute("images").split(';');				
+				var arr = markers.getAttribute("images").split(';');
+				var arr1 = [];
 				document.getElementById('galery0').src ="./img/" + arr[0];
-				for(var i=1; i<arr.length-1; i++){
+				//arr1[0] = "./img/" + arr[0];
+				for(var i=0; i<arr.length-1; i++){
 					//if(arr[i]!=" " && arr[i]!=";" && arr[i].length && arr[i]!=null){
-						galery[i] = document.createElement('img');
-						galery[i].className = 'hidden';
-						galery[i].src = "./img/" + arr[i];
+						//galery[i] = document.createElement('img');
+						//galery[i].className = 'hidden';
+						//galery[i].src = "./img/" + arr[i];
+						arr1[i] = "./img/" + arr[i];
 						//galery[i].title = code;
-						document.getElementById('galery').appendChild(galery[i]);
+						//document.getElementById('galery').appendChild(galery[i]);
 					//document.getElementById("galery"+i).src = "/aviamap/img/"+ code+ i +"." +arr[i];
 						//k++;
 					//}
 				};
 
 			//if(arr.length!=0) 
-			$('.thumbs img').touchTouch();
+			$('').touchTouch(arr1);
 			}
 			else empty_galery = true;
 	});

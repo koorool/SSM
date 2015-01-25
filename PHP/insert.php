@@ -117,7 +117,7 @@ $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
 mysql_close($connection);
 
-header("Content-type: text/html");
+header("Content-type: text/plain");
 echo $code;
 
 ?>
