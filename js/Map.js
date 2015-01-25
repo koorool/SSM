@@ -33,9 +33,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 //Global Variables
 var customIcons = {
-      0: {icon: './images/freeware_new.png'},
-      1: {icon: './images/payware_new.png'},
-      2: {icon: './images/free-pay_new.png'}
+      0: {icon: './images/freeware.png'},
+      1: {icon: './images/payware.png'},
+      2: {icon: './images/free-pay.png'}
     };
 //var map;
 var markers_arr = [];
