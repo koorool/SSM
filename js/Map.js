@@ -1,19 +1,5 @@
 //Initialise function, on load
-function initialize() {
-  /*var styles = [
-    {
-        "featureType": "all",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "gamma": 0.5
-            }
-        ]
-    }
-  ]*/
+function initialize() {  
       map = new google.maps.Map(document.getElementById("map"), {
        center: new google.maps.LatLng(49.0630692517165, 31.201171875),
        zoom: 6,
@@ -210,189 +196,58 @@ function marker_animate(marker){
   setTimeout(function(){marker.setAnimation(null)}, 2000);
 }
 
-function mew_marker_clicked(marker) {              
-              
-              var city;
-              var country;
-              document.getElementById('city').placeholder = "";      
-              document.getElementById('form').reset();              
-              document.getElementById("lat").value = marker.getPosition().lat();
-              document.getElementById("lng").value = marker.getPosition().lng();              
+function mew_marker_clicked(marker) {             
+    var city;
+    var country;
+    document.getElementById('city').placeholder = "";      
+    document.getElementById('form').reset();              
+    document.getElementById("lat").value = marker.getPosition().lat();
+    document.getElementById("lng").value = marker.getPosition().lng();              
              
-              geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
-                  if (status == google.maps.GeocoderStatus.OK) {
-                      if (results[0]) {
-                        var components=results[0].address_components;
-                    for (var component=0;component<(components.length);component++){
+    geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+          var components=results[0].address_components;
+          for (var component=0;component<(components.length);component++){
 
-                      if(results[0].address_components[component].types[0]=="country")
-                        country=results[0].address_components[component].long_name; 
+            if(results[0].address_components[component].types[0]=="country")
+              country=results[0].address_components[component].long_name; 
 
-                      if(components[component].types[0]=="locality")
-                        city = results[0].address_components[component].long_name;  
-                      
-                    }
-                    infowindow.setContent("<b>"+city+', '+ country+'</b>');
-                    infowindow.open(map, marker);
-                  } else {
-                        infowindow.setContent('No results found');
-                        infowindow.open(map, marker);
-                          }
-                  } else {
-                      infowindow.setContent('Geocoder failed due to: ' + status);
-                      infowindow.open(map, marker);
-                    }
-                });      
-      
-      document.getElementById('submit').value = "save";
-      document.getElementById('del').disabled = true;
-      document.getElementById('form').action ="/aviamap/PHP/insert.php";
-      document.getElementById('form').onsubmit = function(){reload()};
-      document.getElementById('reset_btn').disabled = false;
-      document.getElementById('galery').innerHTML = "";
-      $('.placeholder').remove();
-      if(document.getElementById('scenery_free')){
-        document.getElementById('form').removeChild(document.getElementById('scenery_free_label'));
-        if(document.getElementById('scenery_free_label1')){
-          document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
-          document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
-        }
-      }
-      if(document.getElementById('scenery')){
-        document.getElementById('form').removeChild(document.getElementById('scenery_label'));
-        if(document.getElementById('scenery_label1')){
-          document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
-          document.getElementById('form').removeChild(document.getElementById('scenery1'));
-        }
-      }
-      markers_arr.push(marker);
-}
-
-/*function getcity(code){
-  //var x;
-     $.ajax({
-            url: '/aviamap/PHP/getcity.php',
-            data: 'code=' + code,
-            type: 'GET',
-            dataType: "text",
-            async: false,            
-            success: function(msg){
-               //code = data;
-               //alert(msg); 
-               return msg;              
-             } 
-    });
-}*/
-
-/*/InfoWindow//
-function loaddata(marker)
-    { 
-    city_geocode = "undefined";
-    
-
-    /*var city = $.ajax({
-              url: '/aviamap/PHP/getcity.php?code=' + marker.get('code'),
-              global: false,
-              type: "GET",
-              dataType: "html",
-              async:false
-              /*success: function(msg){
-                 alert(msg);
-                      }*/
-              //}).responseText;
-    //marker.set('city', city); //if(city!="")
-    //else marker.set('city', null); //= false;
-    /*geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      if (results[1]) {
-        //var components=results[0].address_components;
-
-        for (var component=0;component<(results[1].address_components.length);component++){
-            if(components[component].types[0]=="administrative_area_level_1")
-                var city=components[component].long_name;
-            
-            if(results[1].address_components[component].types[0]=="country")
-                var country=results[1].address_components[component].long_name;            
-        
-            if(results[1].address_components[component].types[0]=="locality"){
-              //if(results[0].address_components[component].long_name!="undefined"){
-                //city_bool = true;
-               city_geocode = results[1].address_components[component].long_name;
-                //if()                
-              //}
-              //else city_geocode = "undefined";
-            }*/
-
-            /*if(components[component].types[0]=="route")
-                var address=components[component].short_name;            
-
-            if(components[component].types[0]=="street_number")
-                address+=components[component].short_name;*/
-        //}
-        //коряво, переробити
-        /*if(typeof city === 'undefined'){          
-            
-        }*/
-
-          //city = window.this_text;
-        //}
-        //alert(getcity(marker.get('code')));
-
-        /*window.this_marker = marker;
-        //country = results[2].formatted_address;
-        if(marker.get('city')!="null"){
-          infowindow.setContent('<div id="scrollFix"><b>'+marker.title+"</b><br/>"+marker.get('city')+', '+
-        country +'</div><span id="additional" onclick="additional()">Дополнительно</span>');
-        }
-        else{
-          infowindow.setContent('<div id="scrollFix"><b>'+marker.title+"</b><br/>"+window.city_geocode+', '+
-        country +'</div><span id="additional" onclick="additional()">Дополнительно</span>');
-        }
-        
-         //admin_area + "," +
-        //$('#additional').on('click', function(){jQuery.Panel(marker)})
-        infowindow.open(map, marker);*/
-        /*var additional = document.document.createElement('span');
-        additional.cla
-        jQuery.Panel(marker);};
-      /*} else {
-        alert('No results found');
-        //infowindow.open(map, marker);
-      }
-    } else {
-      alert('Geocoder failed due to: ' + status);
-      //infowindow.open(map, marker); 
-    }
-  });*/
-  
-              
-        /*$.ajax({
-        type: "GET",
-        url: "/aviamap/PHP/InfoWindow.php?code=" + marker.get('code'), 
-        cache: false,
-        dataType: "html",
-        async:true,  
-        success: function(data){
-        array = data.split(',' , 3);
-        marker.set('address', array[0]);
-        marker.set('city', array[1]);
-        marker.set('country', array[2]);  
-        window.this_marker = marker;
-        var content = '<div class="scrollFix"><b>' + marker.title + "</b> <br/>"
-         + array[0] +"</b>, <br/>"+ array[1]+"</b>, <br/>"
-         + array[2]+'</b> <br/><span id="additional" onclick="jQuery.Panel(window.this_marker)" >Дополнительно</span></div>'; 
-        
-        infowindow.setContent(content);
+            if(components[component].types[0]=="locality")
+              city = results[0].address_components[component].long_name;                     
+          }
+          infowindow.setContent("<b>"+city+', '+ country+'</b>');
+          infowindow.open(map, marker);
+        } else {
+            infowindow.setContent('No results found');
+            infowindow.open(map, marker);
+          }
+      } else {
+        infowindow.setContent('Geocoder failed due to: ' + status);
         infowindow.open(map, marker);
-        //document.getElementById('additional').onclick = function(){ jQuery.Panel(marker)};
         }
-        /*error:function (xhr, ajaxOptions, thrownError){
-        alert("ajax error:" + xhr.status);
-        alert(thrownError);*/
-     //});       
-    //}
-/*function additional(){
-  jQuery.Panel();
-  loadDataInfoPanel(window.this_marker);
-}*/
-//InfoWindow//
+    });      
+      
+    document.getElementById('submit').value = "save";
+    document.getElementById('del').disabled = true;
+    document.getElementById('form').action ="/aviamap/PHP/insert.php";
+    document.getElementById('form').onsubmit = function(){reload()};
+    document.getElementById('reset_btn').disabled = false;
+    document.getElementById('galery').innerHTML = "";
+    $('.placeholder').remove();
+    if(document.getElementById('scenery_free')){
+      document.getElementById('form').removeChild(document.getElementById('scenery_free_label'));
+      if(document.getElementById('scenery_free_label1')){
+        document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
+        document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+      }
+    }
+    if(document.getElementById('scenery')){
+      document.getElementById('form').removeChild(document.getElementById('scenery_label'));
+      if(document.getElementById('scenery_label1')){
+        document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
+        document.getElementById('form').removeChild(document.getElementById('scenery1'));
+      }
+    }
+    markers_arr.push(marker);
+}

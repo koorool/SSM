@@ -1,72 +1,6 @@
 var admin = false;
 var show=false;
 
-//$(function(){
-/*function click_submit(){
-		//var login = document.getElementById('tbLogin').value;
-		//var pass = document.getElementById('tbPassword').value;
-		$.ajax({
-			url: '/aviamap/PHP/login.php',
-			type: 'POST',
-			data: {user: document.getElementById('tbLogin').value, pass: document.getElementById('tbPassword').value},
-			success: function(data){
-				if(data==="true"){
-					admin = true;
-			//if (jQuery.infopanel.hasClass('visible')) jQuery.Panel();
-			var new_marker_field = document.createElement('input');
-			new_marker_field.type = "checkbox";
-			new_marker_field.id = "new_marker";
-			document.getElementById('navigate').innerHTML += "Add new markers"
-			document.getElementById('navigate').appendChild(new_marker_field);
-			     	//+'<b>Input new markers</b><input type="checkbox" id="new_marker">' 		
-			$('#panel_content').html(//'<div id="panel_content">' 
-				//+'<table height="100%">' 
-												//+'<td id="close" onclick="jQuery.Panel()"> </td>'
-				//+'<td id="content" valign="top">'
-				'<form action="/aviamap/PHP/insert.php" name="form" method="post" id="form" target="frame" enctype="multipart/form-data" >'
-				//+'<div align="left"><b>Code:</b>
-				+'<input id="code" type="text" name="code" required="required" placeholder="ICAO" pattern="[A-Za-z]{4}"> </div>'
-				//+'<div align="left"><b>Название маркера: </b>
-				+'<input id="marker_name" name="name" required="required" placeholder="name"></div></br>'
-				+'<b>lat:</b> <input id="lat" class="number" type="number" name="lat" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!"></br>' //pattern="\d{2}+(\,\d{15})?"
-				+'<b>lng:</b> <input id="lng" class="number" type="number" name="lng" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!"></br>' //pattern="\d{2}+(\,\d{7})?"
-														   	//+'<div><b>type:</b> <input id="type" type="range" min="0" max="2" name="type" required step="1"	</div>'
-				+'<b>scenery:</b> <input id="scenery" name="scenery" placeholder="scenery"></br>'
-				+'<input id="scenery_label" name="scenery_label" placeholder="scenery label"></br>' //class="autogrow"
-				+'<b>free scenery:</b> <input id="scenery_free" name="scenery_free" placeholder="scenery_free"></br>'
-				+'<input id="scenery_free_label" name="scenery_free_label" placeholder="free scenery label"></br>'
-				//+'<input id="scenery_label" name="scenery_label"></br>' //class="autogrow"
-														   	//+'<div><b>address:</b> <input id="address" type="text" name="address">	</div>'
-				//+'<b>Add city box</b><input type="checkbox" id="city_check" onclick="city_checkbox()">'+'<div id="for_city"></div>' //<input id="city" type="text" name="city">
-				+'<b>City:</b></br>'
-				+'<input id="city" name="city"></br>'
-														   	//+'<div><b>country:</b> <input id="country" type="text" name="country">	</div>'
-				+'<textarea id="description" name="description" placeholder="description" ></textarea></br>' //class="autogrow"
-										//checkbox "change city"													 
-				+'<div id="files"><input id="filesend" type="file" name="filename[]" multiple accept="image"/></div>'
-				+'<input type="submit" id="submit" value="save"> <input type="button" id="reset_btn" value="reset" onclick="formReset()">  <input type="button" id="del" value="delete">'
-				+'</form>'
-														//+'<input type="button" id="update" value="update">
-				
-				//+'<button onclick="addcity()">Set city</button>'
-				//+'</td>'
-				//+'</table>'	
-				//+'</div>'
-				);
-
-				document.getElementById('form_login').parentNode.removeChild(document.getElementById('form_login'));
-			    alert('Добро пожаловать, Админ');
-			        		//make draggable
-			    for (var i = 0; i < markers_arr.length; i++) markers_arr[i].setDraggable(true);
-			    show = false;
-				}
-				else alert('Неверное имя или пароль');
-			}
-
-		});
-	}
-//});*/
-
 function ShowLogin(){	
 if (show == false){
 	if(admin)alert('Вы уже вошли как Администратор');
@@ -131,13 +65,13 @@ if (show == false){
 	bLogin.style.position = 'absolute';
 	bLogin.style.zIndex = 2;
 	bLogin.onclick = function() {
-			$.ajax({
-			url: '/aviamap/PHP/login.php',
-			type: 'POST',
-			data: {user: document.getElementById('tbLogin').value, pass: document.getElementById('tbPassword').value},
-			success: function(data){
-				if(data==="true"){
-					admin = true;
+		$.ajax({
+		url: '/aviamap/PHP/login.php',
+		type: 'POST',
+		data: {user: document.getElementById('tbLogin').value, pass: document.getElementById('tbPassword').value},
+		success: function(data){
+			if(data==="true"){
+			admin = true;
 			//if (jQuery.infopanel.hasClass('visible')) jQuery.Panel();
 			var new_marker_field = document.createElement('input');
 			new_marker_field.type = "checkbox";
@@ -204,8 +138,3 @@ if (show == false){
 		    show = false;
 		 }	
 }
-
-//function del(){
-	//document.getElementById('tbLogin').parentNode.removeChild(document.getElementById('tbLogin'));
-	//document.getElementById('tbPassword').parentNode.removeChild(document.getElementById('tbPassword'));	     		
-//}
