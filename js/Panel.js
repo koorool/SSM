@@ -258,9 +258,7 @@ function panelinformation(code, type){
 			}
 				
 	});*/
-	$('.placeholder').remove();
-	var galery = [];
-	empty_galery = false;
+	
 	downloadUrl("/aviamap/PHP/panel.php?code=" + code + "&type=" + type, function(data) {
 		//var xml = data.responseXML;
 		var markers = data.responseXML.firstChild; //documentElement.getElementsByTagName("marker")[0];
@@ -345,11 +343,17 @@ function panelinformation(code, type){
 				else document.getElementById("scenery").textContent = "";*/
 				document.getElementById("description").textContent= markers.getAttribute("description");
 			}
-			document.getElementById('galery').innerHTML = "";
+			//document.getElementById('galery').innerHTML = "";
+			$('.placeholder').remove();
+			var galery = [];
+			empty_galery = false;
+			while (document.getElementById('galery').lastChild.id !== 'galery0') {
+    		document.getElementById('galery').removeChild(document.getElementById('galery').lastChild);
+			}
 			//if(markers.getAttribute("images").indexOf(';')+1){
-				galery0 = document.createElement('img');
-				galery0.id = "galery0";
-				document.getElementById('galery').appendChild(galery0);
+				//galery0 = document.createElement('img');
+				//galery0.id = "galery0";
+				//document.getElementById('galery').appendChild(galery0);
 				var arr = markers.getAttribute("images").split(';');				
 				document.getElementById('galery0').src ="./img/" + arr[0];
 				for(var i=1; i<arr.length-1; i++){
