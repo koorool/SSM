@@ -266,22 +266,78 @@ function panelinformation(code, type){
 			if(admin){
 				switch(type){
 					case '0':
+					if(markers.getAttribute("scenery_free").indexOf(';')+1){
+					var arr_scenery = markers.getAttribute("scenery_free").split(';');
+					document.getElementById("scenery_free").value= arr_scenery[0];
+					document.getElementById("scenery_free1").value= arr_scenery[1];
+					arr_scenery = markers.getAttribute("scenery_free_label").split(';');
+					document.getElementById("scenery_free_label").value= arr_scenery[0];
+					document.getElementById("scenery_free_label1").value= arr_scenery[1];					
+					}
+					else{
 					document.getElementById("scenery_free").value= markers.getAttribute("scenery_free");
 					document.getElementById('scenery_free_label').value = markers.getAttribute("scenery_free_label");
+					document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+					document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
+					}
+					if(document.getElementById('scenery1').length && document.getElementById('scenery_label1').length){
+						document.getElementById('form').removeChild(document.getElementById('scenery1'));
+						document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
+					}
 					document.getElementById("scenery").value= "";
 					document.getElementById("scenery_label").value= "";
 					break;
 					case '1':
+					if(markers.getAttribute("scenery").indexOf(';')+1){
+					var arr_scenery = markers.getAttribute("scenery").split(';');
+					document.getElementById("scenery").value= arr_scenery[0];
+					document.getElementById("scenery1").value= arr_scenery[1];
+					arr_scenery = markers.getAttribute("scenery_label").split(';');
+					document.getElementById("scenery_label").value= arr_scenery[0];
+					document.getElementById("scenery_label1").value= arr_scenery[1];					
+					}
+					else{
 					document.getElementById("scenery").value= markers.getAttribute("scenery");
 					document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
+					document.getElementById('form').removeChild(document.getElementById('scenery_1'));
+					document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
+					}				
+					if(document.getElementById('scenery_free1').length && document.getElementById('scenery_free_label1').length){
+						document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+						document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
+					}
 					document.getElementById("scenery_free").value= "";
 					document.getElementById("scenery_free_label").value= "";
 					break;
 					case '2':
+					if(markers.getAttribute("scenery_free").indexOf(';')+1){
+					var arr_scenery = markers.getAttribute("scenery_free").split(';');
+					document.getElementById("scenery_free").value= arr_scenery[0];
+					document.getElementById("scenery_free1").value= arr_scenery[1];
+					arr_scenery = markers.getAttribute("scenery_free_label").split(';');
+					document.getElementById("scenery_free_label").value= arr_scenery[0];
+					document.getElementById("scenery_free_label1").value= arr_scenery[1];					
+					}
+					else{
 					document.getElementById("scenery_free").value= markers.getAttribute("scenery_free");
 					document.getElementById('scenery_free_label').value = markers.getAttribute("scenery_free_label");
+					document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+					document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
+					}					
+					if(markers.getAttribute("scenery").indexOf(';')+1){
+					var arr_scenery = markers.getAttribute("scenery").split(';');
+					document.getElementById("scenery").value= arr_scenery[0];
+					document.getElementById("scenery1").value= arr_scenery[1];
+					arr_scenery = markers.getAttribute("scenery_label").split(';');
+					document.getElementById("scenery_label").value= arr_scenery[0];
+					document.getElementById("scenery_label1").value= arr_scenery[1];					
+					}
+					else{
 					document.getElementById("scenery").value= markers.getAttribute("scenery");
 					document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
+					document.getElementById('form').removeChild(document.getElementById('scenery_1'));
+					document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
+					}
 					break;
 				}
 				/*if(markers[0].getAttribute("scenery")!=null && markers[0].getAttribute("scenery")!="")
@@ -299,29 +355,87 @@ function panelinformation(code, type){
 			}
 			else{
 				switch(type){
-					case '0':
-					document.getElementById("scenery_free").href = markers.getAttribute("scenery_free");
-					if(markers.getAttribute("scenery_free_label").length && markers.getAttribute("scenery_free_label")!= null)
+					case '0':					
+					if(markers.getAttribute("scenery_free").indexOf(';')+1){
+					var arr_scenery = markers.getAttribute("scenery_free").split(';');
+					document.getElementById("scenery_free").href= arr_scenery[0];
+					document.getElementById("scenery_free1").href= arr_scenery[1];
+					arr_scenery = markers.getAttribute("scenery_free_label").split(';');
+					document.getElementById("scenery_free_label").textContent= arr_scenery[0];
+					document.getElementById("scenery_free_label1").textContent= arr_scenery[1];					
+					}
+					else{
+					document.getElementById("scenery_free").href= markers.getAttribute("scenery_free");
+					if(markers.getAttribute("scenery_free_label").length)// && markers.getAttribute("scenery_free_label")!= null)
 					document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free_label");
 					else document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free");
-					document.getElementById('scenery').textContent = "";
+					document.getElementById('scenery_free1').textContent = null;
+					//document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+					//document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
+					}
+					/*if(document.getElementById('scenery1').length && document.getElementById('scenery_label1').length){
+						document.getElementById('form').removeChild(document.getElementById('scenery1'));
+						document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
+					}*/
+					document.getElementById('scenery').textContent = null;
+					document.getElementById('scenery1').textContent = null;
 					break;
 					case '1':
-					document.getElementById("scenery").href = markers.getAttribute("scenery");
-					if(markers.getAttribute("scenery_label").length && markers.getAttribute("scenery_label")!= null)
+					if(markers.getAttribute("scenery").indexOf(';')+1){
+					var arr_scenery = markers.getAttribute("scenery").split(';');
+					document.getElementById("scenery").href= arr_scenery[0];
+					document.getElementById("scenery1").href= arr_scenery[1];
+					arr_scenery = markers.getAttribute("scenery_label").split(';');
+					document.getElementById("scenery_label").textContent= arr_scenery[0];
+					document.getElementById("scenery_label1").textContent= arr_scenery[1];					
+					}
+					else{
+					document.getElementById("scenery").href= markers.getAttribute("scenery");
+					if(markers.getAttribute("scenery_label").length)// && markers.getAttribute("scenery_free_label")!= null)
 					document.getElementById("scenery").textContent = markers.getAttribute("scenery_label");
 					else document.getElementById("scenery").textContent = markers.getAttribute("scenery");
-					document.getElementById('scenery_free').textContent = "";
+					document.getElementById('scenery1').textContent = null;
+					//document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+					//document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
+					}
+					document.getElementById('scenery_free').textContent = null;
+					document.getElementById('scenery_free1').textContent = null;
 					break;
 					case '2':
-					document.getElementById("scenery_free").href = markers.getAttribute("scenery_free");
-					if(markers.getAttribute("scenery_free_label").length && markers.getAttribute("scenery_free_label")!= null)
+					if(markers.getAttribute("scenery_free").indexOf(';')+1){
+					var arr_scenery = markers.getAttribute("scenery_free").split(';');
+					document.getElementById("scenery_free").href= arr_scenery[0];
+					document.getElementById("scenery_free1").href= arr_scenery[1];
+					arr_scenery = markers.getAttribute("scenery_free_label").split(';');
+					document.getElementById("scenery_free_label").textContent= arr_scenery[0];
+					document.getElementById("scenery_free_label1").textContent= arr_scenery[1];					
+					}
+					else{
+					document.getElementById("scenery_free").href= markers.getAttribute("scenery_free");
+					if(markers.getAttribute("scenery_free_label").length)// && markers.getAttribute("scenery_free_label")!= null)
 					document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free_label");
 					else document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free");
-					document.getElementById("scenery").href = markers.getAttribute("scenery");
-					if(markers.getAttribute("scenery_label").length && markers.getAttribute("scenery_label")!= null)
+					document.getElementById('scenery_free1').textContent = null;
+					//document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+					//document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
+					}
+					if(markers.getAttribute("scenery").indexOf(';')+1){
+					var arr_scenery = markers.getAttribute("scenery").split(';');
+					document.getElementById("scenery").href= arr_scenery[0];
+					document.getElementById("scenery1").href= arr_scenery[1];
+					arr_scenery = markers.getAttribute("scenery_label").split(';');
+					document.getElementById("scenery_label").textContent= arr_scenery[0];
+					document.getElementById("scenery_label1").textContent= arr_scenery[1];					
+					}
+					else{
+					document.getElementById("scenery").href= markers.getAttribute("scenery");
+					if(markers.getAttribute("scenery_label").length)// && markers.getAttribute("scenery_free_label")!= null)
 					document.getElementById("scenery").textContent = markers.getAttribute("scenery_label");
 					else document.getElementById("scenery").textContent = markers.getAttribute("scenery");
+					document.getElementById('scenery1').textContent = null;
+					//document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+					//document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
+					}
 					break;
 				}
 				/*if(markers[0].getAttribute("scenery")!="" && markers[0].getAttribute("scenery")!= null){ 
@@ -350,7 +464,7 @@ function panelinformation(code, type){
 			while (document.getElementById('galery').lastChild.id !== 'galery0') {
     		document.getElementById('galery').removeChild(document.getElementById('galery').lastChild);
 			}
-			//if(markers.getAttribute("images").indexOf(';')+1){
+			if(markers.getAttribute("images").indexOf(';')+1){
 				//galery0 = document.createElement('img');
 				//galery0.id = "galery0";
 				//document.getElementById('galery').appendChild(galery0);
@@ -370,8 +484,8 @@ function panelinformation(code, type){
 
 			//if(arr.length!=0) 
 			$('.thumbs img').touchTouch();
-			//}
-			//else empty_galery = true;
+			}
+			else empty_galery = true;
 	});
 }
 

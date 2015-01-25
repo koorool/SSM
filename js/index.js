@@ -34,7 +34,3 @@
 	
 
 	$( "#search" ).autocomplete({ source: source });
-
-	$("#Login").click(function(){
-		$("#login_form").toggle();
-	});

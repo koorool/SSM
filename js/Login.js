@@ -69,25 +69,22 @@ var show=false;
 
 function ShowLogin(){	
 if (show == false){
-	if(admin)alert('You are logged in already!');
+	if(admin)alert('Вы уже вошли как Администратор');
 	else{
-	var form_login = document.createElement('form');
+		var form_login = document.createElement('form');
 			/*form_login.target = 'frame';*/
-	form_login.onsubmit=function(){return false;};
+		form_login.onsubmit=function(){return false;};
 			//form_login.addEventListener("submit", 'return false');
 			//form_login.action = '/aviamap/PHP/login.php';
-	form_login.autocomplete = 'on';
+		form_login.autocomplete = 'on';
 			//form_login.method = 'POST';
-	form_login.id = 'form_login';
-	form_login.className = 'pull-right form-inline'
+		form_login.id = 'form_login';
 
 	//var Menu = document.getElementById('Menu');
-	var 
 	var tbLogin = document.createElement('input');
 	//tbLogin.className = 'LoginBox';
 	tbLogin.id = 'tbLogin';
 	tbLogin.name = 'user';
-	tbLogin.class = ''
 	tbLogin.autocomplete = 'on';
 	//tbLogin.style.background = 'fff';
 	tbLogin.style.top = '0px';
@@ -184,12 +181,12 @@ if (show == false){
 				);
 
 				document.getElementById('form_login').parentNode.removeChild(document.getElementById('form_login'));
-			    
+			    alert('Добро пожаловать, Админ');
 			        		//make draggable
 			    for (var i = 0; i < markers_arr.length; i++) markers_arr[i].setDraggable(true);
 			    show = false;
 				}
-				else alert('Wrong name or password!');
+				else alert('Неверное имя или пароль');
 			}
 
 		});
