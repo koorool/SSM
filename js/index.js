@@ -32,5 +32,15 @@
 	};
 	}, 4000);
 	
+$(document).ready(function(){
+    $("#search").autocomplete({ source: source });
 
-	$( "#search" ).autocomplete({ source: source });
+    $("#ShowLogin").click(function(){
+        $("#LoginForm").toggle();
+    });
+
+    $("#LoginForm").submit(function(event){
+        Login($("#InputLogin").val(), $("#InputPassword").val());
+        event.preventDefault();
+    });
+});
