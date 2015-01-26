@@ -30,7 +30,7 @@ foreach (glob("../img/" . $code . "*") as $filename) {
 	$images .= basename($filename) . ";";
 }
 
-$connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
+$connection = mysql_connect($host, $username, $password) or die("Не могу соединиться с MySQLI.");
 
 mysql_query('SET NAMES utf8');
 $db_selected = mysql_select_db($database) or die("Не могу соединиться с MySQLI.");

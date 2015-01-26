@@ -8,7 +8,7 @@ $code = $_POST['code'];
 
 //get filetypes to delete
 //$filetype;
-$connection = mysql_connect(/*"simscene.mysql.ukraine.com.ua"*/"localhost", $username, $password) or die("Не могу соединиться с MySQLI.");
+$connection = mysql_connect($host, $username, $password) or die("Не могу соединиться с MySQLI.");
 
 $db_selected = mysql_select_db($database) or die("Не могу соединиться с MySQLI.");
 
