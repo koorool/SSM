@@ -233,20 +233,20 @@ function mew_marker_clicked(marker) {
     document.getElementById('form').action ="/aviamap/PHP/insert.php";
     document.getElementById('form').onsubmit = function(){reload()};
     document.getElementById('reset_btn').disabled = false;
-    document.getElementById('galery').innerHTML = "";
+    document.getElementById('galery0').src = './images/2.png';
     $('.placeholder').remove();
-    if(document.getElementById('scenery_free')){
-      document.getElementById('form').removeChild(document.getElementById('scenery_free_label'));
+    if(document.getElementById('scenery_free_label')!==null){
+      document.getElementById('scenery_free_label').parentNode.removeChild(document.getElementById('scenery_free_label'));
       if(document.getElementById('scenery_free_label1')){
-        document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
-        document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+        document.getElementById('scenery_free_label1').parentNode.removeChild(document.getElementById('scenery_free_label1'));
+        document.getElementById('scenery_free1').parentNode.removeChild(document.getElementById('scenery_free1'));
       }
     }
-    if(document.getElementById('scenery')){
-      document.getElementById('form').removeChild(document.getElementById('scenery_label'));
+    if(document.getElementById('scenery_label')!==null){
+      document.getElementById('scenery_label').parentNode.removeChild(document.getElementById('scenery_label'));
       if(document.getElementById('scenery_label1')){
-        document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
-        document.getElementById('form').removeChild(document.getElementById('scenery1'));
+        document.getElementById('scenery_label1').parentNode.removeChild(document.getElementById('scenery_label1'));
+        document.getElementById('scenery1').parentNode.removeChild(document.getElementById('scenery1'));
       }
     }
     markers_arr.push(marker);

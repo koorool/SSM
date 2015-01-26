@@ -37,12 +37,12 @@ function Login(login, password)
                     +'<input id="lng" type="number" name="lng" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!" class="form-control"></br>' //pattern="\d{2}+(\,\d{7})?"
                     +'</div>'
                         //+'<div><b>type:</b> <input id="type" type="range" min="0" max="2" name="type" required step="1"	</div>'
-                    +'<div id="nonfree_scenery" class="form-group">'
+                    +'<div id="scenery_box" class="form-group">'
                     +'<b>scenery:</b>' /*<input id="scenery_chbx"type="checkbox" onclick="createfield(scenery)">*/ 
                     +'<input id="scenery" name="scenery" placeholder="scenery" onblur="createfield(scenery)" class="form-control">' //onchange="createfield(scenery)"
                     +'</div>'
                         //+'<input id="scenery_label" name="scenery_label" placeholder="scenery label"></br>' //class="autogrow"
-                    +'<div id="free_scenery" class="form-group">'
+                    +'<div id="scenery_free_box" class="form-group">'
                     +'<b>free scenery:</b>'
                     +'<input id="scenery_free" name="scenery_free" placeholder="Free scenery" onblur="createfield(scenery_free)" class="form-control">'
                     +'</div>'

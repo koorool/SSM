@@ -26,7 +26,7 @@
 })(jQuery);*/
 
 function reload(){
-	document.getElementById('galery').innerHTML = "";
+	//document.getElementById('galery').innerHTML = "";
 	$('.placeholder').remove();
 	document.getElementById('submit').value = "update";
 	document.getElementById('del').disabled = false;
@@ -533,24 +533,32 @@ function createfield(field){
 		//tbCity.type = "text";
 	 	tbSceneryLabel.name = field.id + "_label"; //.id
 	 	tbSceneryLabel.id = field.id + "_label";//.id
-	 	tbSceneryLabel.placeholder = field.id + "_label"; //.id
-	 	document.getElementById('form').insertBefore(tbSceneryLabel, document.getElementById('before_' + field.id));
-	 	document.getElementById('form').insertBefore(document.createElement('br'), document.getElementById('before_' + field.id));
+	 	tbSceneryLabel.className = "form-control";
+	 	tbSceneryLabel.placeholder = field.id + "_label"; //.id	 	
+	 	document.getElementById(field.id +"_box").appendChild(tbSceneryLabel);
 	 	tbSceneryLabel.focus();
 	 	tbSceneryLabel.onblur = function(){
+	 		if(document.getElementById(field.id + "1") === null){
 	 		var tbScenery = document.createElement('input');
 	 		tbScenery.name = field.id + "1"; //.id
 	 		tbScenery.id = field.id + "1";//.id
 	 		tbScenery.placeholder = field.id; //.id
-	 		document.getElementById('form').insertBefore(tbScenery, document.getElementById('before_' + field.id));
-	 		document.getElementById('form').insertBefore(document.createElement('br'), document.getElementById('before_' + field.id));
+	 		tbScenery.className = "form-control";
+	 		if(field === 'scenery_free_label' || field === 'scenery_free_label1'|| field === 'scenery_free1' )
+	 		document.getElementById('scenery_free_box').appendChild(tbScenery);
+	 		else
+	 		document.getElementById('scenery_box').appendChild(tbScenery);	
 	 		tbScenery.focus();
 	 		var tbSceneryLabel = document.createElement('input');
 	 		tbSceneryLabel.name = field.id + "_label1"; //.id
+	 		tbSceneryLabel.className = "form-control";
 	 		tbSceneryLabel.id = field.id + "_label1";//.id
-	 		tbSceneryLabel.placeholder = field.id; //.id
-	 		document.getElementById('form').insertBefore(tbSceneryLabel, document.getElementById('before_' + field.id));
-	 		document.getElementById('form').insertBefore(document.createElement('br'), document.getElementById('before_' + field.id));
+	 		tbSceneryLabel.placeholder = field.id + "_label"; //.id
+	 		if(field === 'scenery_free_label' || field === 'scenery_free_label1'|| field === 'scenery_free1' )
+	 		document.getElementById('scenery_free_box').appendChild(tbSceneryLabel);
+	 		else
+	 		document.getElementById('scenery_box').appendChild(tbSceneryLabel);
+	 		}
 	 	}
 	} 	
  	/*else
@@ -588,8 +596,8 @@ function create_onefield(field){
 	 	tbSceneryLabel.placeholder = field; //.id
 	 	if(field === 'scenery_free_label' || field === 'scenery_free_label1'|| field === 'scenery_free1' )
 	 	//document.getElementById('before_free').insertBefore(tbSceneryLabel, document.getElementById('before_scenery_free'));
-	 	document.getElementById('free_scenery').appendChild(tbSceneryLabel);
-	 	else document.getElementById('nonfree_scenery').appendChild(tbSceneryLabel);
+	 	document.getElementById('scenery_free_box').appendChild(tbSceneryLabel);
+	 	else document.getElementById('scenery_box').appendChild(tbSceneryLabel);
 	 	//document.getElementById('before').insertBefore(tbSceneryLabel, document.getElementById('before_scenery'));
 	 	//document.getElementById('form').insertBefore(document.createElement('br'), document.getElementById('before_' + field));
 }
