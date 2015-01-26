@@ -47,3 +47,6 @@ till Monday 2.02
 3) переписати на jQuery
 4) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
 	a) echo ("file doesn't load") до користувача
+
+bugs
+1) if there is only 1 image - gallery load one empty

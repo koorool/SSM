@@ -368,7 +368,7 @@ function panelinformation(code, type){
 					}
 					else{
 					document.getElementById("scenery_free").href= markers.getAttribute("scenery_free");
-					if(markers.getAttribute("scenery_free_label")!==null)// && markers.getAttribute("scenery_free_label")!= null)
+					if(markers.getAttribute("scenery_free_label")!==null && markers.getAttribute("scenery_free_label").length)
 					document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free_label");
 					else document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free");
 					document.getElementById('scenery_free1').textContent = null;
@@ -388,14 +388,14 @@ function panelinformation(code, type){
 					/*var arr_scenery = markers.getAttribute("scenery").split(';');
 					document.getElementById("scenery").href= arr_scenery[0];
 					document.getElementById("scenery1").href= arr_scenery[1];*/
-					load_text('scenery_free' , markers.getAttribute("scenery_label").split(';'));
+					load_text('scenery' , markers.getAttribute("scenery_label").split(';'));
 					/*arr_scenery = markers.getAttribute("scenery_label").split(';');
 					document.getElementById("scenery_label").textContent= arr_scenery[0];
 					document.getElementById("scenery_label1").textContent= arr_scenery[1];*/					
 					}
 					else{
 					document.getElementById("scenery").href= markers.getAttribute("scenery");
-					if(markers.getAttribute("scenery_label")!==null)// && markers.getAttribute("scenery_free_label")!= null)
+					if(markers.getAttribute("scenery_label")!==null && markers.getAttribute("scenery_label").length)
 					document.getElementById("scenery").textContent = markers.getAttribute("scenery_label");
 					else document.getElementById("scenery").textContent = markers.getAttribute("scenery");
 					document.getElementById('scenery1').textContent = null;
@@ -407,16 +407,12 @@ function panelinformation(code, type){
 					break;
 					case '2':
 					if(markers.getAttribute("scenery_free").indexOf(';')+1){
-					var arr_scenery = markers.getAttribute("scenery_free").split(';');
-					document.getElementById("scenery_free").href= arr_scenery[0];
-					document.getElementById("scenery_free1").href= arr_scenery[1];
-					arr_scenery = markers.getAttribute("scenery_free_label").split(';');
-					document.getElementById("scenery_free_label").textContent= arr_scenery[0];
-					document.getElementById("scenery_free_label1").textContent= arr_scenery[1];					
+					load_href('scenery_free' , markers.getAttribute("scenery_free").split(';'));
+					load_text('scenery_free', markers.getAttribute("scenery_free_label").split(';'));				
 					}
 					else{
 					document.getElementById("scenery_free").href= markers.getAttribute("scenery_free");
-					if(markers.getAttribute("scenery_free_label")!==null)// && markers.getAttribute("scenery_free_label")!= null)
+					if(markers.getAttribute("scenery_free_label")!==null && markers.getAttribute("scenery_free_label").length)
 					document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free_label");
 					else document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free");
 					document.getElementById('scenery_free1').textContent = null;
@@ -424,16 +420,12 @@ function panelinformation(code, type){
 					//document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
 					}
 					if(markers.getAttribute("scenery").indexOf(';')+1){
-					var arr_scenery = markers.getAttribute("scenery").split(';');
-					document.getElementById("scenery").href= arr_scenery[0];
-					document.getElementById("scenery1").href= arr_scenery[1];
-					arr_scenery = markers.getAttribute("scenery_label").split(';');
-					document.getElementById("scenery").textContent= arr_scenery[0];
-					document.getElementById("scenery1").textContent= arr_scenery[1];					
+					load_href('scenery' , markers.getAttribute("scenery").split(';'));
+					load_text('scenery', markers.getAttribute("scenery_label").split(';'));					
 					}
 					else{
 					document.getElementById("scenery").href= markers.getAttribute("scenery");
-					if(markers.getAttribute("scenery_label")!==null)// && markers.getAttribute("scenery_free_label")!= null)
+					if(markers.getAttribute("scenery_label")!==null && markers.getAttribute("scenery_label").length)
 					document.getElementById("scenery").textContent = markers.getAttribute("scenery_label");
 					else document.getElementById("scenery").textContent = markers.getAttribute("scenery");
 					document.getElementById('scenery1').textContent = null;

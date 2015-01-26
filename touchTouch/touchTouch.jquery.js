@@ -226,9 +226,11 @@
 
 		// Preload an image by its index in the items array
 		function preload(index){
+			if(index+1 < array.length){
 			setTimeout(function(){
 				showImage(index);
 			}, 1000);
+			}
 		}
 
 		// Show image in the slider
