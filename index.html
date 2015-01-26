@@ -52,16 +52,16 @@
 				<img src="./images/2.png" class = "Logo">
 				<iframe class="hidden" name="frame" id="frame" srcdoc="" seamless="seamless" width="120" height="40"></iframe>
 			<!--img src="./advertisment.jpg" class="Logo"-->
-				<form id="LoginForm" class="form-inline pull-right" style="display: none" action="JavaScript: return false">
+				<form id="LoginForm" class="form-inline pull-right" style="display: none" onsubmit="return false"><!--style="display: none"  action="JavaScript: return false"-->
   					<div class="form-group">
     					<label class="sr-only" for="InputLogin">Email address</label>
-    					<input type="email" name="user" class="form-control" id="InputLogin" placeholder="E-mail" required="required">
+    					<input name="user" class="form-control" id="InputLogin" placeholder="E-mail" required><!--type="email"-->
   					</div>
   					<div class="form-group">
     					<label class="sr-only" for="InputPassword">Password</label>
-    					<input type="password" class="form-control" id="InputPassword" placeholder="Password" required="required">
+    					<input type="password" name ="pass" class="form-control" id="InputPassword" placeholder="Password" required>
   					</div>
-  					<button id = "SignIn" name ="pass" type="submit" class="btn btn-default">Sign in</button>
+  					<button id = "SignIn" type="submit" class="btn btn-default">Sign in</button> <!--name ="pass"-->
 				</form>
 			</div> <!-- Menu -->
 
@@ -82,7 +82,7 @@
 				</div>
 				<div id="checkbox">			
 				</div>
-				<div class="container">
+				<div class="container" id="panel_content">
 					<h4 id="marker_name"></h4>				
 					<table class=".table-condensed">
 		    			<tr>

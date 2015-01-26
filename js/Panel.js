@@ -357,12 +357,14 @@ function panelinformation(code, type){
 				switch(type){
 					case '0':					
 					if(markers.getAttribute("scenery_free").indexOf(';')+1){
-					var arr_scenery = markers.getAttribute("scenery_free").split(';');
-					document.getElementById("scenery_free").href= arr_scenery[0];
-					document.getElementById("scenery_free1").href= arr_scenery[1];
-					arr_scenery = markers.getAttribute("scenery_free_label").split(';');
-					document.getElementById("scenery_free_label").textContent= arr_scenery[0];
-					document.getElementById("scenery_free_label1").textContent= arr_scenery[1];					
+					//var arr_scenery = markers.getAttribute("scenery_free").split(';');
+					load_href('scenery_free' , markers.getAttribute("scenery_free").split(';'));
+					//document.getElementById("scenery_free").href= arr_scenery[0];
+					//document.getElementById("scenery_free1").href= arr_scenery[1];
+					load_text('scenery_free', markers.getAttribute("scenery_free_label").split(';'));
+					/*arr_scenery = markers.getAttribute("scenery_free_label").split(';');
+					document.getElementById("scenery_free").textContent= arr_scenery[0];
+					document.getElementById("scenery_free1").textContent= arr_scenery[1];*/					
 					}
 					else{
 					document.getElementById("scenery_free").href= markers.getAttribute("scenery_free");
@@ -382,12 +384,14 @@ function panelinformation(code, type){
 					break;
 					case '1':
 					if(markers.getAttribute("scenery").indexOf(';')+1){
-					var arr_scenery = markers.getAttribute("scenery").split(';');
+					load_href('scenery' , markers.getAttribute("scenery").split(';'));
+					/*var arr_scenery = markers.getAttribute("scenery").split(';');
 					document.getElementById("scenery").href= arr_scenery[0];
-					document.getElementById("scenery1").href= arr_scenery[1];
-					arr_scenery = markers.getAttribute("scenery_label").split(';');
+					document.getElementById("scenery1").href= arr_scenery[1];*/
+					load_text('scenery_free' , markers.getAttribute("scenery_label").split(';'));
+					/*arr_scenery = markers.getAttribute("scenery_label").split(';');
 					document.getElementById("scenery_label").textContent= arr_scenery[0];
-					document.getElementById("scenery_label1").textContent= arr_scenery[1];					
+					document.getElementById("scenery_label1").textContent= arr_scenery[1];*/					
 					}
 					else{
 					document.getElementById("scenery").href= markers.getAttribute("scenery");
@@ -424,8 +428,8 @@ function panelinformation(code, type){
 					document.getElementById("scenery").href= arr_scenery[0];
 					document.getElementById("scenery1").href= arr_scenery[1];
 					arr_scenery = markers.getAttribute("scenery_label").split(';');
-					document.getElementById("scenery_label").textContent= arr_scenery[0];
-					document.getElementById("scenery_label1").textContent= arr_scenery[1];					
+					document.getElementById("scenery").textContent= arr_scenery[0];
+					document.getElementById("scenery1").textContent= arr_scenery[1];					
 					}
 					else{
 					document.getElementById("scenery").href= markers.getAttribute("scenery");
@@ -569,3 +573,11 @@ function createfield(field){
 	document.getElementById(field).textContent = markers[0].getAttribute(field + "_label");
 	else document.getElementById(field).textContent = markers[0].getAttribute(field);
 }*/
+function load_href(field, array){
+	document.getElementById(field).href= array[0];
+	document.getElementById(field + "1").href= array[1];
+}
+function load_text(field, array){
+	document.getElementById(field).textContent= array[0];
+	document.getElementById(field + "1").textContent= array[1];
+}
