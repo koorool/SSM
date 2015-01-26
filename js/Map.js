@@ -4,7 +4,8 @@ function initialize() {
        center: new google.maps.LatLng(49.0630692517165, 31.201171875),
        zoom: 6,
        mapTypeId: 'terrain',
-       streetViewControl: false
+       streetViewControl: false,
+       minZoom: 3
        //styles: styles
      });
      markers_load("-1");
@@ -129,8 +130,8 @@ google.maps.event.addListener(map, 'zoom_changed', function() {
 
     var zoom = map.getZoom();
 
-    if (zoom < 3) map.setZoom(3);
-    else{
+    //if (zoom < 3) map.setZoom(3);
+    //if (zoom > 3){
     switch(zoom){
       case 3:
       var relativePixelSize = Math.round(pixelSizeAtZoom0*Math.pow(1,zoom));
@@ -158,7 +159,7 @@ google.maps.event.addListener(map, 'zoom_changed', function() {
         )
     );
     }
-  }
+  //}
 
 });
 }
