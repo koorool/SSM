@@ -82,6 +82,9 @@ function Login(login, password)
                 document.getElementById("scenery_free").onblur = function(){
                     createfield("scenery_free");
                 };
+                document.getElementById('marker_name').onblur= function(){
+                    document.getElementById('scenery').focus();
+                }
             }
             else alert('Wrong name or password!');
         }

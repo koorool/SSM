@@ -322,7 +322,7 @@ function panelinformation(code, type){
 						document.getElementById("scenery_free").value= markers.getAttribute("scenery_free");
 						if(document.getElementById('scenery_free_label')===null) create_onefield('scenery_free_label');
 						document.getElementById('scenery_free_label').value = markers.getAttribute("scenery_free_label");
-						if(document.getElementById("scenery_free1")!==null){document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
+						if(document.getElementById("scenery_free1")!==null){document.getElementById('scenery_free1').parentNode.removeChild(document.getElementById('scenery_free1'));
 						document.getElementById('scenery_free_label1').parentNode.removeChild(document.getElementById('scenery_free_label1'));}
 					}
 					/*if(document.getElementById('scenery1')!==null && document.getElementById('scenery_label1')!==null){

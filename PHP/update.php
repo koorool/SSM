@@ -8,8 +8,8 @@ $lng = $_POST['lng'];
 $description = $_POST['description'];
 $scenery = $_POST['scenery'];
 $scenery_free = $_POST['scenery_free'];
-$scenery_label = $_POST['scenery_label'];
-$scenery_free_label = $_POST['scenery_free_label'];
+//$scenery_label = $_POST['scenery_label'];
+//$scenery_free_label = $_POST['scenery_free_label'];
 
 if (isset($_POST['city'])) {
 	$city = $_POST['city'];
@@ -17,31 +17,51 @@ if (isset($_POST['city'])) {
 
 if (isset($scenery_free) && isset($scenery) && !empty($scenery) && !empty($scenery_free)) {
 	$type = 2;
-	if (isset($_POST['scenery_free1']) && !empty($_POST['scenery_free1'])) {
-		$scenery_free .= ";" . $_POST['scenery_free1'];
+	if (isset($_POST['scenery_free_label']) && !empty($_POST['scenery_free_label'])) {
+		$scenery_free_label = $_POST['scenery_free_label'];
+		if (isset($_POST['scenery_free1']) && !empty($_POST['scenery_free1'])) {
+			$scenery_free .= ";" . $_POST['scenery_free1'];
+		}
+		if (isset($_POST['scenery_free_label1']) && !empty($_POST['scenery_free_label1'])) {
+			$scenery_free_label .= ";" . $_POST['scenery_free_label1'];
+		}
 	}
-	if (isset($_POST['scenery_free_label1']) && !empty($_POST['scenery_free_label1'])) {
-		$scenery_free_label .= ";" . $_POST['scenery_free_label1'];
+	if (isset($_POST['scenery_label']) && !empty($_POST['scenery_label'])) {
+		$scenery_label = $_POST['scenery_label'];
+		if (isset($_POST['scenery1']) && !empty($_POST['scenery1'])) {
+			$scenery .= ";" . $_POST['scenery1'];
+		}
+		if (isset($_POST['scenery_label1']) && !empty($_POST['scenery_label1'])) {
+			$scenery_label .= ";" . $_POST['scenery_label1'];
+		}
 	}
+	$queryinfo = "UPDATE markerinfo SET scenery='$scenery',description='$description',scenery_free='$scenery_free',scenery_free_label='$scenery_free_label',scenery_label='$scenery_label' WHERE code='$code'";
 
 } else if (isset($_POST['scenery_free']) && !empty($scenery_free)) {
 	$type = 0;
-	if (isset($_POST['scenery_free1']) && !empty($_POST['scenery_free1'])) {
-		$scenery_free .= ";" . $_POST['scenery_free1'];
+	if (isset($_POST['scenery_free_label']) && !empty($_POST['scenery_free_label'])) {
+		$scenery_free_label = $_POST['scenery_free_label'];
+		if (isset($_POST['scenery_free1']) && !empty($_POST['scenery_free1'])) {
+			$scenery_free .= ";" . $_POST['scenery_free1'];
+		}
+		if (isset($_POST['scenery_free_label1']) && !empty($_POST['scenery_free_label1'])) {
+			$scenery_free_label .= ";" . $_POST['scenery_free_label1'];
+		}
 	}
-	if (isset($_POST['scenery_free_label1']) && !empty($_POST['scenery_free_label1'])) {
-		$scenery_free_label .= ";" . $_POST['scenery_free_label1'];
-	}
+	$queryinfo = "UPDATE markerinfo SET description='$description',scenery_free='$scenery_free',scenery_free_label='$scenery_free_label' WHERE code='$code'";
 
 } else if (isset($_POST['scenery']) && !empty($scenery)) {
 	$type = 1;
-	if (isset($_POST['scenery1']) && !empty($_POST['scenery1'])) {
-		$scenery_free .= ";" . $_POST['scenery1'];
+	if (isset($_POST['scenery_label']) && !empty($_POST['scenery_label'])) {
+		$scenery_label = $_POST['scenery_label'];
+		if (isset($_POST['scenery1']) && !empty($_POST['scenery1'])) {
+			$scenery .= ";" . $_POST['scenery1'];
+		}
+		if (isset($_POST['scenery_label1']) && !empty($_POST['scenery_label1'])) {
+			$scenery_label .= ";" . $_POST['scenery_label1'];
+		}
 	}
-	if (isset($_POST['scenery_label1']) && !empty($_POST['scenery_label1'])) {
-		$scenery_free_label .= ";" . $_POST['scenery_label1'];
-	}
-
+	$queryinfo = "UPDATE markerinfo SET description='$description',scenery='$scenery',scenery_label='$scenery_label' WHERE code='$code'";
 }
 
 $connection = mysql_connect($host, $username, $password) or die("Не могу соединиться с MySQLI.");
@@ -58,9 +78,7 @@ $result = mysql_query($query) or die('Invalid query: ' . mysql_error());
 
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error());*/
 
-$query = "UPDATE markerinfo SET scenery='$scenery',description='$description',scenery_free='$scenery_free',scenery_free_label='$scenery_free_label',scenery_label='$scenery_label' WHERE code='$code'";
-
-$result = mysql_query($query) or die('Invalid query: ' . mysql_error());
+$result = mysql_query($queryinfo) or die('Invalid query: ' . mysql_error());
 
 mysql_close($connection);
 
