@@ -29,7 +29,7 @@ height: 100%
   color:#f2ffff;
 }*/
 #twitt_line{
-  float: bottom;
+  /*float: bottom;*/
   height: 185px
 }
 #wrap {
@@ -142,10 +142,10 @@ margin: auto;
 #navigate{
   background: #394e7e;
 }
-.number { 
+#lat,#lng { 
   -moz-appearance: textfield;
 }
-.number::-webkit-inner-spin-button { 
+#lat,#lng::-webkit-inner-spin-button { 
   display: none;
 }
 
@@ -224,9 +224,9 @@ margin: auto;
   background-position:center center;
   background-repeat: no-repeat;
   
-  background-size:cover;
+  /*background-size:cover;
   -moz-background-size:cover;
-  -webkit-background-size:cover;
+  -webkit-background-size:cover;*/
   cursor: pointer
 }
 

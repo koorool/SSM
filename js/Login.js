@@ -24,34 +24,34 @@ function Login(login, password)
                     '<form action="./PHP/insert.php" name="form" method="post" id="form" target="frame" enctype="multipart/form-data" >'
                         //+'<div align="left"><b>Code:</b>
                     +'<div class="form-group">'
-                    +'<input id="code" name="code" required="required" placeholder="code" pattern="[A-Za-z]{4}" class="form-control"> </div>'
+                    +'<input id="code" name="code" required placeholder="code" pattern="[A-Za-z]{4}" class="form-control"> </div>'
                     +'</div>'
                         //+'<div align="left"><b>Название маркера: </b>
                     +'<div class="form-group">'
-                    +'<input id="marker_name" name="name" required="required" placeholder="Name" class="form-control"></br>'
+                    +'<input id="marker_name" name="name" required placeholder="Name" class="form-control"></br>'
                     +'</div>'
                     +'<div class="form-group">'
-                    +'<input id="lat" class="number" type="number" name="lat" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!" class="form-control"></br>' //pattern="\d{2}+(\,\d{15})?"
+                    +'<input id="lat" type="number" name="lat" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!" class="form-control"></br>' //pattern="\d{2}+(\,\d{15})?"
                     +'</div>'
                     +'<div class="form-group">'
-                    +'<input id="lng" class="number" type="number" name="lng" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!" class="form-control"></br>' //pattern="\d{2}+(\,\d{7})?"
+                    +'<input id="lng" type="number" name="lng" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!" class="form-control"></br>' //pattern="\d{2}+(\,\d{7})?"
                     +'</div>'
                         //+'<div><b>type:</b> <input id="type" type="range" min="0" max="2" name="type" required step="1"	</div>'
-                    +'<div class="form-group">'
+                    +'<div id="nonfree_scenery" class="form-group">'
                     +'<b>scenery:</b>' /*<input id="scenery_chbx"type="checkbox" onclick="createfield(scenery)">*/ 
-                    +'<input id="scenery" name="scenery" placeholder="scenery" onblur="createfield(scenery)" class="form-control"></br>' //onchange="createfield(scenery)"
+                    +'<input id="scenery" name="scenery" placeholder="scenery" onblur="createfield(scenery)" class="form-control">' //onchange="createfield(scenery)"
                     +'</div>'
                         //+'<input id="scenery_label" name="scenery_label" placeholder="scenery label"></br>' //class="autogrow"
-                    +'<div class="form-group">'
-                    +'<b id="before_scenery">free scenery:</b>'
-                    +'<input id="scenery_free" name="scenery_free" placeholder="Free scenery" onblur="createfield(scenery_free)" class="form-control"></br>'
+                    +'<div id="free_scenery" class="form-group">'
+                    +'<b>free scenery:</b>'
+                    +'<input id="scenery_free" name="scenery_free" placeholder="Free scenery" onblur="createfield(scenery_free)" class="form-control">'
                     +'</div>'
                         //+'<input id="scenery_free_label" name="scenery_free_label" placeholder="free scenery label"></br>'
                         //+'<input id="scenery_label" name="scenery_label"></br>' //class="autogrow"
                         //+'<div><b>address:</b> <input id="address" type="text" name="address">	</div>'
                         //+'<b>Add city box</b><input type="checkbox" id="city_check" onclick="city_checkbox()">'+'<div id="for_city"></div>' //<input id="city" type="text" name="city">
                     +'<div class="form-group">'
-                    +'<b id="before_scenery_free">City:</b></br>'
+                    +'<b>City:</b></br>'
                     +'<input id="city" name="city" class="form-control"></br>'
                     +'</div>'
                         //+'<div><b>country:</b> <input id="country" type="text" name="country">	</div>'

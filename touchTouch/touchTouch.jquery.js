@@ -216,7 +216,7 @@
 			overlayVisible = false;
 
 			//Clear preloaded items
-			//$('.placeholder').empty();
+			$('.placeholder').empty();
 		}
 
 		function offsetSlider(index){
@@ -225,12 +225,10 @@
 		}
 
 		// Preload an image by its index in the items array
-		function preload(index){
-			if(index+1 < array.length){
+		function preload(index){			
 			setTimeout(function(){
 				showImage(index);
-			}, 1000);
-			}
+			}, 1000);			
 		}
 
 		// Show image in the slider

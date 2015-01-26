@@ -35,8 +35,9 @@ till Monday 26.01
 0) ОЖИВИТЬ САЙТ
 1) UI
 2) статично закрепить галерею, чтобы она не ерзала по панели +-
-3) возможность 2-х scenery/scenery_free test
+3) возможность 2-х scenery/scenery_free server side(insert && update.php)
 4) SEO optimisation
+	a) refferal links
 5) Всплывающие сообщения вместо модальных.
 6) розділ about - напише Антон 
 	a) обратная связь
