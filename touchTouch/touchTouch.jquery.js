@@ -32,7 +32,7 @@
 
 		// Creating a placeholder for each image
 		//array.each(function(){//items
-			for(var i=0; i<array.length; i++)
+			for(var i=0; i<window.length1; i++)
 			placeholders = placeholders.add($('<div class="placeholder">')); // переробити на array
 		//});
 
@@ -129,6 +129,7 @@
 			// Find the position of this image
 			// in the collection
 			//index = 0;//items.index(this);
+			index = 0;
 			showOverlay(index);
 			showImage(index);
 
@@ -136,7 +137,7 @@
 			preload(index+1);
 
 			// Preload the previous
-			//preload(index-1);
+			preload(index-1);
 		}
 		});
 
@@ -163,7 +164,7 @@
 								array.splice(index-1,1);
 								alert("Photo deleted");
 								$("touchtouch" + index).remove();
-								if(index+1 < array.length)showNext();							
+								if(index+1 < window.length1)showNext();							
 								else showPrevious();								
 						}
 				});
@@ -216,7 +217,7 @@
 			overlayVisible = false;
 
 			//Clear preloaded items
-			$('.placeholder').empty();
+			//$('.placeholder').empty();
 		}
 
 		function offsetSlider(index){
@@ -234,7 +235,7 @@
 		// Show image in the slider
 		function showImage(index){
 			// If the index is outside the bonds of the array
-			if(index < 0 || index >= array.length)
+			if(index < 0 || index >= window.length1)
 				return false;
 
 			// Call the load function with the href attribute of the item
@@ -259,7 +260,7 @@
 		function showNext(){
 
 			// If this is not the last image
-			if(index+1 < array.length){
+			if(index+1 < window.length1){
 				index++;
 				offsetSlider(index);
 				preload(index+1);

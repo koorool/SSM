@@ -488,6 +488,7 @@ function panelinformation(code, type){
 				};
 
 			//if(arr.length!=0) 
+			window.length1 = arr1.length;
 			$('').touchTouch(arr1);
 			}
 			else {
