@@ -1,12 +1,13 @@
 //Initialise function, on load
-function initialize() {  
+function initialize() { 
+var styles = [ { "featureType": "transit.station.airport", "stylers": [ { "visibility": "on" } ] },{ "featureType": "poi", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit.station.bus", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit.station.rail", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit.line", "stylers": [ { "visibility": "off" } ] } ]; 
       map = new google.maps.Map(document.getElementById("map"), {
        center: new google.maps.LatLng(49.0630692517165, 31.201171875),
        zoom: 6,
        mapTypeId: 'terrain',
        streetViewControl: false,
-       minZoom: 3
-       //styles: styles
+       minZoom: 3,
+       styles: styles
      });
      markers_load("-1");
      geocoder = new google.maps.Geocoder();
