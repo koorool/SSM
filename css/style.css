@@ -4,7 +4,7 @@
 }
 html { 
 /*font-size: 100%; 
-overflow-x: hidden;*/
+overflow: hidden;*/
 height: 93.7% ; 
 /*position: fixed;*/
 width: 100%;
@@ -30,7 +30,10 @@ height: 100%
 }*/
 #twitt_line{
   /*float: bottom;*/
-  height: 185px
+  height: 185px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 #wrap {
 /*центрируем*/
@@ -60,7 +63,7 @@ height: 100%
 }
 .radio{
   color:orange;
-  font-size: 16px;
+  /*font-size: 16px;*/
 }
 
 /*#Login {
@@ -95,7 +98,7 @@ height: 100%
 	position: absolute;
 	/*top: 40px;
 	bottom: 40px;*/
-  height: 97%;
+  height: 91%;
 	/*margin-right: 0px;*/
 }
 /*----------------------------
@@ -105,15 +108,25 @@ height: 100%
     background: #30426a;
     position: absolute;
     right: 0px;
-    /*overflow: hidden;*/
-    height: 97%;
-    width: 300px;
+    overflow-y: auto;
+    height: 91%;
+    width: 305px;
     /*max-width: 300px;*/
     border-left:7px solid #303030;
     box-shadow:0 1px 3px rgba(0,0,0,0.5);
-    word-wrap: break-word;
+    /*word-wrap:break-word;
+    white-space: -moz-pre-wrap;
+    text-overflow:ellipsis;*/
     /*border-radius:4px;*/
     /*margin: 6px 6px 40px;*/    
+}
+
+#scenery,#scenery1,#scenery_free,#scenery_free1{
+  word-wrap: break-word;
+  /*text-overflow:ellipsis;*/
+  white-space: -moz-pre-wrap;
+  white-space: pre-line; 
+  padding: 2px 4px;
 }
 
 /*#panel-content {
@@ -208,8 +221,9 @@ margin: auto;
 }*/
 
 #galery0{ /*.thumbs img*/
-  width:285px;
-  max-width:285px;
+  /*width:275px;*/
+  width:100%;
+  max-width:280px;
   height:180px;
   position:absolute;
   display:inline-block;
@@ -350,7 +364,7 @@ margin: auto;
 }*/
 
 .sidebar-footer {
-    position: absolute;
+    position: relative;
     height: 40px;
     bottom: 0px;
     width: 100%;
