@@ -39,12 +39,12 @@ function Login(login, password)
                         //+'<div><b>type:</b> <input id="type" type="range" min="0" max="2" name="type" required step="1"	</div>'
                     +'<div id="scenery_box" class="form-group">'
                     +'<b>scenery:</b>' /*<input id="scenery_chbx"type="checkbox" onclick="createfield(scenery)">*/ 
-                    +'<input id="scenery" name="scenery" placeholder="scenery" onblur="createfield(scenery)" class="form-control">' //onchange="createfield(scenery)"
+                    +'<input id="scenery" name="scenery" placeholder="scenery" class="form-control">' //onblur="createfield(scenery)"
                     +'</div>'
                         //+'<input id="scenery_label" name="scenery_label" placeholder="scenery label"></br>' //class="autogrow"
                     +'<div id="scenery_free_box" class="form-group">'
                     +'<b>free scenery:</b>'
-                    +'<input id="scenery_free" name="scenery_free" placeholder="Free scenery" onblur="createfield(scenery_free)" class="form-control">'
+                    +'<input id="scenery_free" name="scenery_free" placeholder="Free scenery" class="form-control">' //onblur="createfield(scenery_free)"
                     +'</div>'
                         //+'<input id="scenery_free_label" name="scenery_free_label" placeholder="free scenery label"></br>'
                         //+'<input id="scenery_label" name="scenery_label"></br>' //class="autogrow"
@@ -76,6 +76,12 @@ function Login(login, password)
                 for (var i = 0; i < markers_arr.length; i++) markers_arr[i].setDraggable(true);
                 show = false;
                 $("#LoginForm").toggle();
+                document.getElementById("scenery").onblur = function(){
+                    createfield("scenery");
+                };
+                document.getElementById("scenery_free").onblur = function(){
+                    createfield("scenery_free");
+                };
             }
             else alert('Wrong name or password!');
         }

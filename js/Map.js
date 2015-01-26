@@ -249,5 +249,11 @@ function mew_marker_clicked(marker) {
         document.getElementById('scenery1').parentNode.removeChild(document.getElementById('scenery1'));
       }
     }
+    document.getElementById("scenery").onblur = function(){
+                    createfield("scenery");
+                };
+                document.getElementById("scenery_free").onblur = function(){
+                    createfield("scenery_free");
+                };
     markers_arr.push(marker);
 }

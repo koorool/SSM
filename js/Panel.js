@@ -262,6 +262,12 @@ function panelinformation(code, type){
 		var markers = data.responseXML.firstChild; //documentElement.getElementsByTagName("marker")[0];
 			//переробити, враховуючи залежність між type and scenery			
 			if(admin){
+				document.getElementById("scenery").onblur = function(){
+					createfield("scenery");
+				};
+				document.getElementById("scenery_free").onblur = function(){
+					createfield("scenery_free");
+				};
 				switch(type){
 					case '0':
 					if(markers.getAttribute("scenery_free").indexOf(';')+1){					
@@ -528,37 +534,39 @@ function panelinformation(code, type){
 
 function createfield(field){
 	//if(document.getElementById(field.id +'_chbx').checked){
-	if(document.getElementById(field.id).value && !document.getElementById(field.id + "_label")){//.id
+	if(document.getElementById(field).value && !document.getElementById(field + "_label")){//.id
 		var tbSceneryLabel = document.createElement('input');
+		document.getElementById(field).onblur = null;
 		//tbCity.type = "text";
-	 	tbSceneryLabel.name = field.id + "_label"; //.id
-	 	tbSceneryLabel.id = field.id + "_label";//.id
+	 	tbSceneryLabel.name = field + "_label"; //.id
+	 	tbSceneryLabel.id = field + "_label";//.id
 	 	tbSceneryLabel.className = "form-control";
-	 	tbSceneryLabel.placeholder = field.id + "_label"; //.id	 	
-	 	document.getElementById(field.id +"_box").appendChild(tbSceneryLabel);
+	 	tbSceneryLabel.placeholder = field + "_label"; //.id	 	
+	 	document.getElementById(field +"_box").appendChild(tbSceneryLabel);
 	 	tbSceneryLabel.focus();
 	 	tbSceneryLabel.onblur = function(){
-	 		if(document.getElementById(field.id + "1") === null){
+	 		//if(document.getElementById("scenery_free1") === null || document.getElementById("scenery1")===null){
+	 		document.getElementById(field + "_label").onblur = null;
 	 		var tbScenery = document.createElement('input');
-	 		tbScenery.name = field.id + "1"; //.id
-	 		tbScenery.id = field.id + "1";//.id
-	 		tbScenery.placeholder = field.id; //.id
+	 		tbScenery.name = field + "1"; //.id
+	 		tbScenery.id = field + "1";//.id
+	 		tbScenery.placeholder = field; //.id
 	 		tbScenery.className = "form-control";
-	 		if(field === 'scenery_free_label' || field === 'scenery_free_label1'|| field === 'scenery_free1' )
+	 		if(field === 'scenery_free_label' || field === 'scenery_free_label1'|| field === 'scenery_free1' || field === 'scenery_free' )
 	 		document.getElementById('scenery_free_box').appendChild(tbScenery);
 	 		else
 	 		document.getElementById('scenery_box').appendChild(tbScenery);	
 	 		tbScenery.focus();
 	 		var tbSceneryLabel = document.createElement('input');
-	 		tbSceneryLabel.name = field.id + "_label1"; //.id
+	 		tbSceneryLabel.name = field + "_label1"; //.id
 	 		tbSceneryLabel.className = "form-control";
-	 		tbSceneryLabel.id = field.id + "_label1";//.id
-	 		tbSceneryLabel.placeholder = field.id + "_label"; //.id
-	 		if(field === 'scenery_free_label' || field === 'scenery_free_label1'|| field === 'scenery_free1' )
+	 		tbSceneryLabel.id = field + "_label1";//.id
+	 		tbSceneryLabel.placeholder = field + "_label"; //.id
+	 		if(field === 'scenery_free_label' || field === 'scenery_free_label1'|| field === 'scenery_free1' || field === 'scenery_free' )
 	 		document.getElementById('scenery_free_box').appendChild(tbSceneryLabel);
 	 		else
 	 		document.getElementById('scenery_box').appendChild(tbSceneryLabel);
-	 		}
+	 		//}
 	 	}
 	} 	
  	/*else
