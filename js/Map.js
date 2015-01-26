@@ -24,12 +24,9 @@ var customIcons = {
       0: {icon: './images/freeware.png'},
       1: {icon: './images/payware.png'},
       2: {icon: './images/free-pay.png'}
-    };
-//var map;
-var markers_arr = [];
-//var this_marker;
-var source = [];
-var infowindow = new google.maps.InfoWindow();
+    },
+markers_arr = [], source = [],
+infowindow = new google.maps.InfoWindow();
 //Global Variables//
 
 // Load markers from DataBase
@@ -126,22 +123,22 @@ function markers_load(type, code){
 
 google.maps.event.addListener(map, 'zoom_changed', function() {
 
-    var pixelSizeAtZoom0 = 6; //the size of the icon at zoom level 0
-    var maxPixelSize = 40; //restricts the maximum size of the icon, otherwise the browser will choke at higher zoom levels trying to scale an image to millions of pixels
+    var pixelSizeAtZoom0 = 6, //the size of the icon at zoom level 0
+    maxPixelSize = 40; //restricts the maximum size of the icon, otherwise the browser will choke at higher zoom levels trying to scale an image to millions of pixels
 
-    var zoom = map.getZoom();
+    //var zoom = map.getZoom();
 
     //if (zoom < 3) map.setZoom(3);
     //if (zoom > 3){
-    switch(zoom){
+    switch(map.getZoom()){
       case 3:
-      var relativePixelSize = Math.round(pixelSizeAtZoom0*Math.pow(1,zoom));
+      var relativePixelSize = Math.round(pixelSizeAtZoom0*Math.pow(1,map.getZoom()));
       break;
       case 4:
-      var relativePixelSize = Math.round(pixelSizeAtZoom0*Math.pow(1.1,zoom));
+      var relativePixelSize = Math.round(pixelSizeAtZoom0*Math.pow(1.1,map.getZoom()));
       break;
       default:
-      var relativePixelSize = Math.round(pixelSizeAtZoom0*Math.pow(1.2,zoom));// use 2 to the power of current zoom to calculate relative pixel size.  Base of exponent is 2 because relative size should double every time you zoom in
+      var relativePixelSize = Math.round(pixelSizeAtZoom0*Math.pow(1.2,map.getZoom()));// use 2 to the power of current zoom to calculate relative pixel size.  Base of exponent is 2 because relative size should double every time you zoom in
       break;
     }
      
@@ -199,8 +196,7 @@ function marker_animate(marker){
 }
 
 function mew_marker_clicked(marker) {             
-    var city;
-    var country;
+    var city, country;
     document.getElementById('city').placeholder = "";      
     document.getElementById('form').reset();              
     document.getElementById("lat").value = marker.getPosition().lat();
