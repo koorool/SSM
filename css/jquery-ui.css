@@ -93,11 +93,11 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	cursor: default;
-	max-height: 250px;
-    overflow-y: auto;
+	/*cursor: default;*/
+	max-height: 200px;
+    /*overflow-y: auto;*/
     /* prevent horizontal scrollbar */
-    overflow-x: hidden;
+    overflow: hidden;
     /* add padding for vertical scrollbar */
     padding-right: 5px;
 }
@@ -111,6 +111,7 @@
 } 
 .ui-autocomplete li {
     font-size: 14px;
+    white-space: nowrap
 }
 /*---------------------
 -----Autocomplete-----*/

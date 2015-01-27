@@ -1,6 +1,26 @@
 //Initialise function, on load
 function initialize() { 
-var styles = [ { "featureType": "transit.station.airport", "stylers": [ { "visibility": "on" } ] },{ "featureType": "poi", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit.station.bus", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit.station.rail", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit.line", "stylers": [ { "visibility": "off" } ] } ]; 
+var styles = [
+    {
+        "featureType": "transit.station.airport",
+        "elementType": "labels",
+        "stylers": [ { "visibility": 'off' } ]
+    },
+    {
+        "featureType": "transit.line",
+        "stylers": [ { "visibility": "off" } ]
+    },
+    {
+        "featureType": "transit.station.rail", "stylers": [ { "visibility": "off" } ]
+    },
+    {
+        "featureType": "transit.station.bus", "stylers": [ { "visibility": "off" } ]
+    },
+    { 
+      "featureType": "poi",
+      "stylers": [ { "visibility": "off" } ]
+    }
+];
       map = new google.maps.Map(document.getElementById("map"), {
        center: new google.maps.LatLng(49.0630692517165, 31.201171875),
        zoom: 6,
@@ -88,7 +108,7 @@ function markers_load(type, code){
 
      //add markers on the map   
   google.maps.event.addListener(map, "click", function(event) {          
-      if (admin && document.getElementById('new_marker').checked) { //event.latLng &&
+      if (admin &&event.latLng) { // && document.getElementById('new_marker').checked
 
         var marker = new google.maps.Marker({
             map: map,
@@ -108,7 +128,7 @@ function markers_load(type, code){
               //if(jQuery.infopanel.hasClass('visible')){
                document.getElementById('lat').value = this.getPosition().lat();
                document.getElementById('lng').value = this.getPosition().lng();
-               formReset();
+               //formReset();
                //infowindow.close();
               //}
              });
@@ -116,7 +136,7 @@ function markers_load(type, code){
              google.maps.event.addListener(marker, 'click', function ()
               {
                 //markers_arr.push(marker);
-              mew_marker_clicked(marker); 
+              mew_marker_clicked(this); 
               });
       }
     });

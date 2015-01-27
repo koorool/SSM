@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
-<!--[if IE 7]><html class="ie7 oldie" lang="ru"><![endif]-->
-<!--[if IE 8]><html class="ie8 oldie" lang="ru"><![endif]-->
-<!--[if gt IE 8]><!--><!--<![endif]--><!--html lang="RU"-->
-<!--[if IEMobile 7 ]> <html class="iem7" lang="ru"> <![endif]-->
+<!--[if IE 7]><html class="ie7 oldie" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie8 oldie" lang="en"><![endif]-->
+<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<!--[if gt IE 8]> <html lang="en"> <![endif]-->
+<!--[if IEMobile 7 ]> <html class="iem7" lang="en"> <![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> 
-<html> 
+<html lang="en"> 
 <!--<![endif]-->
 <!--lang="ru" manifest="default.appcache"-->
 	<!--html lang="RU" manifest="default.appcache"-->
@@ -29,8 +30,7 @@
 		<meta name='keywords' content='ICAO, scenery, simulator, microsoft flight simulator, АЫЧ, FSX Scenery, prepar3d, p3d, fsx, сценарий, симулятор'>
 		<link rel="canonical" href="www.simscenerymap.com">
 		<meta name="author" content="CupOfCode">
-    	<!--meta name="copyright" content="All rights reserved by CupOfCode 2014-2015 ©"-->
-    	<!--noscript>Ваш браузер не поддерживает скрипты!</noscript--> 
+    	<!--meta name="copyright" content="All rights reserved by CupOfCode 2014-2015 ©"--> 
 		<!--SEO-->		
 
 		<!-- The stylesheet -->
@@ -58,7 +58,7 @@
 <body>
 		<!--div--><!--wrap!-->
 			<div id="Menu">
-				<img src="./images/2.png" class = "Logo" alt="simscenerymap">
+				<img src="./images/2.png" id = "Logo" alt="simscenerymap">
 				<iframe class="hidden" name="frame" id="frame" srcdoc=""  width="120" height="40"></iframe>
 			<!--img src="./advertisment.jpg" class="Logo"-->
 				<form id="LoginForm" class="form-inline pull-right" onsubmit="return false"><!--style="display: none"  action="JavaScript: return false"-->
@@ -74,11 +74,11 @@
 				</form>
 			</div> <!-- Menu -->
 
-			<div id="input-group" class=" form-inline">
+			<div id="input-group" class="form-inline">
 				<input type="search" id="search" placeholder="Search" class="form-control"/> 
-				<button class="search form-control btn btn-default" onclick="search()">Go</button>
+				<button class="form-control btn btn-default" onclick="search()">Go</button>
 			</div>
-
+			<noscript>Turn on JavaScripts to load the map</noscript>
 			<div id="map"></div>
 
 			<div id="panel" class="container-flow">
@@ -88,10 +88,10 @@
 					<label class="radio"><input id ="non-free" type="radio" onclick="check(1)" name="filter"/>pay</label>
 					<button id="refresh" onclick="check(-1)" class="btn btn-default btn-xs">Refresh</button>
 				</div>
-				<div id="checkbox"></div>
-				<div class="" id="panel_content">
+				<!--div id="checkbox"></div-->
+				<div id="panel_content">
 					<h4 id="marker_name">Airport</h4>				
-					<table class=".table-condensed">
+					<table class="table-condensed">
 		    			<tr>
 							<td><abbr title="International Civil Aviation Organization code">ICAO</abbr>: </td>
 							<td><b id="code"></b></td>

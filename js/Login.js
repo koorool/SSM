@@ -11,11 +11,11 @@ function Login(login, password)
             if(data==="true"){
                 admin = true;
                 //if (jQuery.infopanel.hasClass('visible')) jQuery.Panel();
-                var new_marker_field = document.createElement('input');
+                /*var new_marker_field = document.createElement('input');
                 new_marker_field.type = "checkbox";
                 new_marker_field.id = "new_marker";
                 document.getElementById('checkbox').innerHTML = "Add new markers";
-                document.getElementById('checkbox').appendChild(new_marker_field);
+                document.getElementById('checkbox').insertBefore(document.getElementById('panel_content'));*/
                 //+'<b>Input new markers</b><input type="checkbox" id="new_marker">'
                 $('#panel_content').html(//'<div id="panel_content">'
                     //+'<table height="100%">'
