@@ -138,9 +138,9 @@
 	right:40px;
 }
 
-.hide_picture{
+/*.hide_picture{
 	visibility: hidden
-}
+}*/
 #deleteArrow{
 	border:none;
 	text-decoration:none;
@@ -154,8 +154,4 @@
 	margin-top:-29px;
 	background-position:right top;
 	right:40px;
-	
-	/*-moz-transition:opacity 0.2s ease;
-	-webkit-transition:opacity 0.2s ease;
-	transition:opacity 0.2s ease;*/
 }
