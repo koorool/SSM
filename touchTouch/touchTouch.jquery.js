@@ -155,7 +155,7 @@
 				e.preventDefault();
 				showNext();
 			});
-			if(admin) overlay.append(deleteArrow);
+			/*if(admin)*/ overlay.append(deleteArrow);
 			//a function to delete the image from site
 			deleteArrow.click(function(e){
 				$.ajax({

@@ -58,6 +58,8 @@ function markers_load(type, code){
   //if(free!= "-1") не брати з бази тип
       downloadUrl("/aviamap/PHP/load_markers.php?type="+ type +"&code=" + code, function(data) {
         //var xml = data.responseXML;
+        if (navigator.appName == 'Microsoft Internet Explorer')var markers = data.responseXML.childNodes[1].childNodes;
+        else 
         var markers = data.responseXML.childNodes[0].childNodes;
         for (var i = 0; i < markers.length; i++) {
           //var code = markers[i].getAttribute("code"); 
