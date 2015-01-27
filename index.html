@@ -4,53 +4,62 @@
 <!--[if gt IE 8]><!--><!--<![endif]--><!--html lang="RU"-->
 <!--[if IEMobile 7 ]> <html class="iem7" lang="ru"> <![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> 
-<html lang="ru" manifest="default.appcache"> 
+<html> 
 <!--<![endif]-->
-
+<!--lang="ru" manifest="default.appcache"-->
 	<!--html lang="RU" manifest="default.appcache"-->
 	<Head>
 		<!--meta http-equiv="Content-Language" content="ru"-->
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta charset="UTF-8">
 		<!--Optimisation for tablets-->
 		<meta name="HandheldFriendly" content="True">
 		<!--meta name="MobileOptimized" content="320"-->
-		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="default">
 		<meta name="format-detection" content="address=no">
 		<meta name="viewport" content="target-densitydpi=high-dpi">
 		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<meta name="HandheldFriendly" content="True">
 		<link rel="shortcut icon" href="./images/favicon.ico"><!--type="image/x-icon"-->
 		
 
 		<!--SEO-->
     	<Title>Simscenerymap - all sceneries for flight simulation on the one map</Title>
-		<meta name='description' content='A modern, open coworking environment for free-range humans. From collaborative space to private conference rooms, Grind has everything you need to work liquid.' />
-		<meta name='keywords' content='ICAO, scenery, simulator, microsoft flight simulator, АЫЧ, FSX Scenery, prepar3d, p3d, fsx'/>
-		<link rel="canonical" href="www.simscenerymap.com"/>
+		<meta name='description' content='A modern, open coworking environment for free-range humans. From collaborative space to private conference rooms, Grind has everything you need to work liquid.'>
+		<meta name='keywords' content='ICAO, scenery, simulator, microsoft flight simulator, АЫЧ, FSX Scenery, prepar3d, p3d, fsx, сценарий, симулятор'>
+		<link rel="canonical" href="www.simscenerymap.com">
 		<meta name="author" content="CupOfCode">
-    	<meta name="copyright" content="All rights reserved by CupOfCode 2014-2015 ©">
+    	<!--meta name="copyright" content="All rights reserved by CupOfCode 2014-2015 ©"-->
+    	<!--noscript>Ваш браузер не поддерживает скрипты!</noscript--> 
 		<!--SEO-->		
 
-		
-
 		<!-- The stylesheet -->
-		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/style.css">
 		<link rel="stylesheet" href="./css/bootstrap.min.css">
 		<!--Javascript-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<!--client=AIzaSyB-NQCXIIa9EzYTUm3Tv4fECpJPn5-a6ko&-->
-        <script src="https://maps.google.com/maps/api/js?v=3.18&language=en"></script>
+        <script src="https://maps.google.com/maps/api/js?v=3.18&amp;language=en"></script>
 
         <script src="./js/Map.js"></script>
 
-	</Head>	
+        <script defer src="./js/Login.js"></script>
+<script async src="./js/Panel.js"></script>
+<script defer src="./touchTouch/touchTouch.jquery.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/jquery-ui.min.js"></script>
+<link type="text/css" rel="stylesheet" href="./css/jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="./touchTouch/touchTouch.css">
+<script defer src="./js/index.js"></script>
+
+</Head>	
 	
-	<Body>
-		<div id=""><!--wrap!-->
+<body>
+		<!--div--><!--wrap!-->
 			<div id="Menu">
-				<img src="./images/2.png" class = "Logo">
-				<iframe class="hidden" name="frame" id="frame" srcdoc="" seamless="seamless" width="120" height="40"></iframe>
+				<img src="./images/2.png" class = "Logo" alt="simscenerymap">
+				<iframe class="hidden" name="frame" id="frame" srcdoc=""  width="120" height="40"></iframe>
 			<!--img src="./advertisment.jpg" class="Logo"-->
 				<form id="LoginForm" class="form-inline pull-right" onsubmit="return false"><!--style="display: none"  action="JavaScript: return false"-->
   					<div class="form-group">
@@ -70,20 +79,18 @@
 				<button class="search form-control btn btn-default" onclick="search()">Go</button>
 			</div>
 
-			<div id="map">
-			</div>
+			<div id="map"></div>
 
 			<div id="panel" class="container-flow">
 				<div id="navigate" class = "form-inline">
-					<label class="radio"><input id ="pay-free" onclick="check(2)" type="radio" name="filter"/>pay&free</label>
+					<label class="radio"><input id ="pay-free" onclick="check(2)" type="radio" name="filter"/>pay&amp;free</label>
 					<label class="radio"><input id ="free" type="radio" onclick="check(0)" name="filter"/>free</label>
 					<label class="radio"><input id ="non-free" type="radio" onclick="check(1)" name="filter"/>pay</label>
 					<button id="refresh" onclick="check(-1)" class="btn btn-default btn-xs">Refresh</button>
 				</div>
-				<div id="checkbox">			
-				</div>
+				<div id="checkbox"></div>
 				<div class="" id="panel_content">
-					<h4 id="marker_name"></h4>				
+					<h4 id="marker_name">Airport</h4>				
 					<table class=".table-condensed">
 		    			<tr>
 							<td><abbr title="International Civil Aviation Organization code">ICAO</abbr>: </td>
@@ -120,9 +127,9 @@
 				    </table>
 				</div> <!--panel_content-->
 				<hr/>			
-				<img id="galery0" onError="this.src='./images/2.png';">
+				<img id="galery0" alt="an image of the airport" src="./images/2.png"> <!--onError="this.src='./images/2.png';"-->
 		        <a id="twitt_line" class="twitter-timeline"  href="https://twitter.com/simscenerymap" data-widget-id="558524001463848960" data-chrome="noscrollbar" data-lang="en">Tweets by @simscenerymap</a>
-            	<script async>
+            	<script>
             		!function(d,s,id)
             		{
             			var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
@@ -145,14 +152,6 @@
 		        	</div>
 		      	</div> <!--sidebar-footer-->
 			</div> <!--panel-->
-		</div> <!--wrap-->
+		<!--/div--> <!--wrap-->
 	</body>
 </html>
-<script defer src="./js/Login.js"></script>
-<script async src="./js/Panel.js"></script>
-<script defer src="./touchTouch/touchTouch.jquery.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="./css/jquery-ui.css">
-<link rel="stylesheet" href="./touchTouch/touchTouch.css"/>
-<script defer type="text/javascript" src="./js/index.js"></script>

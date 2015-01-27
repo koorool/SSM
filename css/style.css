@@ -117,9 +117,12 @@ height: 100%
 #scenery,#scenery1,#scenery_free,#scenery_free1{
   word-wrap: break-word;
   text-overflow:ellipsis;
-  white-space: -moz-pre-wrap;
+  /*white-space: -moz-pre-wrap;*//*validator warning*/
   white-space: pre-line; 
   padding: 2px 4px;
+}
+#marker_name{
+  text-align: center
 }
 
 /*#panel-content {
@@ -137,7 +140,7 @@ textarea {
  max-height: 80px;
  height: auto;
  word-wrap: break-word;
-margin: auto;
+ margin: auto;
  /*margin:0px; 
  padding:0px;
  overflow:hidden;*/
@@ -148,12 +151,12 @@ margin: auto;
 #navigate{
   background: #394e7e;
 }
-#lat,#lng { 
+/*#lat,#lng { 
   -moz-appearance: textfield;
 }
 #lat,#lng::-webkit-inner-spin-button { 
   display: none;
-}
+}*/
 td{
    vertical-align:top;
 }
@@ -285,7 +288,7 @@ td{
     font-size: 0.9em;
 }
 
-.smooth-tab.attach-top .tab-sweep.toleft {
+/*.smooth-tab.attach-top .tab-sweep.toleft {
     left: -0.9em;
     border-top-right-radius: 1em 1.4em;
     box-shadow: 0.2em -0.3em 0em 0em #111;

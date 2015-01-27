@@ -31,10 +31,10 @@ function Login(login, password)
                     +'<input id="marker_name" name="name" required placeholder="Name" class="form-control"></br>'
                     +'</div>'
                     +'<div class="form-group">'
-                    +'<input id="lat" type="number" name="lat" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!" class="form-control"></br>' //pattern="\d{2}+(\,\d{15})?"
+                    +'<input id="lat" name="lat" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!" class="form-control"></br>' //pattern="\d{2}+(\,\d{15})?"
                     +'</div>'
                     +'<div class="form-group">'
-                    +'<input id="lng" type="number" name="lng" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!" class="form-control"></br>' //pattern="\d{2}+(\,\d{7})?"
+                    +'<input id="lng" name="lng" min="-90" max="90" step="any" required pattern="\d{2}+(\,\d{15})?" title="Здесь должно быть число!" class="form-control"></br>' //pattern="\d{2}+(\,\d{7})?"
                     +'</div>'
                         //+'<div><b>type:</b> <input id="type" type="range" min="0" max="2" name="type" required step="1"	</div>'
                     +'<div id="scenery_box" class="form-group">'
