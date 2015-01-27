@@ -77,7 +77,7 @@ function markers_load(type, code){
             null,//new google.maps.Point(0, 0),
             null,//new google.maps.Point(0, 0),
             new google.maps.Size(20, 20)),
-            draggable: admin,
+            //draggable: admin,
 	          title: markers[i].getAttribute("name")
           });
           marker.set('code', markers[i].tagName);
