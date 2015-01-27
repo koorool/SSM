@@ -25,7 +25,7 @@
     });
 })(jQuery);*/
 
-/*function reload(){
+function reload(){
 	//document.getElementById('galery').innerHTML = "";
 	$('.placeholder').remove();
 	document.getElementById('submit').value = "update";
@@ -53,9 +53,9 @@ function formReset() {
 	      /*if(form.elements.item(i).type != 'file') form.elements.item(i).value = values[i];*/
 	   
 	   //document.getElementById("description").textContent= "";
-//}
+}
 
-/*function delete_marker(marker){
+function delete_marker(marker){
 	$.ajax({
             url: '/aviamap/PHP/delete.php',
             data: "code=" + marker.get('code'),
@@ -67,18 +67,18 @@ function formReset() {
             	document.getElementById("form").reset();        	
             } 
     });
-}*/
+}
 
 function loadDataInfoPanel(marker)
 	{
 		if(document.getElementById("marker_name").value != marker.title ){
-			/*if(admin){
+			//if(admin){
 		 	panelinformation(marker.get('code'), marker.get('type'));
 		 	document.getElementById('city').value = "";
 		 	document.getElementById('city').placeholder = "";
 		 	/*if(document.getElementById('tbCity')!=null)
 		 	document.getElementById('bLogin').parentNode.removeChild(document.getElementById('bLogin'));*/
-			/*document.getElementById("code").value = marker.get('code');
+			document.getElementById("code").value = marker.get('code');
 			document.getElementById("marker_name").value = marker.title;
 			document.getElementById("lat").value = marker.getPosition().lat();
 			document.getElementById("lng").value = marker.getPosition().lng();
@@ -124,8 +124,8 @@ function loadDataInfoPanel(marker)
             	+'</b> <br/><div id="additionally"><span id="additional" onclick="jQuery.Panel(window.this_marker)">Дополнительно</span></div></div>';
         		window.infowindow.setContent(content);
         		window.infowindow.open(map, marker);*/
-            	//document.getElementById("files").innerHTML = document.getElementById("files").innerHTML;
-           	//};			
+            	document.getElementById("files").innerHTML = document.getElementById("files").innerHTML;
+           	};			
 
 			/*if(marker.get('type') == 0) document.getElementById("type").value="free";
 				else document.getElementById("type").value="nonfree";*/
@@ -134,8 +134,8 @@ function loadDataInfoPanel(marker)
 			//document.getElementById("address").value = marker.get('address');
 			//document.getElementById("country").value = marker.get('country');
 			//document.getElementById("city").value = marker.get('city');
-			 //}
-		//else {
+			// }
+		/*else {
 			document.getElementById('city').textContent = "";
 			panelinformation(marker.get('code'), marker.get('type'));
 			document.getElementById("code").textContent = marker.get('code'); 	
@@ -165,25 +165,25 @@ function loadDataInfoPanel(marker)
             /*if(components[component].types[0]=="administrative_area_level_1"){
                 var admin_area=components[component].long_name;
             }*/
-            if(components[component].types[0]=="country"){
-            	//if(!admin) //document.getElementById('country').value = components[component].long_name;
+            /*if(components[component].types[0]=="country"){
+            	if(!admin) //document.getElementById('country').value = components[component].long_name;
             	document.getElementById('country').textContent = components[component].long_name;
                 //country=components[component].long_name;
-            }
+            }*/
 
             if(components[component].types[0]=="locality"){
             	//alert(components[component].long_name);
             	if(marker.get('city') != "null"){
-            		//if(admin) document.getElementById('city').value = marker.get('city');
-		 			/*else*/ document.getElementById('city').textContent = marker.get('city');
+            		/*if(admin)*/ document.getElementById('city').value = marker.get('city');
+		 			//else document.getElementById('city').textContent = marker.get('city');
 		 		}
 		 		//else if(typeof components[component].long_name === undefined && admin) document.getElementById('city').placeholder ="City is null!";
-		 		//else if(admin) document.getElementById('city').placeholder ="City is set by geocoding";//document.getElementById('city').value = components[component].long_name;
-		 		else document.getElementById('city').textContent = components[component].long_name;
+		 		else /*if(admin)*/ document.getElementById('city').placeholder ="City is set by geocoding";//document.getElementById('city').value = components[component].long_name;
+		 		//else document.getElementById('city').textContent = components[component].long_name;
                 //city=components[component].long_name;
             }
         }
-        //if(admin && !document.getElementById('city').value.length && !document.getElementById('city').placeholder.length) document.getElementById('city').placeholder ="City is null!";
+        if(!document.getElementById('city').value.length && !document.getElementById('city').placeholder.length) document.getElementById('city').placeholder ="City is null!";
         /*if(typeof city === 'undefined'){          
             
         }*/
@@ -209,13 +209,13 @@ function loadDataInfoPanel(marker)
         country +'</div><span id="additional" onclick="additional()">Дополнительно</span>');
         }*/
       } else {
-        infowindow.setContent('No results found');
+            infowindow.setContent('<b style="color:black">No results found</b>');
+            infowindow.open(map, marker);
+          }
+      } else {
+        infowindow.setContent('<b style="color:black">Geocoder failed due to: ' + status + '</b>');
         infowindow.open(map, marker);
-      }
-    } else {
-      infowindow.setContent('Geocoder failed due to: ' + status);
-      infowindow.open(map, marker); 
-    }
+        }
   });
 	//if(admin && document.getElementById('city').value==="") document.getElementById('city').placeholder ="City is null!";
 }
@@ -259,12 +259,9 @@ function panelinformation(code, type){
 	
 	downloadUrl("/aviamap/PHP/panel.php?code=" + code + "&type=" + type, function(data) {
 		//var xml = data.responseXML;
-		if (navigator.appName == 'Microsoft Internet Explorer') var markers = data.responseXML.childNodes[1];
-        else 
-        var markers = data.responseXML.firstChild;
-		 //documentElement.getElementsByTagName("marker")[0];
+		var markers = data.responseXML.firstChild; //documentElement.getElementsByTagName("marker")[0];
 			//переробити, враховуючи залежність між type and scenery			
-			/*if(admin){
+			//if(admin){
 				document.getElementById("scenery").onblur = function(){
 					createfield("scenery");
 				};
@@ -296,11 +293,11 @@ function panelinformation(code, type){
 					/*var arr_scenery = markers.getAttribute("scenery_free").split(';');
 					document.getElementById("scenery_free").value= arr_scenery[0];
 					document.getElementById("scenery_free1").value= arr_scenery[1];*/
-					//load_admin('scenery',markers.getAttribute("scenery").split(';'));
+					load_admin('scenery',markers.getAttribute("scenery").split(';'));
 					/*arr_scenery = markers.getAttribute("scenery_free_label").split(';');
 					document.getElementById("scenery_free_label").value= arr_scenery[0];
 					document.getElementById("scenery_free_label1").value= arr_scenery[1];*/
-					/*load_admin('scenery_label',markers.getAttribute("scenery_label").split(';'));
+					load_admin('scenery_label',markers.getAttribute("scenery_label").split(';'));
 					}
 					else{
 						document.getElementById("scenery").value= markers.getAttribute("scenery");
@@ -332,7 +329,7 @@ function panelinformation(code, type){
 						document.getElementById('scenery1').parentNode.removeChild(document.getElementById('scenery1'));
 						document.getElementById('scenery_label1').parentNode.removeChild(document.getElementById('scenery_label1'));
 					}*/					
-					/*if(markers.getAttribute("scenery").indexOf(';')+1){					
+					if(markers.getAttribute("scenery").indexOf(';')+1){					
 					load_admin('scenery',markers.getAttribute("scenery").split(';'));					
 					load_admin('scenery_label',markers.getAttribute("scenery_label").split(';'));
 					}
@@ -340,15 +337,15 @@ function panelinformation(code, type){
 						document.getElementById("scenery").value= markers.getAttribute("scenery");
 						if(document.getElementById('scenery_label')===null) create_onefield('scenery_label');
 						document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
-						if(document.getElementById("scenery1")!==null){document.getElementById('form').removeChild(document.getElementById('scenery1'));
-						document.getElementById('scenery_label1').removeChild(document.getElementById('scenery_label1'));}
+						if(document.getElementById("scenery1")!==null){document.getElementById('scenery1').parentNode.removeChild(document.getElementById('scenery1'));
+						document.getElementById('scenery_label1').parentNode.removeChild(document.getElementById('scenery_label1'));}
 					}
 					/*if(document.getElementById('scenery_free1')!==null && document.getElementById('scenery_free_label1')!==null){
 						document.getElementById('scenery_free1').parentNode.removeChild(document.getElementById('scenery_free1'));
 						document.getElementById('scenery_free_label1').parentNode.removeChild(document.getElementById('scenery_free_label1'));
 					}*/
-					//break;
-				//}
+					break;
+				}
 				/*if(markers[0].getAttribute("scenery")!=null && markers[0].getAttribute("scenery")!="")
 					document.getElementById("scenery").value= markers[0].getAttribute("scenery");
 					//createfield('scenery');
@@ -360,9 +357,9 @@ function panelinformation(code, type){
 			 	//createfield('scenery_free');
 				document.getElementById('scenery_free_label').value = markers[0].getAttribute("scenery_free_label");
 				}*/
-			 	//document.getElementById("description").value= markers.getAttribute("description");
+			 	document.getElementById("description").value= markers.getAttribute("description");
 			//}
-			//else{
+			/*else{
 				switch(type){
 					case '0':					
 					if(markers.getAttribute("scenery_free").indexOf(';')+1){
@@ -374,21 +371,21 @@ function panelinformation(code, type){
 					/*arr_scenery = markers.getAttribute("scenery_free_label").split(';');
 					document.getElementById("scenery_free").textContent= arr_scenery[0];
 					document.getElementById("scenery_free1").textContent= arr_scenery[1];*/					
-					}
+					/*}
 					else{
 					document.getElementById("scenery_free").href= markers.getAttribute("scenery_free");
 					if(markers.getAttribute("scenery_free_label")!==null && markers.getAttribute("scenery_free_label").length)
 					document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free_label").substring(11, 40);
 					else document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free").substring(11, 40);
-					document.getElementById('scenery_free1').textContent = null;
+					document.getElementById('scenery_free1').textContent = null;*/
 					//document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
 					//document.getElementById('form').removeChild(document.getElementById('scenery_free_label1'));
-					}
+					//}
 					/*if(document.getElementById('scenery1').length && document.getElementById('scenery_label1').length){
 						document.getElementById('form').removeChild(document.getElementById('scenery1'));
 						document.getElementById('form').removeChild(document.getElementById('scenery_label1'));
 					}*/
-					document.getElementById('scenery').textContent = null;
+					/*document.getElementById('scenery').textContent = null;
 					document.getElementById('scenery1').textContent = null;
 					break;
 					case '1':
@@ -397,11 +394,11 @@ function panelinformation(code, type){
 					/*var arr_scenery = markers.getAttribute("scenery").split(';');
 					document.getElementById("scenery").href= arr_scenery[0];
 					document.getElementById("scenery1").href= arr_scenery[1];*/
-					load_text('scenery' , markers.getAttribute("scenery_label").split(';'));
+					//load_text('scenery' , markers.getAttribute("scenery_label").split(';'));
 					/*arr_scenery = markers.getAttribute("scenery_label").split(';');
 					document.getElementById("scenery_label").textContent= arr_scenery[0];
 					document.getElementById("scenery_label1").textContent= arr_scenery[1];*/					
-					}
+					/*}
 					else{
 					document.getElementById("scenery").href= markers.getAttribute("scenery");
 					if(markers.getAttribute("scenery_label")!==null && markers.getAttribute("scenery_label").length)
@@ -460,7 +457,7 @@ function panelinformation(code, type){
 					else document.getElementById("scenery_free").textContent = markers[0].getAttribute("scenery_free");
 				}
 				else document.getElementById("scenery").textContent = "";*/
-				document.getElementById("description").textContent= markers.getAttribute("description");
+				//document.getElementById("description").textContent= markers.getAttribute("description");
 			//}
 			//document.getElementById('galery').innerHTML = "";
 			$('.placeholder').remove();
@@ -536,7 +533,7 @@ function panelinformation(code, type){
     }); // END READY           
 })(jQuery);*/
 
-/*function createfield(field){
+function createfield(field){
 	//if(document.getElementById(field.id +'_chbx').checked){
 	if(document.getElementById(field).value && !document.getElementById(field + "_label")){//.id
 		var tbSceneryLabel = document.createElement('input');
@@ -549,7 +546,7 @@ function panelinformation(code, type){
 	 	document.getElementById(field +"_box").appendChild(tbSceneryLabel);
 	 	tbSceneryLabel.focus();
 	 	tbSceneryLabel.onblur = function(){
-	 		//if(document.getElementById("scenery_free1") === null || document.getElementById("scenery1")===null){
+	 		if(document.getElementById(field + "_chbs").checked){
 	 		document.getElementById(field + "_label").onblur = null;
 	 		var tbScenery = document.createElement('input');
 	 		tbScenery.name = field + "1"; //.id
@@ -570,14 +567,14 @@ function panelinformation(code, type){
 	 		document.getElementById('scenery_free_box').appendChild(tbSceneryLabel);
 	 		else
 	 		document.getElementById('scenery_box').appendChild(tbSceneryLabel);
-	 		//}
+	 		}
 	 	}
 	} 	
  	/*else
  	{
  		document.getElementById('form').removeChild(document.getElementById(field.id + "_label"))
  	}*/
-//}
+}
 
 /*function load_link(field){
 	document.getElementById(field).href = markers[0].getAttribute(field);
@@ -585,15 +582,15 @@ function panelinformation(code, type){
 	document.getElementById(field).textContent = markers[0].getAttribute(field + "_label");
 	else document.getElementById(field).textContent = markers[0].getAttribute(field);
 }*/
-function load_href(field, array){
+/*function load_href(field, array){
 	document.getElementById(field).href= array[0];
 	document.getElementById(field + "1").href= array[1];
 }
 function load_text(field, array){
 	document.getElementById(field).textContent= array[0];
 	document.getElementById(field + "1").textContent= array[1];
-}
-/*function load_admin(field, array){
+}*/
+function load_admin(field, array){
 	if(document.getElementById(field)===null) create_onefield(field);
 	document.getElementById(field).value= array[0];
 	if(document.getElementById(field + "1")===null) create_onefield(field+'1');
@@ -612,22 +609,4 @@ function create_onefield(field){
 	 	else document.getElementById('scenery_box').appendChild(tbSceneryLabel);
 	 	//document.getElementById('before').insertBefore(tbSceneryLabel, document.getElementById('before_scenery'));
 	 	//document.getElementById('form').insertBefore(document.createElement('br'), document.getElementById('before_' + field));
-}*/
-
-if (Object.defineProperty && Object.getOwnPropertyDescriptor &&
-     Object.getOwnPropertyDescriptor(Element.prototype, "textContent") &&
-    !Object.getOwnPropertyDescriptor(Element.prototype, "textContent").get)
-  (function() {
-    var innerText = Object.getOwnPropertyDescriptor(Element.prototype, "innerText");
-    Object.defineProperty(Element.prototype, "textContent",
-      { // It won't work if you just drop in innerText.get
-        // and innerText.set or the whole descriptor.
-        get : function() {
-          return innerText.get.call(this)
-        },
-        set : function(x) {
-          return innerText.set.call(this, x)
-        }
-      }
-    );
-  })();
+}
