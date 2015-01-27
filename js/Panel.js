@@ -25,137 +25,14 @@
     });
 })(jQuery);*/
 
-/*function reload(){
-	//document.getElementById('galery').innerHTML = "";
-	$('.placeholder').remove();
-	document.getElementById('submit').value = "update";
-	document.getElementById('del').disabled = false;
-	document.getElementById('reset_btn').disabled = true;
-}
-
-function formReset() {
-	var lat = document.getElementById('form').elements.item(2).value;
-	var lng = document.getElementById('form').elements.item(3).value;
-	document.getElementById("form").reset();
-	document.getElementById('form').elements.item(2).value = lat;
-	document.getElementById('form').elements.item(3).value = lng;
-	//var form = document.getElementById('form');
-	   //var values = new Array(form.elements.length);
-	   //values[0] = "";
-	   //values[1] = "";
-	   //for (var i = 2; i < (form.elements.length - 2); i++) values[i] = "";	      
-	   
-	   
-	   //values[9] = form.elements.item(9).value;
-	   //values[10] = form.elements.item(10).value; 
-	   
-	   //for (var i = 0; i < form.elements.length-3; i++) 
-	      /*if(form.elements.item(i).type != 'file') form.elements.item(i).value = values[i];*/
-	   
-	   //document.getElementById("description").textContent= "";
-//}
-
-/*function delete_marker(marker){
-	$.ajax({
-            url: '/aviamap/PHP/delete.php',
-            data: "code=" + marker.get('code'),
-            type: 'POST',
-            dataType: "html",            
-            success: function(data){
-            	alert("marker with code"+ marker.get('code')+ " Deleted!" + data);
-            	marker.setMap(null);
-            	document.getElementById("form").reset();        	
-            } 
-    });
-}*/
-
 function loadDataInfoPanel(marker)
 	{
 		if(document.getElementById("marker_name").value != marker.title ){
-			/*if(admin){
-		 	panelinformation(marker.get('code'), marker.get('type'));
-		 	document.getElementById('city').value = "";
-		 	document.getElementById('city').placeholder = "";
-		 	/*if(document.getElementById('tbCity')!=null)
-		 	document.getElementById('bLogin').parentNode.removeChild(document.getElementById('bLogin'));*/
-			/*document.getElementById("code").value = marker.get('code');
-			document.getElementById("marker_name").value = marker.title;
-			document.getElementById("lat").value = marker.getPosition().lat();
-			document.getElementById("lng").value = marker.getPosition().lng();
-			//document.getElementById('country').value = country;
-			document.getElementById('submit').value = "update";
-			document.getElementById('reset_btn').disabled = true;
-		 	document.getElementById('del').disabled = false;
-		 	document.getElementById('del').onclick = function(){ delete_marker(marker)};
-		 	//addcity();
-		 	//document.getElementById('country').value = country;
-
-			document.getElementById('form').action = '/aviamap/PHP/update.php';
-			document.getElementById('form').onsubmit = function(){
-				alert("marker with id: " + marker.get('code')+ " Updated!");
-           		//marker.setMap(null);
-           		//window.infowindow.setMap(null);
-           		if(document.getElementById('scenery_free').value && !document.getElementById('scenery').value){
-           			marker.setIcon(new google.maps.MarkerImage(customIcons[0].icon,
-            		new google.maps.Size(20, 20),
-            		null,//new google.maps.Point(0, 0),
-            		null,//new google.maps.Point(0, 0),
-            		new google.maps.Size(20, 20)));
-           		}
-           		else if(!document.getElementById('scenery_free').value && document.getElementById('scenery').value){
-           			marker.setIcon(new google.maps.MarkerImage(customIcons[1].icon,
-            		new google.maps.Size(20, 20),
-            		null,//new google.maps.Point(0, 0),
-            		null,//new google.maps.Point(0, 0),
-            		new google.maps.Size(20, 20)));
-           		}
-           		else{
-           			marker.setIcon(new google.maps.MarkerImage(customIcons[2].icon,
-            		new google.maps.Size(20, 20),
-            		null,//new google.maps.Point(0, 0),
-            		null,//new google.maps.Point(0, 0),
-            		new google.maps.Size(20, 20)));
-           		}           		
-           		//marker.setIcon(customIcons[document.getElementById('type').value].icon);
-
-            	/*var content = '<div class="scrollFix"><b>' + document.getElementById("marker_name").value + "</b> <br/>" 
-            	+ document.getElementById("address").value +"</b>, <br/>"
-            	+ document.getElementById("city").value+"</b>, <br/>"+ document.getElementById("country").value
-            	+'</b> <br/><div id="additionally"><span id="additional" onclick="jQuery.Panel(window.this_marker)">Дополнительно</span></div></div>';
-        		window.infowindow.setContent(content);
-        		window.infowindow.open(map, marker);*/
-            	//document.getElementById("files").innerHTML = document.getElementById("files").innerHTML;
-           	//};			
-
-			/*if(marker.get('type') == 0) document.getElementById("type").value="free";
-				else document.getElementById("type").value="nonfree";*/
-
-			
-			//document.getElementById("address").value = marker.get('address');
-			//document.getElementById("country").value = marker.get('country');
-			//document.getElementById("city").value = marker.get('city');
-			 //}
-		//else {
 			document.getElementById('city').textContent = "";
 			panelinformation(marker.get('code'), marker.get('type'));
 			document.getElementById("code").textContent = marker.get('code'); 	
 			document.getElementById("marker_name").textContent=marker.title;
-			//document.getElementById("lng").textContent= marker.getPosition().lng();
-			//document.getElementById("lat").textContent= marker.getPosition().lat();
-			/*if(marker.get('city') != "null"){		 		
-		 		document.getElementById('city').textContent = marker.get('city');
-		 	}
-		 	else{
-		 		document.getElementById('city').textContent = city;		 			 		
-		 	}*/
-		 	//document.getElementById('country').textContent = country;
-			
-			/*if(marker.get('type') == 0) document.getElementById("type").textContent="free";
-				else document.getElementById("type").textContent="nonfree";*/						
-		//}		
-	}
-		/*var city;
-		var conuntry;*/
+	
 		geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       if (results[0]) {
@@ -183,31 +60,6 @@ function loadDataInfoPanel(marker)
                 //city=components[component].long_name;
             }
         }
-        //if(admin && !document.getElementById('city').value.length && !document.getElementById('city').placeholder.length) document.getElementById('city').placeholder ="City is null!";
-        /*if(typeof city === 'undefined'){          
-            
-        }*/
-        /*if(marker.get('city') != "null"){		 		
-		 		document.getElementById('city').value = marker.get('city');
-		 	}
-		 	else{
-		 		document.getElementById('city').value = city;		 			 		
-		 	}*/
-
-          //city = window.this_text;
-        //}
-        //alert(getcity(marker.get('code')));
-
-        /*window.this_marker = marker;
-        //country = results[2].formatted_address;
-        if(marker.get('city')!="null"){
-          infowindow.setContent('<div id="scrollFix"><b>'+marker.title+"</b><br/>"+marker.get('city')+', '+
-        country +'</div><span id="additional" onclick="additional()">Дополнительно</span>');
-        }
-        else{
-          infowindow.setContent('<div id="scrollFix"><b>'+marker.title+"</b><br/>"+window.city_geocode+', '+
-        country +'</div><span id="additional" onclick="additional()">Дополнительно</span>');
-        }*/
       } else {
         infowindow.setContent('<b styles="font-color:black;">No results found</b>');
         infowindow.open(map, marker);
@@ -217,152 +69,19 @@ function loadDataInfoPanel(marker)
       infowindow.open(map, marker); 
     }
   });
+	}
 	//if(admin && document.getElementById('city').value==="") document.getElementById('city').placeholder ="City is null!";
 }
+
 var empty_galery = false;
 //переробити
 function panelinformation(code, type){
-	//var k=0;
-	//var j = 0;
-	/*$.ajax({
-		    type: "GET",  
-		    url: "/aviamap/PHP/panel.php?code=" + code,  
-		    cache: false,
-		    dataType: "xml",
-		    async:true,  
-		    success: function(data){
-		    	var xml = dat.responseXML;
-		    	var xmlDoc=loadXMLDoc(data);
-			    var markers = xmlDoc.documentElement.getElementsByTagName("marker");
-			    arr = markers[1].getAttribute("images").split(',');
-				document.getElementById("description").textContent= markers[1].getAttribute("description");
-				if(admin) document.getElementById("simulator").value= markers[1].getAttribute("simulator");
-				else{ 
-					document.getElementById("scenery").textContent = markers[1].getAttribute("scenery");
-					document.getElementById("simulator").textContent= markers[1].getAttribute("simulator");
-				}
-
-				
-				for(var i=0; i<arr.length; i++){
-					if(arr[i]!=" " && arr[i]!="," && arr[i]!="" && arr[i]!=null){
-					document.getElementById("galery"+i).src = "/aviamap/img/"+ code+ i +"." +arr[i];
-					//k++;
-					}
-				 };
-				 if(k!=0) $('.thumbs img').slice( 0, arr.length).touchTouch();		
-
-					//document.anchors[0].href = "/aviamap/img/10Krovokrat0.png";
-					//document.getElementById("png").firstChild.href= "/aviamap/img/" + marker.get('id') + marker.title + ".png";
-			}
-				
-	});*/
 	
 	downloadUrl("/aviamap/PHP/panel.php?code=" + code + "&type=" + type, function(data) {
 		//var xml = data.responseXML;
 		if (navigator.appName == 'Microsoft Internet Explorer') var markers = data.responseXML.childNodes[1];
         else 
         var markers = data.responseXML.firstChild;
-		 //documentElement.getElementsByTagName("marker")[0];
-			//переробити, враховуючи залежність між type and scenery			
-			/*if(admin){
-				document.getElementById("scenery").onblur = function(){
-					createfield("scenery");
-				};
-				document.getElementById("scenery_free").onblur = function(){
-					createfield("scenery_free");
-				};
-				switch(type){
-					case '0':
-					if(markers.getAttribute("scenery_free").indexOf(';')+1){					
-					load_admin('scenery_free',markers.getAttribute("scenery_free").split(';'));					
-					load_admin('scenery_free_label',markers.getAttribute("scenery_free_label").split(';'));
-					}
-					else{
-						document.getElementById("scenery_free").value= markers.getAttribute("scenery_free");
-						if(document.getElementById('scenery_free_label')===null) create_onefield('scenery_free_label');
-						document.getElementById('scenery_free_label').value = markers.getAttribute("scenery_free_label");
-						if(document.getElementById("scenery_free1")!==null){document.getElementById('scenery_free1').parentNode.removeChild(document.getElementById('scenery_free1'));
-						document.getElementById('scenery_free_label1').parentNode.removeChild(document.getElementById('scenery_free_label1'));}
-					}
-					if(document.getElementById('scenery1')!==null && document.getElementById('scenery_label1')!==null){
-						document.getElementById('scenery1').parentNode.removeChild(document.getElementById('scenery1'));
-						document.getElementById('scenery_label1').parentNode.removeChild(document.getElementById('scenery_label1'));
-					}
-					document.getElementById("scenery").value= "";
-					if(document.getElementById("scenery_label")!==null)document.getElementById('scenery_label').parentNode.removeChild(document.getElementById('scenery_label'));
-					break;
-					case '1':
-					if(markers.getAttribute("scenery").indexOf(';')+1){
-					/*var arr_scenery = markers.getAttribute("scenery_free").split(';');
-					document.getElementById("scenery_free").value= arr_scenery[0];
-					document.getElementById("scenery_free1").value= arr_scenery[1];*/
-					//load_admin('scenery',markers.getAttribute("scenery").split(';'));
-					/*arr_scenery = markers.getAttribute("scenery_free_label").split(';');
-					document.getElementById("scenery_free_label").value= arr_scenery[0];
-					document.getElementById("scenery_free_label1").value= arr_scenery[1];*/
-					/*load_admin('scenery_label',markers.getAttribute("scenery_label").split(';'));
-					}
-					else{
-						document.getElementById("scenery").value= markers.getAttribute("scenery");
-						if(document.getElementById('scenery_label')===null) create_onefield('scenery_label');
-						document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
-						if(document.getElementById("scenery1")!==null){document.getElementById('scenery1').parentNode.removeChild(document.getElementById('scenery1'));
-						document.getElementById('scenery_label1').parentNode.removeChild(document.getElementById('scenery_label1'));}
-					}
-					if(document.getElementById('scenery_free1')!==null && document.getElementById('scenery_free_label1')!==null){
-						document.getElementById('scenery_free1').parentNode.removeChild(document.getElementById('scenery_free1'));
-						document.getElementById('scenery_free_label1').parentNode.removeChild(document.getElementById('scenery_free_label1'));
-					}
-					document.getElementById("scenery_free").value= "";
-					if(document.getElementById("scenery_free_label")!==null)document.getElementById('scenery_free_label').parentNode.removeChild(document.getElementById('scenery_free_label'));
-					break;
-					case '2':
-					if(markers.getAttribute("scenery_free").indexOf(';')+1){					
-					load_admin('scenery_free',markers.getAttribute("scenery_free").split(';'));					
-					load_admin('scenery_free_label',markers.getAttribute("scenery_free_label").split(';'));
-					}
-					else{
-						document.getElementById("scenery_free").value= markers.getAttribute("scenery_free");
-						if(document.getElementById('scenery_free_label')===null) create_onefield('scenery_free_label');
-						document.getElementById('scenery_free_label').value = markers.getAttribute("scenery_free_label");
-						if(document.getElementById("scenery_free1")!==null){document.getElementById('scenery_free1').parentNode.removeChild(document.getElementById('scenery_free1'));
-						document.getElementById('scenery_free_label1').parentNode.removeChild(document.getElementById('scenery_free_label1'));}
-					}
-					/*if(document.getElementById('scenery1')!==null && document.getElementById('scenery_label1')!==null){
-						document.getElementById('scenery1').parentNode.removeChild(document.getElementById('scenery1'));
-						document.getElementById('scenery_label1').parentNode.removeChild(document.getElementById('scenery_label1'));
-					}*/					
-					/*if(markers.getAttribute("scenery").indexOf(';')+1){					
-					load_admin('scenery',markers.getAttribute("scenery").split(';'));					
-					load_admin('scenery_label',markers.getAttribute("scenery_label").split(';'));
-					}
-					else{
-						document.getElementById("scenery").value= markers.getAttribute("scenery");
-						if(document.getElementById('scenery_label')===null) create_onefield('scenery_label');
-						document.getElementById('scenery_label').value = markers.getAttribute("scenery_label");
-						if(document.getElementById("scenery1")!==null){document.getElementById('form').removeChild(document.getElementById('scenery1'));
-						document.getElementById('scenery_label1').removeChild(document.getElementById('scenery_label1'));}
-					}
-					/*if(document.getElementById('scenery_free1')!==null && document.getElementById('scenery_free_label1')!==null){
-						document.getElementById('scenery_free1').parentNode.removeChild(document.getElementById('scenery_free1'));
-						document.getElementById('scenery_free_label1').parentNode.removeChild(document.getElementById('scenery_free_label1'));
-					}*/
-					//break;
-				//}
-				/*if(markers[0].getAttribute("scenery")!=null && markers[0].getAttribute("scenery")!="")
-					document.getElementById("scenery").value= markers[0].getAttribute("scenery");
-					//createfield('scenery');
-				if(markers[0].getAttribute("scenery_label")!=null && markers[0].getAttribute("scenery_label")!=""){
-					document.getElementById('scenery_label').value = markers[0].getAttribute("scenery_label");
-				
-			 	if(markers[0].getAttribute("scenery_free")!=null && markers[0].getAttribute("scenery_free")!=""){
-			 	document.getElementById("scenery_free").value= markers[0].getAttribute("scenery_free");
-			 	//createfield('scenery_free');
-				document.getElementById('scenery_free_label').value = markers[0].getAttribute("scenery_free_label");
-				}*/
-			 	//document.getElementById("description").value= markers.getAttribute("description");
-			//}
-			//else{
 				switch(type){
 					case '0':					
 					if(markers.getAttribute("scenery_free").indexOf(';')+1){
@@ -443,23 +162,6 @@ function panelinformation(code, type){
 					}
 					break;
 				}
-				/*if(markers[0].getAttribute("scenery")!="" && markers[0].getAttribute("scenery")!= null){ 
-					document.getElementById("scenery").href = markers[0].getAttribute("scenery");
-					if(markers[0].getAttribute("scenery_label")!="" && markers[0].getAttribute("scenery_label")!= null)
-					document.getElementById("scenery").textContent = markers[0].getAttribute("scenery_free_label");
-					else document.getElementById("scenery_free").textContent = markers[0].getAttribute("scenery");
-				}
-				else{
-					//document.getElementById("scenery").href = null;
-					document.getElementById("scenery").textContent = "";
-				}
-				if(markers[0].getAttribute("scenery_free")!="" && markers[0].getAttribute("scenery_free")!= null){				
-				document.getElementById("scenery_free").href= markers[0].getAttribute("scenery_free");
-					if(markers[0].getAttribute("scenery_free_label")!="" && markers[0].getAttribute("scenery_free_label")!= null)
-					document.getElementById("scenery_free").textContent = markers[0].getAttribute("scenery_free_label");
-					else document.getElementById("scenery_free").textContent = markers[0].getAttribute("scenery_free");
-				}
-				else document.getElementById("scenery").textContent = "";*/
 				document.getElementById("description").textContent= markers.getAttribute("description");
 			//}
 			//document.getElementById('galery').innerHTML = "";
