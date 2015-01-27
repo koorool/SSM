@@ -1,4 +1,14 @@
 //Initialise function, on load
+//Global Variables
+var map;
+var customIcons = {
+      0: {icon: './images/freeware.png'},
+      1: {icon: './images/payware.png'},
+      2: {icon: './images/free-pay.png'}
+    },
+markers_arr = [], source = [],
+infowindow = new google.maps.InfoWindow();
+//Global Variables//
 function initialize() { 
 var styles = [
     {
@@ -38,16 +48,6 @@ var styles = [
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
-//Global Variables
-var customIcons = {
-      0: {icon: './images/freeware.png'},
-      1: {icon: './images/payware.png'},
-      2: {icon: './images/free-pay.png'}
-    },
-markers_arr = [], source = [],
-infowindow = new google.maps.InfoWindow();
-//Global Variables//
 
 // Load markers from DataBase
 function markers_load(type, code){
@@ -93,53 +93,8 @@ function markers_load(type, code){
           /*if(jQuery.infopanel.hasClass('visible'))  
               ;*/
       	});
-
-        google.maps.event.addListener(marker, 'dragend', function() {
-            //if(admin && jQuery.infopanel.hasClass('visible')){
-              document.getElementById('lat').value = this.getPosition().lat();
-              document.getElementById('lng').value = this.getPosition().lng();
-            //}
-            //infowindow.close();
-            //loaddata(this);
-        });
-
       }
 });
-
-     //add markers on the map   
-  google.maps.event.addListener(map, "click", function(event) {          
-      if (admin &&event.latLng) { // && document.getElementById('new_marker').checked
-
-        var marker = new google.maps.Marker({
-            map: map,
-            position: event.latLng, 
-            draggable:true
-            });
-        mew_marker_clicked(marker); 
-
-            //google.maps.event.addListener(marker, "click", function() {
-               
-              
-              //if(!jQuery.infopanel.hasClass('visible'))
-              //jQuery.Panel();
-            //});
-          
-             google.maps.event.addListener(marker, 'dragend', function() {
-              //if(jQuery.infopanel.hasClass('visible')){
-               document.getElementById('lat').value = this.getPosition().lat();
-               document.getElementById('lng').value = this.getPosition().lng();
-               //formReset();
-               //infowindow.close();
-              //}
-             });
-
-             google.maps.event.addListener(marker, 'click', function ()
-              {
-                //markers_arr.push(marker);
-              mew_marker_clicked(this); 
-              });
-      }
-    });
 
 google.maps.event.addListener(map, 'zoom_changed', function() {
 
@@ -213,65 +168,4 @@ function search(){
 function marker_animate(marker){
   marker.setAnimation(google.maps.Animation.BOUNCE);
   setTimeout(function(){marker.setAnimation(null)}, 2000);
-}
-
-function mew_marker_clicked(marker) {             
-    var city, country;
-    document.getElementById('city').placeholder = "";      
-    document.getElementById('form').reset();              
-    document.getElementById("lat").value = marker.getPosition().lat();
-    document.getElementById("lng").value = marker.getPosition().lng();              
-             
-    geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        if (results[0]) {
-          var components=results[0].address_components;
-          for (var component=0;component<(components.length);component++){
-
-            if(results[0].address_components[component].types[0]=="country")
-              country=results[0].address_components[component].long_name; 
-
-            if(components[component].types[0]=="locality")
-              city = results[0].address_components[component].long_name;                     
-          }
-          infowindow.setContent("<b>"+city+', '+ country+'</b>');
-          infowindow.open(map, marker);
-        } else {
-            infowindow.setContent('No results found');
-            infowindow.open(map, marker);
-          }
-      } else {
-        infowindow.setContent('Geocoder failed due to: ' + status);
-        infowindow.open(map, marker);
-        }
-    });      
-      
-    document.getElementById('submit').value = "save";
-    document.getElementById('del').disabled = true;
-    document.getElementById('form').action ="/aviamap/PHP/insert.php";
-    document.getElementById('form').onsubmit = function(){reload()};
-    document.getElementById('reset_btn').disabled = false;
-    document.getElementById('galery0').src = './images/2.png';
-    $('.placeholder').remove();
-    if(document.getElementById('scenery_free_label')!==null){
-      document.getElementById('scenery_free_label').parentNode.removeChild(document.getElementById('scenery_free_label'));
-      if(document.getElementById('scenery_free_label1')){
-        document.getElementById('scenery_free_label1').parentNode.removeChild(document.getElementById('scenery_free_label1'));
-        document.getElementById('scenery_free1').parentNode.removeChild(document.getElementById('scenery_free1'));
-      }
-    }
-    if(document.getElementById('scenery_label')!==null){
-      document.getElementById('scenery_label').parentNode.removeChild(document.getElementById('scenery_label'));
-      if(document.getElementById('scenery_label1')){
-        document.getElementById('scenery_label1').parentNode.removeChild(document.getElementById('scenery_label1'));
-        document.getElementById('scenery1').parentNode.removeChild(document.getElementById('scenery1'));
-      }
-    }
-    document.getElementById("scenery").onblur = function(){
-                    createfield("scenery");
-                };
-                document.getElementById("scenery_free").onblur = function(){
-                    createfield("scenery_free");
-                };
-    markers_arr.push(marker);
 }

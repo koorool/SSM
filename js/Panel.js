@@ -209,11 +209,11 @@ function loadDataInfoPanel(marker)
         country +'</div><span id="additional" onclick="additional()">Дополнительно</span>');
         }*/
       } else {
-        infowindow.setContent('No results found');
+        infowindow.setContent('<b styles="font-color:black;">No results found</b>');
         infowindow.open(map, marker);
       }
     } else {
-      infowindow.setContent('Geocoder failed due to: ' + status);
+      infowindow.setContent('<b styles="font-color:black;"> Geocoder failed due to: ' + status + '</b>');
       infowindow.open(map, marker); 
     }
   });
