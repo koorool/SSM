@@ -113,6 +113,7 @@ td{
   height: 185px;
   overflow: hidden;
   position: absolute;
+  margin-left: -15px;
   top: 75%;
   width: 100%;
 }
