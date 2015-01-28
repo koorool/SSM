@@ -4,9 +4,6 @@
 			case -1:
 			markers_load(-1);
 			document.getElementById('refresh').innerHTML = "Refresh";
-			document.getElementById("free").checked = false;
-			document.getElementById("pay-free").checked = false;
-			document.getElementById("non-free").checked = false;		
 			break;
 			case 0:
 			markers_load(0);
@@ -35,6 +32,18 @@
 $(document).ready(function(){
     $("#search").autocomplete({ source: source });
 
+    $("#CheckAll").click(function(){
+    	check(-1);
+    });
+    $("#CheckFree").click(function(){
+    	check(0);
+    });
+    $("#CheckPaid").click(function(){
+    	check(1);
+    });
+    $("#CheckPaidAndFree").click(function(){
+    	check(2);
+    });
     /*$("#ShowLogin").click(function(){
         $("#LoginForm").toggle();
     });
