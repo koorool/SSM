@@ -129,15 +129,14 @@ td{
   height:180px;
   position:absolute;
   display:inline-block;
-  border:3px solid #303030;
-  margin: 2px;
+  border:2px solid #303030;
+  margin: 0px;
   box-shadow:0 1px 3px rgba(0,0,0,0.5);
   border-radius:4px;
   /*margin: 6px 6px 40px;*/
-  position:absolute;
   top:45%;
   /*text-decoration:none;*/
-  
+  margin-left: -15px;
   background-position:center center;
   background-repeat: no-repeat;
   
@@ -170,7 +169,7 @@ td{
     top: 100%;
     width: 100%;
     padding: 0px;
-    margin: 0px;
+    margin-left: -15px;
     transition: all 0.6s ease 0s;
     text-align: center;
     background: none repeat scroll 0% 0% #2D3E63;
