@@ -69,6 +69,9 @@
 		  border-left:0px;
 		  border-right:0px;
 		}
+		#tmp{
+			padding: 6px 6px;
+		}
 		#Menu {
 		/*padding:0px;*/
 		width: 100%; 
@@ -80,12 +83,8 @@
 			height:60px; 
 			width:288.9px;
 			float: left;	
-		}
-		.radio{
-		  color:orange;
-		  /*font-size: 16px;*/
-		}
-		#input-group{
+		}		
+		#SearchBlock{
 		  /*display: table;*/
 		  border-collapse: separate;
 		  box-sizing: border-box;
@@ -93,6 +92,7 @@
 		  right: 58%;
 		  top: 60px;
 		  z-index: 2;
+		  width:200px;
 		}
    		#map{
 		width: 76.5%;
@@ -205,9 +205,11 @@
 				</form-->
 			</div> <!-- Menu -->
 
-			<div id="input-group" class="form-inline">
-				<input type="search" id="search" placeholder="Search" class="form-control"/> 
-				<button class="form-control btn btn-default" onclick="search_func(document.getElementById('search').value.split(','))">Go</button>
+			<div class = "input-group" id="SearchBlock">
+				<input type="search" id="search" placeholder="Search for..." class="form-control"/> 
+				<span class = "input-group-btn">
+					<button class="btn btn-default" onclick="search()" type="button">Go!</button>
+				</span>
 			</div>
 			<noscript>Turn on JavaScripts to load the map</noscript>
 			<div id="map"></div>
