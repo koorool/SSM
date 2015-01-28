@@ -35,6 +35,14 @@
 $(document).ready(function(){
     $("#search").autocomplete({ source: source });
 
+    $(document).on('click', ".ui-menu-item" ,  function(){    	
+    
+    //function search(){
+	  	//var arr_split;
+	  	search_func($(this).text().split(','));
+	//}
+	})
+
     /*$("#ShowLogin").click(function(){
         $("#LoginForm").toggle();
     });
@@ -51,3 +59,18 @@ $(document).ready(function(){
     });
 });
 
+function marker_animate(marker){
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+  setTimeout(function(){marker.setAnimation(null)}, 2000);
+}
+function search_func(text){
+      //var arr_split;
+      for (var i = 0; i < markers_arr.length; i++) {
+        var arr_split = text;
+        if(arr_split[0] == markers_arr[i].get('code')){
+          map.setCenter(markers_arr[i].getPosition()); 
+          loadDataInfoPanel(markers_arr[i]);
+          marker_animate(markers_arr[i]);
+        } 
+      }
+ }

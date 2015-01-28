@@ -207,7 +207,7 @@
 
 			<div id="input-group" class="form-inline">
 				<input type="search" id="search" placeholder="Search" class="form-control"/> 
-				<button class="form-control btn btn-default" onclick="search()">Go</button>
+				<button class="form-control btn btn-default" onclick="search_func(document.getElementById('search').value.split(','))">Go</button>
 			</div>
 			<noscript>Turn on JavaScripts to load the map</noscript>
 			<div id="map"></div>

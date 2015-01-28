@@ -27,10 +27,11 @@
 
 function loadDataInfoPanel(marker)
 	{
-		if(document.getElementById("marker_name").value != marker.title ){
+		if(document.getElementById("marker_name").textContent != marker.title ){
 			document.getElementById('city').textContent = "";
 			panelinformation(marker.get('code'), marker.get('type'));
 			document.getElementById("code").textContent = marker.get('code'); 	
+			//document.getElementById("code").innerText = marker.get('code');
 			document.getElementById("marker_name").textContent=marker.title;
 	
 		geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
@@ -315,21 +316,3 @@ function create_onefield(field){
 	 	//document.getElementById('before').insertBefore(tbSceneryLabel, document.getElementById('before_scenery'));
 	 	//document.getElementById('form').insertBefore(document.createElement('br'), document.getElementById('before_' + field));
 }*/
-
-if (Object.defineProperty && Object.getOwnPropertyDescriptor &&
-     Object.getOwnPropertyDescriptor(Element.prototype, "textContent") &&
-    !Object.getOwnPropertyDescriptor(Element.prototype, "textContent").get)
-  (function() {
-    var innerText = Object.getOwnPropertyDescriptor(Element.prototype, "innerText");
-    Object.defineProperty(Element.prototype, "textContent",
-      { // It won't work if you just drop in innerText.get
-        // and innerText.set or the whole descriptor.
-        get : function() {
-          return innerText.get.call(this)
-        },
-        set : function(x) {
-          return innerText.set.call(this, x)
-        }
-      }
-    );
-  })();

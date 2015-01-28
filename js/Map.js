@@ -156,17 +156,16 @@ function downloadUrl(url, callback) {
 }
 
 function search(){
-  var arr_split;
-  for (var i = 0; i < markers_arr.length; i++) {
-    arr_split = document.getElementById('search').value.split(',');
-      if(arr_split[0] == markers_arr[i].get('code')){
-        map.setCenter(markers_arr[i].getPosition()); 
-      loadDataInfoPanel(markers_arr[i]);
-      marker_animate(markers_arr[i]);
-      } 
-    }
-}
-
+      //var arr_split;
+      for (var i = 0; i < markers_arr.length; i++) {
+        var arr_split = document.getElementById('search').value.split(',');
+        if(arr_split[0] == markers_arr[i].get('code')){
+          map.setCenter(markers_arr[i].getPosition()); 
+          loadDataInfoPanel(markers_arr[i]);
+          marker_animate(markers_arr[i]);
+        } 
+      }
+  }
 function marker_animate(marker){
   marker.setAnimation(google.maps.Animation.BOUNCE);
   setTimeout(function(){marker.setAnimation(null)}, 2000);

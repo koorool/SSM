@@ -2,9 +2,9 @@
 <!--[if IE 7]><html class="ie7 oldie" lang="en"><![endif]-->
 <!--[if IE 8]><html class="ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]> <html lang="en"> <![endif]-->
-<!--[if IE] 9><html lang="en" class="ie"><![endif]-->
+<!--[if IE 9]><html lang="en" class="ie"><![endif]-->
 <!--[if IEMobile 7 ]> <html class="iem7" lang="en"> <![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> 
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!-->
 <html lang="en"> 
 <!--<![endif]-->
 <!--lang="ru" manifest="default.appcache"-->
@@ -40,9 +40,6 @@
 		<link rel="stylesheet" href="./css/bootstrap.min.css">
 		<!--Javascript-->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <!--[if lt IE 9]>
-    	<script src="https://developers.google.com/_static/aa7baca2b4/js/html5shim/html5.js"></script>
-    	<![endif]-->
 
 		<!--client=AIzaSyB-NQCXIIa9EzYTUm3Tv4fECpJPn5-a6ko&-->
         <script src="http://maps.google.com/maps/api/js?v=3.18&amp;language=en"></script>
@@ -56,7 +53,12 @@
 <script src="./js/jquery-ui.min.js"></script>
 <link type="text/css" rel="stylesheet" href="./css/jquery-ui.css">
 <script defer src="./js/index.js"></script>
-
+<!--[if lt IE 9]>
+   	<script src="https://developers.google.com/_static/aa7baca2b4/js/html5shim/html5.js"></script>
+<![endif]-->
+<!--[if lte IE 8]>
+   	<script src="./js/ie_8.js"></script>
+<![endif]-->
 </Head>	
 	
 <body>
@@ -65,17 +67,17 @@
 				<img src="./images/2.png" id = "Logo" alt="simscenerymap">
 				<iframe class="hidden" name="frame" id="frame" srcdoc=""  width="120" height="40"></iframe>
 			<!--img src="./advertisment.jpg" class="Logo"-->
-				<form id="LoginForm" class="form-inline pull-right" onsubmit="return false"><!--style="display: none"  action="JavaScript: return false"-->
-  					<div class="form-group">
+				<!--form id="LoginForm" class="form-inline pull-right" onsubmit="return false"--><!--style="display: none"  action="JavaScript: return false"-->
+  					<!--div class="form-group">
     					<label class="sr-only" for="InputLogin">Login</label>
-    					<input name="user" class="form-control" id="InputLogin" placeholder="E-mail" required><!--type="email"-->
-  					</div>
+    					<input name="user" class="form-control" id="InputLogin" placeholder="E-mail" required--><!--type="email"-->
+  					<!--/div>
   					<div class="form-group">
     					<label class="sr-only" for="InputPassword">Password</label>
     					<input type="password" name ="pass" class="form-control" id="InputPassword" placeholder="Password" required>
   					</div>
-  					<button id = "SignIn" type="submit" class="btn btn-default">Sign in</button> <!--name ="pass"-->
-				</form>
+  					<button id = "SignIn" type="submit" class="btn btn-default">Sign in</button--> <!--name ="pass"-->
+				<!--/form-->
 			</div> <!-- Menu -->
 
 			<div id="input-group" class="form-inline">
@@ -87,9 +89,9 @@
 
 			<div id="panel" class="container-flow">
 				<div id="navigate" class = "form-inline">
-					<label class="radio"><input id ="pay-free" onclick="check(2)" type="radio" name="filter"/>pay&amp;free</label>
-					<label class="radio"><input id ="free" type="radio" onclick="check(0)" name="filter"/>free</label>
-					<label class="radio"><input id ="non-free" type="radio" onclick="check(1)" name="filter"/>pay</label>
+					<label for="pay-free" class="radio"><input id ="pay-free" onclick="check(2)" type="radio" name="filter"/>pay&amp;free</label>
+					<label for="free" class="radio"><input id ="free" type="radio" onclick="check(0)" name="filter"/>free</label>
+					<label for="non-free" class="radio"><input id ="non-free" type="radio" onclick="check(1)" name="filter"/>pay</label>
 					<button id="refresh" onclick="check(-1)" class="btn btn-default btn-xs">Refresh</button>
 				</div>
 				<!--div id="checkbox"></div-->
@@ -151,9 +153,9 @@
           			<div class="col-xs-4">
 		          		<a id = "ShowAbout" href="about.html">About</a>
 		        	</div>
-		        	<div class="col-xs-4">
+		        	<!--div class="col-xs-4">
 		          		<a id = "ShowLogin">Login</a>
-		        	</div>
+		        	</div-->
 		      	</div> <!--sidebar-footer-->
 			</div> <!--panel-->
 		<!--/div--> <!--wrap-->

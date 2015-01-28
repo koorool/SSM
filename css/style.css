@@ -3,8 +3,8 @@
   padding:0;
 }*/
 html { 
-/*font-size: 100%; 
-overflow: hidden;*/
+/*font-size: 100%;*/ 
+overflow: hidden;
 height: 100% ; 
 /*position: fixed;*/
 width: 100%;
@@ -58,6 +58,7 @@ body{
 }
 .radio{
   color:orange;
+  display: block;
   /*font-size: 16px;*/
 }
 
@@ -76,6 +77,7 @@ body{
   right: 58%;
   top: 60px;
   z-index: 2;
+  /*width:200px;*/
 }
 /*#search{
   position: absolute;
@@ -167,9 +169,9 @@ body{
 td{
    vertical-align:top;
 }
-#LoginForm{
+/*#LoginForm{
   display: none
-}
+}*/
 /*.paneltext{
   font-size:16px;
   margin-left: 5px;

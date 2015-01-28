@@ -200,7 +200,7 @@ function downloadUrl(url, callback) {
       request.send(null);
 }
 
-function search(){
+/*function search(){
   var arr_split;
   for (var i = 0; i < markers_arr.length; i++) {
     arr_split = document.getElementById('search').value.split(',');
@@ -215,7 +215,7 @@ function search(){
 function marker_animate(marker){
   marker.setAnimation(google.maps.Animation.BOUNCE);
   setTimeout(function(){marker.setAnimation(null)}, 2000);
-}
+}*/
 
 function mew_marker_clicked(marker) {             
     var city, country;

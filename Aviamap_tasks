@@ -50,11 +50,18 @@ till Monday 2.02
 3) переписати на jQuery
 4) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
 	a) echo ("file doesn't load") до користувача
+	б) повторюваний code
 5) IE 7,8 support
-	a) gallery won't work in ie7
+	a) gallery will never work in ie7!
 	b) load text to the boxes ie7
 	c) styles ie7-8
 	d) twitter ie7-8
 6) chrome - infowindow scroll
+7) if marker code changed images lost
+8) android
+	а) кнопка пошуку сповзає на 2 лінію, неможливо перейти на маркер
+	б) не переносить слова на наступну строку - панель
+	с)
+9) зміна code, зі зміною назв файлу
 
 1) 2 маркери можуть бути в 1 місці, повідомляти про це адміна
