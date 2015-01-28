@@ -41,9 +41,9 @@ var styles = [
      });
      markers_load("-1");
      geocoder = new google.maps.Geocoder();
-     document.getElementById("free").checked = false;
+     /*document.getElementById("free").checked = false;
      document.getElementById("pay-free").checked = false;
-     document.getElementById("non-free").checked = false;
+     document.getElementById("non-free").checked = false;*/
      document.getElementById('search').value = "";
 }
 
@@ -153,20 +153,4 @@ function downloadUrl(url, callback) {
 
       request.open('GET', url, true);
       request.send(null);
-}
-
-function search(){
-      //var arr_split;
-      for (var i = 0; i < markers_arr.length; i++) {
-        var arr_split = document.getElementById('search').value.split(',');
-        if(arr_split[0] == markers_arr[i].get('code')){
-          map.setCenter(markers_arr[i].getPosition()); 
-          loadDataInfoPanel(markers_arr[i]);
-          marker_animate(markers_arr[i]);
-        } 
-      }
-  }
-function marker_animate(marker){
-  marker.setAnimation(google.maps.Animation.BOUNCE);
-  setTimeout(function(){marker.setAnimation(null)}, 2000);
 }

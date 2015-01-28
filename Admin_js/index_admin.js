@@ -1,5 +1,5 @@
 //filter free/non-free/all markers//
-	function check(type){
+	/*function check(type){
 		switch (type){
 			case -1:
 			markers_load(-1);
@@ -21,7 +21,7 @@
 			document.getElementById('refresh').innerHTML = "Reset";
 			break;
 		}
-	}
+	}*/
 	setTimeout(function() {
 	document.getElementById('frame').onload = function(){
 		if(document.getElementById('frame').contentWindow.document.body.innerHTML!=""){
@@ -34,6 +34,26 @@
 	
 $(document).ready(function(){
     $("#search").autocomplete({ source: source });
+
+    $("#search").autocomplete({ source: source });
+
+	$('#tmp').click(function(){
+		hide_markers(3);
+	})
+
+    $("#CheckAll").click(function(){
+    	hide_markers(-1);//markers_load(-1);
+    });
+
+    $("#CheckFree").click(function(){
+    	hide_markers(0);//markers_load(0);
+    });
+    $("#CheckPaid").click(function(){
+    	hide_markers(1);//markers_load(1);
+    });
+    $("#CheckPaidAndFree").click(function(){
+    	hide_markers(2);//markers_load(2);
+    });
     
 /*$(document).on('load', "#deleteArrow" ,  function(){
     $(this).toggle();
@@ -91,4 +111,26 @@ function search_func(text){
           marker_animate(markers_arr[i]);
         } 
       }
+}
+
+function hide_markers(type){
+	if(type === -1){
+		for (var i = 0; i < markers_arr.length; i++)
+        markers_arr[i].setVisible(true);      
+	}
+	else if(type === 3){
+		for (var i = 0; i < markers_arr.length; i++) {
+        if(markers_arr[i].get('type')==3){
+          markers_arr[i].setMap(null);
+      }
+    }
+	}
+	else{
+	for (var i = 0; i < markers_arr.length; i++) {
+        if(type == markers_arr[i].get('type') || markers_arr[i].get('type')==3){
+          markers_arr[i].setVisible(true);
+        }
+        else markers_arr[i].setVisible(false);
+      }
+    }
 }

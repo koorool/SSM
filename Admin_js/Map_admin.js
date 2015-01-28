@@ -217,12 +217,13 @@ function marker_animate(marker){
   setTimeout(function(){marker.setAnimation(null)}, 2000);
 }*/
 
-function mew_marker_clicked(marker) {             
+function mew_marker_clicked(marker) {
+    marker.set('type', 3);         
     var city, country;
     document.getElementById('city').placeholder = "";      
     document.getElementById('form').reset();              
     document.getElementById("lat").value = marker.getPosition().lat();
-    document.getElementById("lng").value = marker.getPosition().lng();              
+    document.getElementById("lng").value = marker.getPosition().lng();
              
     geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {

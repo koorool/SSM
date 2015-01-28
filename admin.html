@@ -213,11 +213,28 @@
 			<div id="map"></div>
 
 			<div id="panel" class="container-flow">
-				<div id="navigate" class = "form-inline">
+				<!--div id="navigate" class = "form-inline">
 					<label class="radio"><input id ="pay-free" onclick="check(2)" type="radio" name="filter"/>pay&amp;free</label>
 					<label class="radio"><input id ="free" type="radio" onclick="check(0)" name="filter"/>free</label>
 					<label class="radio"><input id ="non-free" type="radio" onclick="check(1)" name="filter"/>pay</label>
 					<button id="refresh" onclick="check(-1)" class="btn btn-default btn-xs">Refresh</button>
+				</div-->
+				<div class="btn-group" data-toggle="buttons">
+				  <label class="btn btn-primary active" id="CheckAll">
+				    <input type="radio" name="options" autocomplete="off"> All
+				  </label>
+				  <label class="btn btn-primary" id="CheckFree">
+				    <input type="radio" name="options" autocomplete="off"> Free
+				  </label>
+				  <label class="btn btn-primary" id="CheckPaid">
+				    <input type="radio" name="options" autocomplete="off"> Paid
+				  </label>
+				  <label class="btn btn-primary" id="CheckPaidAndFree">
+				  	<input type="radio" name="options" autocomplete="off"> Free&amp;Paid
+				  </label>
+				  <label class="btn btn-primary" id="tmp">
+				  	<input type="radio" name="options" autocomplete="off"> Tmp
+				  </label>
 				</div>
 				<!--div id="checkbox"></div-->
 				<div id="panel_content">
