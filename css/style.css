@@ -9,26 +9,6 @@ height: 100% ;
 /*position: fixed;*/
 width: 100%;
 }
-/*body {
-margin: 0;
-padding:0; 
-/*font-size: 16px; 
-line-height: 16px; 
-font-family: "fMerriweather Light" ,Helvetica,Arial,sans-serif;*/
-/*color: #58595B;*/
-/*background: #5f6260;*/
-/*height: 100%
-}*/
-/*.LoginBox{
-  background-color: white;
-  position: absolute;
-  z-index: 2
-}*/
-/*.plaintext b{
-  font-family: "Montserrat-Bold";
-  font-size: 1.05em;
-  color:#f2ffff;
-}*/
 body{
 /*центрируем*/
   position:relative;
@@ -62,14 +42,7 @@ body{
   /*font-size: 16px;*/
 }
 
-/*#Login {
-	/*margin-right: 10px; 
-	position: absolute;
-	right: 10px;
-	top: 10px;
-  cursor:pointer
-}*/
-#input-group{
+#SearchBlock{
   /*display: table;*/
   border-collapse: separate;
   box-sizing: border-box;
@@ -77,23 +50,8 @@ body{
   right: 58%;
   top: 60px;
   z-index: 2;
-  /*width:200px;*/
+  width:200px;
 }
-/*#search{
-  position: absolute;
-  right: 62%;
-  top: 60px;
-  margin-right: 10px;
-  z-index: 2;
-}
-.search{
-  position: absolute;
-  right: 60%;
-  top: 60px;
-  margin-right: 10px;
-  z-index: 2
-}*/
-
 #map{
 	width: 76.5%;
 	position: absolute;
@@ -134,14 +92,6 @@ body{
   text-align: center
 }
 
-/*#panel-content {
-    background: #EEE;
-    width: 300px;
-    max-width: 300px;
-    height: 100%;
-    float: right;
-    padding: 10px 5px;
-}*/
 #description{
  /*resize: none;*/
  max-width: 300px;
@@ -160,75 +110,9 @@ body{
 #navigate{
   background: #394e7e;
 }
-/*#lat,#lng { 
-  -moz-appearance: textfield;
-}
-#lat,#lng::-webkit-inner-spin-button { 
-  display: none;
-}*/
 td{
    vertical-align:top;
 }
-/*#LoginForm{
-  display: none
-}*/
-/*.paneltext{
-  font-size:16px;
-  margin-left: 5px;
-  font-family:'Merriweather Light';
-  color:#f2ffff;
-}*/
-/*----------------------------
-        Panel
-----------------------------*/
-
-/*----------------------------
-  Thumbnails
------------------------------*/
-
-/*.thumbs{
-  width:0px;
-  height: 0px;
-  /*margin:20px auto 20px;
-  text-align:center;
-  /*visibility: hidden
-}*/
-
-/*.thumbs a{
-  width:120px;
-  height:120px;
-  display:inline-block;
-  border:7px solid #303030;
-  box-shadow:0 1px 3px rgba(0,0,0,0.5);
-  border-radius:4px;
-  /*margin: 6px 6px 40px;
-  position:relative;
-  text-decoration:none;
-  
-  background-position:center center;
-  background-repeat: no-repeat;
-  
-  background-size:cover;
-  -moz-background-size:cover;
-  -webkit-background-size:cover;
-}
-
-.thumbs a:after{
-  background-color: #303030;
-    border-radius: 7px;
-    bottom: -136px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    color: #FFFFFF;
-    content: attr(title);
-    display: inline-block;
-    font-size: 10px;
-    max-width: 90px;
-    overflow: hidden;
-    padding: 2px 10px;
-    position: relative;
-    text-align: center;
-    white-space: nowrap;
-}*/
 #twitt_line{
   /*float: bottom;*/
   height: 185px;
@@ -279,108 +163,6 @@ td{
     /*text-align: center;*/
     white-space: nowrap;
 }
-/*.hidden {
-  visibility: hidden;
-  height: 1px;
-  width: 1px;
-}*/
-
-/*#searchBox {
-    margin: 0em 0em 0em 0.2em;
-    color: #111;
-    width: 10em;
-    border: 0px none;
-    height: 1.5em;
-    padding: 0.2em 0px 0.1em 1.9em;
-    border-radius: 1.5em 0px 0px 1.5em;
-    background-color: #EEE;
-    font-size: 0.9em;
-}*/
-
-/*.smooth-tab.attach-top .tab-sweep.toleft {
-    left: -0.9em;
-    border-top-right-radius: 1em 1.4em;
-    box-shadow: 0.2em -0.3em 0em 0em #111;
-}
-.smooth-tab.attach-top .tab-sweep {
-    top: 0em;
-}
-.smooth-tab.attach-top {
-    border-radius: 0em 0em 1em 1em / 0em 0em 1.4em 1.4em;
-}
-.smooth-tab.dark {
-    background-color: #111;
-}
-.smooth-tab {
-    border: 0px solid;
-    background-color: transparent;
-    font-size: 1.1em;
-    min-height: 1.6em;
-    min-width: 1.6em;
-}
-.bootstrap .pull-right {
-    float: right !important;
-}
-
-.smooth-tab.attach-top .tab-sweep.toright {
-  right: -0.9em;
-  border-top-left-radius: 1em 1.4em;
-  box-shadow: -0.2em -0.3em 0em 0em #111;
-}
-
-.smooth-tab.attach-right {
-  border-radius: 1.4em 0 0 1.4em / 1em 0 0 1em;
-}
-
-.smooth-tab.attach-right .tab-sweep {
-  right: 0em;
-}
-
-.smooth-tab.attach-right .tab-sweep.totop {
-  top: -0.9em;
-  border-bottom-right-radius: 1.4em 1em;
-  box-shadow: 0.3em 0.2em 0em 0em #111;
-}
-
-.smooth-tab.attach-right .tab-sweep.tobottom {
-  bottom: -0.9em;
-  border-top-right-radius: 1.4em 1em;
-  box-shadow: 0.3em -0.2em 0em 0em #111;
-}
-
-/*.smooth-tab-group {
-  overflow:hidden;
-  font-size: 1.5em;
-}
-.smooth-tab-group  li:first-child {
-  margin-left: -0.4em;
-}
-
-.smooth-tab-group  li {
-  position:relative;
-  display:inline-block;
-  z-index: 1;
-  margin-left: -0.8em;
-}
-
-.smooth-tab-group  li:hover {
-  z-index: 2;
-}*/
-
-/*@font-face {
-  font-family: 'Merriweather';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Merriweather Light'), local('Merriweather-Light'), url(http://fonts.gstatic.com/s/merriweather/v8/ZvcMqxEwPfh2qDWBPxn6nk4GofcKVZz6wtzX_QUIqsI.woff2) format('woff2'), url(http://fonts.gstatic.com/s/merriweather/v8/ZvcMqxEwPfh2qDWBPxn6nmFp2sMiApZm5Dx7NpSTOZk.woff) format('woff');
-}*/
-
-
-/*@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Montserrat-Bold"), url("http://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcoWiMMZ7xLd792ULpGE4W_Y.woff2") format("woff2"), url("http://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcgFhaRv2pGgT5Kf0An0s4MM.woff") format("woff");
-}*/
 
 .sidebar-footer {
     position: absolute;

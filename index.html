@@ -80,9 +80,11 @@
 				<!--/form-->
 			</div> <!-- Menu -->
 
-			<div id="input-group" class="form-inline">
-				<input type="search" id="search" placeholder="Search" class="form-control"/> 
-				<button class="form-control btn btn-default" onclick="search()">Go</button>
+			<div class = "input-group" id="SearchBlock">
+				<input type="search" id="search" placeholder="Search for..." class="form-control"/> 
+				<span class = "input-group-btn">
+					<button class="btn btn-default" onclick="search()" type="button">Go!</button>
+				</span>
 			</div>
 			<noscript>Turn on JavaScripts to load the map</noscript>
 			<div id="map"></div>
