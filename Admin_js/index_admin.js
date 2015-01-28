@@ -61,8 +61,6 @@ $(document).on('click', ".ui-menu-item" ,  function(){
 	//}
 	})
 
-//$(document).on('load', ".ui-menu-item"
-
     /*$("#ShowLogin").click(function(){
         $("#LoginForm").toggle();
     });

@@ -44,7 +44,6 @@ till Monday 26.01
 till Monday 2.02
 1) SEO optimisation
 	a) refferal links
-2) panel.php make echo plaintext not xml
 3) переписати на jQuery
 4) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
 	a) echo ("file doesn't load") до користувача
