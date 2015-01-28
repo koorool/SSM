@@ -18,7 +18,7 @@ http://www.xpscenery.net - вот пример карты кстати, можн
 http://www.rikoooo.com/en/downloads/viewcategory/68
 
 замовник skype: mirikamoari
-фіча: reset and refresh очистить від нових маркерів(tmp)
+
 
 https://sites.google.com/site/simscenerymap/
 https://www.google.com/maps/d/edit?mid=zEn_pZnzWivQ.kuY1-wSU815w
@@ -51,9 +51,12 @@ till Monday 2.02
 4) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
 	a) echo ("file doesn't load") до користувача
 	б) повторюваний code
-5) IE 9 twitter support
+
 7) if marker code changed images lost, зміна code, зі зміною назв файлу
 8) android
 	a) не переносить слова на наступну строку - панель
 
+fitures
 1) 2 маркери можуть бути в 1 місці, повідомляти про це адміна
+2) IE 9 twitter support - add tsl protocole
+3) reset and refresh очистить від нових маркерів(tmp)
