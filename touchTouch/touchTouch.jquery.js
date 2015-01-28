@@ -14,7 +14,7 @@
 		slider = $('<div id="gallerySlider">'),
 		prevArrow = $('<a id="prevArrow"></a>'),
 		nextArrow = $('<a id="nextArrow"></a>'),
-		deleteArrow = $('<a id="deleteArrow"></a>'),
+		deleteArrow = $('<a id="deleteArrow" style="display: none;"></a>'),
 		overlayVisible = false;
 
 
@@ -157,18 +157,6 @@
 			});
 			/*if(admin)*/ overlay.append(deleteArrow);
 			//a function to delete the image from site
-			deleteArrow.click(function(e){
-				$.ajax({
-						url:'/aviamap/PHP/delete_image.php?name=' + array[index],
-						success: function(){								
-								array.splice(index-1,1);
-								alert("Photo deleted");
-								$("touchtouch" + index).remove();
-								if(index+1 < window.length1)showNext();							
-								else showPrevious();								
-						}
-				});
-			});
 		}
 
 		// Listen for arrow keys

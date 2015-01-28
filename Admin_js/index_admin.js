@@ -34,14 +34,34 @@
 	
 $(document).ready(function(){
     $("#search").autocomplete({ source: source });
-
-    $(document).on('click', ".ui-menu-item" ,  function(){    	
+    
+/*$(document).on('load', "#deleteArrow" ,  function(){
+    $(this).toggle();
+});*/
+$('#galery0').click(function(){
+	$("#deleteArrow").show();
+});
+$('#deleteArrow').click(function(e){
+				$.ajax({
+						url:'/aviamap/PHP/delete_image.php?name=' + array[index],
+						success: function(){								
+								array.splice(index-1,1);
+								alert("Photo deleted");
+								$("touchtouch" + index).remove();
+								if(index+1 < window.length1)showNext();							
+								else showPrevious();								
+						}
+				});
+			});
+$(document).on('click', ".ui-menu-item" ,  function(){    	
     
     //function search(){
 	  	//var arr_split;
 	  	search_func($(this).text().split(','));
 	//}
 	})
+
+//$(document).on('load', ".ui-menu-item"
 
     /*$("#ShowLogin").click(function(){
         $("#LoginForm").toggle();
@@ -73,4 +93,4 @@ function search_func(text){
           marker_animate(markers_arr[i]);
         } 
       }
- }
+}
