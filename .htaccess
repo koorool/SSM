@@ -31,6 +31,24 @@ AuthName "Private zone. Only for administrator!"
 AuthUserFile  /opt/lampp/htdocs/aviamap/.htpasswd
 require valid-user
 </Files>
+<Files index_admin.js>
+AuthType Basic
+AuthName "Private zone. Only for administrator!"
+AuthUserFile  /opt/lampp/htdocs/aviamap/.htpasswd
+require valid-user
+</Files>
+<Files Panel_admin.js>
+AuthType Basic
+AuthName "Private zone. Only for administrator!"
+AuthUserFile  /opt/lampp/htdocs/aviamap/.htpasswd
+require valid-user
+</Files>
+<Files Map_admin.js>
+AuthType Basic
+AuthName "Private zone. Only for administrator!"
+AuthUserFile  /opt/lampp/htdocs/aviamap/.htpasswd
+require valid-user
+</Files>
 <Files *.php>
 AuthType Basic
 AuthName "Private zone. Only for administrator!"
