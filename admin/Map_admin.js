@@ -88,21 +88,13 @@ function markers_load(type, code){
 
       	google.maps.event.addListener(marker, 'click', function ()
       	{
-          //loaddata(this);
           loadDataInfoPanel(this);
-          /*if(jQuery.infopanel.hasClass('visible'))  
-              ;*/
       	});
 
         google.maps.event.addListener(marker, 'dragend', function() {
-            //if(admin && jQuery.infopanel.hasClass('visible')){
               loadDataInfoPanel(this);
               document.getElementById('lat').value = this.getPosition().lat();
               document.getElementById('lng').value = this.getPosition().lng();
-
-            //}
-            //infowindow.close();
-            //loaddata(this);
         });
 
       }
@@ -117,7 +109,9 @@ function markers_load(type, code){
             position: event.latLng, 
             draggable:true
             });
-        mew_marker_clicked(marker); 
+        marker.set('type', 3); 
+        mew_marker_clicked(marker);
+        markers_arr.push(marker);
 
             //google.maps.event.addListener(marker, "click", function() {
                
@@ -130,15 +124,16 @@ function markers_load(type, code){
               //if(jQuery.infopanel.hasClass('visible')){
                document.getElementById('lat').value = this.getPosition().lat();
                document.getElementById('lng').value = this.getPosition().lng();
-               //formReset();
+               formReset();
                //infowindow.close();
               //}
              });
 
              google.maps.event.addListener(marker, 'click', function ()
               {
-                //markers_arr.push(marker);
-              mew_marker_clicked(this); 
+               if(document.getElementById("lat").value!== marker.getPosition().lat()
+                  && document.getElementById("lng").value!== marker.getPosition().lng())
+                mew_marker_clicked(this);                
               });
       }
     });
@@ -218,10 +213,10 @@ function marker_animate(marker){
 }*/
 
 function mew_marker_clicked(marker) {
-    marker.set('type', 3);         
+    formReset(); 
     var city, country;
     document.getElementById('city').placeholder = "";      
-    document.getElementById('form').reset();              
+    //document.getElementById('form').reset();              
     document.getElementById("lat").value = marker.getPosition().lat();
     document.getElementById("lng").value = marker.getPosition().lng();
              
@@ -252,7 +247,7 @@ function mew_marker_clicked(marker) {
     document.getElementById('submit').value = "save";
     document.getElementById('del').disabled = true;
     document.getElementById('form').action ="/aviamap/PHP/insert.php";
-    document.getElementById('form').onsubmit = function(){reload()};
+    //document.getElementById('form').onsubmit = function(){reload()};
     document.getElementById('reset_btn').disabled = false;
     document.getElementById('galery0').src = '../images/2.png';
     $('.placeholder').remove();
@@ -276,5 +271,5 @@ function mew_marker_clicked(marker) {
     document.getElementById("scenery_free").onblur = function(){
                     createfield("scenery_free");
     };
-    markers_arr.push(marker);
+    
 }

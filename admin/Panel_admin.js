@@ -25,13 +25,13 @@
     });
 })(jQuery);*/
 
-function reload(){
+/*function reload(){
 	//document.getElementById('galery').innerHTML = "";
 	$('.placeholder').remove();
 	document.getElementById('submit').value = "update";
 	document.getElementById('del').disabled = false;
 	document.getElementById('reset_btn').disabled = true;
-}
+}*/
 
 function formReset() {
 	var lat = document.getElementById('form').elements.item(2).value;
@@ -97,7 +97,7 @@ function loadDataInfoPanel(marker)
 		 	//document.getElementById('country').value = country;
 
 			document.getElementById('form').action = '/aviamap/PHP/update.php';
-			document.getElementById('form').onsubmit = function(){ // rewrite
+			/*document.getElementById('form').onsubmit = function(){ // rewrite
 				alert("marker with id: " + marker.get('code')+ " Updated!");
            		//marker.setMap(null);
            		//window.infowindow.setMap(null);
@@ -130,8 +130,8 @@ function loadDataInfoPanel(marker)
             	+'</b> <br/><div id="additionally"><span id="additional" onclick="jQuery.Panel(window.this_marker)">Дополнительно</span></div></div>';
         		window.infowindow.setContent(content);
         		window.infowindow.open(map, marker);*/
-            	document.getElementById("files").innerHTML = document.getElementById("files").innerHTML;
-           	};			
+            	//document.getElementById("files").innerHTML = document.getElementById("files").innerHTML;
+           	//};			
 
 			/*if(marker.get('type') == 0) document.getElementById("type").value="free";
 				else document.getElementById("type").value="nonfree";*/

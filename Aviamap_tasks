@@ -36,12 +36,14 @@ till Monday 26.01
 1)дописати .htaccess
 	а) закрити папки, особливо адмінські
 	б) перенаправити simscenerymap.com/admin - index.html
-
 2) UI
 3) Всплывающие сообщения вместо модальных.
 4) розділ about - напише Антон 
 	a) обратная связь
 	b) лінк до соц мереж
+bugs
+1) sends insert.php while reload the page!
+2) didn't load scenery free and scenery_free label
 
 till Monday 2.02
 1) SEO optimisation
@@ -50,6 +52,7 @@ till Monday 2.02
 4) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них
 	a) echo ("file doesn't load") до користувача
 	б) повторюваний code
+	в) треба до всіх ajax додати onerror - щоб користувач знав, що є помилка й повідомив адміна
 7) if marker code changed images lost, зміна code, зі зміною назв файлу
 8) android
 	a) не переносить слова на наступну строку - панель
