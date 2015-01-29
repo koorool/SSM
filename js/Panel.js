@@ -199,7 +199,7 @@ function panelinformation(code, type){
 			}
 			else {
 				empty_galery = true;
-				document.getElementById('galery0').src = './images/2.png';
+				document.getElementById('galery0').src = './images/NoImage.png';
 			}
 	});
 }
