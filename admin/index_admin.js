@@ -128,6 +128,8 @@ $("#form").submit(function(e)
 		marker.setTitle(document.getElementById("marker_name").value);
 		marker.set('code', document.getElementById('code').value);
 		source.push (document.getElementById('code').value + ", " + document.getElementById("marker_name").value);
+		if(document.getElementById("city").value.length) marker.set('city', document.getElementById("city").value);
+		infowindow.close();
 		google.maps.event.addListener(marker, 'click', function ()
       	{
           loadDataInfoPanel(this);
@@ -210,6 +212,7 @@ function set_icon(marker){
 	        null,//new google.maps.Point(0, 0),
 	        null,//new google.maps.Point(0, 0),
 	        new google.maps.Size(20, 20)));
+	        marker.set('type', '0');
 	        }
 		    else if(!document.getElementById('scenery_free').value && document.getElementById('scenery').value){
 		        marker.setIcon(new google.maps.MarkerImage(customIcons[1].icon,
@@ -217,6 +220,7 @@ function set_icon(marker){
 		        null,//new google.maps.Point(0, 0),
 		        null,//new google.maps.Point(0, 0),
 		        new google.maps.Size(20, 20)));
+		        marker.set('type', '1');
 		        }
 		    else{
 		        marker.setIcon(new google.maps.MarkerImage(customIcons[2].icon,
@@ -224,5 +228,6 @@ function set_icon(marker){
 		    	null,//new google.maps.Point(0, 0),
 		        null,//new google.maps.Point(0, 0),
 		        new google.maps.Size(20, 20)));
+		        marker.set('type', '2');
 		    }
 }

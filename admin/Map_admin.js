@@ -50,7 +50,7 @@ infowindow = new google.maps.InfoWindow();
 //Global Variables//
 
 // Load markers from DataBase
-function markers_load(type, code){
+function markers_load(type){
   for (var i = 0; i < markers_arr.length; i++)
     markers_arr[i].setMap(null);
   markers_arr = [];
