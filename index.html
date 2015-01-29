@@ -37,7 +37,7 @@
 		<!-- The stylesheet -->
 		<link type="text/css" rel="stylesheet" href="./touchTouch/touchTouch.css">
 		<link rel="stylesheet" href="./css/style.css">
-		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/bootstrap.css">
 		<!--Javascript-->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -163,7 +163,7 @@
 
 				<div class="sidebar-footer">
           			<div class="col-xs-4">
-		          		<a id = "ShowAbout" href="about.html">About</a>
+		          		<a id = "ShowAbout" data-toggle="modal" data-target="#AboutWindow">About</a>
 		        	</div>
 		        	<!--div class="col-xs-4">
 		          		<a id = "ShowLogin">Login</a>
@@ -171,5 +171,22 @@
 		      	</div> <!--sidebar-footer-->
 			</div> <!--panel-->
 		<!--/div--> <!--wrap-->
+
+		<!-- Modal -->
+		<div class="modal fade" id="AboutWindow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">About</h4>
+		      </div>
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <div class="modal-footer">
+		      </div>
+		    </div>
+		  </div>
+		</div> <!--Modal-->
 	</body>
 </html>
