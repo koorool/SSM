@@ -87,11 +87,17 @@ function loadDataInfoPanel(marker)
 			document.getElementById('reset_btn').disabled = true;
 		 	document.getElementById('del').disabled = false;
 		 	document.getElementById('del').onclick = function(){ delete_marker(marker)};
+		 	document.getElementById("scenery").onblur = function(){
+					createfield("scenery");
+				};
+				document.getElementById("scenery_free").onblur = function(){
+					createfield("scenery_free");
+				};
 		 	//addcity();
 		 	//document.getElementById('country').value = country;
 
 			document.getElementById('form').action = '/aviamap/PHP/update.php';
-			document.getElementById('form').onsubmit = function(){
+			document.getElementById('form').onsubmit = function(){ // rewrite
 				alert("marker with id: " + marker.get('code')+ " Updated!");
            		//marker.setMap(null);
            		//window.infowindow.setMap(null);
@@ -262,12 +268,7 @@ function panelinformation(code, type){
 		var markers = data.responseXML.firstChild; //documentElement.getElementsByTagName("marker")[0];
 			//переробити, враховуючи залежність між type and scenery			
 			//if(admin){
-				document.getElementById("scenery").onblur = function(){
-					createfield("scenery");
-				};
-				document.getElementById("scenery_free").onblur = function(){
-					createfield("scenery_free");
-				};
+				
 				switch(type){
 					case '0':
 					if(markers.getAttribute("scenery_free").indexOf(';')+1){					
@@ -472,14 +473,14 @@ function panelinformation(code, type){
 				//document.getElementById('galery').appendChild(galery0);
 				var arr = markers.getAttribute("images").split(';');
 				var arr1 = [];
-				document.getElementById('galery0').src ="./img/" + arr[0];
+				document.getElementById('galery0').src ="../img/" + arr[0];
 				//arr1[0] = "./img/" + arr[0];
 				for(var i=0; i<arr.length-1; i++){
 					//if(arr[i]!=" " && arr[i]!=";" && arr[i].length && arr[i]!=null){
 						//galery[i] = document.createElement('img');
 						//galery[i].className = 'hidden';
 						//galery[i].src = "./img/" + arr[i];
-						arr1[i] = "./img/" + arr[i];
+						arr1[i] = "../img/" + arr[i];
 						//galery[i].title = code;
 						//document.getElementById('galery').appendChild(galery[i]);
 					//document.getElementById("galery"+i).src = "/aviamap/img/"+ code+ i +"." +arr[i];
@@ -493,7 +494,7 @@ function panelinformation(code, type){
 			}
 			else {
 				empty_galery = true;
-				document.getElementById('galery0').src = './images/2.png';
+				document.getElementById('galery0').src = '../images/2.png';
 			}
 	});
 }

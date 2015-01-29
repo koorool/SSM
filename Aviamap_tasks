@@ -33,8 +33,10 @@ pass: 3qXGMD;
 keywords: FSX Scenery prepar3d, fs9, simulator, microsoft flight simulator, АЫЧ, scenery, p3d, UKBB scenery, UKBB fsx
 
 till Monday 26.01
-1) Розділити адмінські функції та функціїї користувача
-	a) нужно сделать защищенный пароль або захист по ip
+1)дописати .htaccess
+	а) закрити папки, особливо адмінські
+	б) перенаправити simscenerymap.com/admin - index.html
+
 2) UI
 3) Всплывающие сообщения вместо модальных.
 4) розділ about - напише Антон 
@@ -45,12 +47,12 @@ till Monday 2.02
 1) SEO optimisation
 	a) refferal links
 3) переписати на jQuery
-4) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них, не виводити частнину на alert
+4) відшукати всі помилки на стороні сервера - виключення й повідомлення користувача про них
 	a) echo ("file doesn't load") до користувача
 	б) повторюваний code
-
 7) if marker code changed images lost, зміна code, зі зміною назв файлу
 8) android
 	a) не переносить слова на наступну строку - панель
+9) Зжати css, js
 
 2) IE 9 twitter support - add tsl protocole

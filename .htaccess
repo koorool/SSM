@@ -1,0 +1,75 @@
+Options All -ExecCGI -Indexes -Includes +FollowSymLinks
+#перенаправлення
+#<IfModule mod_rewrite.c>
+#    RewriteEngine on
+#    RewriteBase /
+#    RewriteCond %{HTTP_HOST} ^simscenerymap
+#    RewriteRule (.*) http://simscenerymap.com/$1 [R=301,L]
+    #не потрібний index.php
+    #RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+    #RewriteRule ^index\.php$ http://simscenerymap.com/ [R=301,L]
+#</IfModule>
+#підпис сервера, encoding
+ServerSignature Off
+AddDefaultCharset UTF-8
+#php config
+<ifModule mod_php.c>
+  php_value	upload_max_filesize	32M
+  php_value	post_max_size		10M
+  php_value	default_charset utf-8
+  php_value	max_execution_time 200
+</ifModule>
+# remove trailing slashes
+# if want external redirect use correct external redir [R=301,L] or [R=301] for correct internal or simple redir [L]
+#RewriteCond %{REQUEST_URI} !^/$
+#RewriteCond %{REQUEST_URI} (.*)/$
+#    RewriteRule . %1.html [R=301,L,E=NS:1,QSA]
+
+<Files admin.html>
+AuthType Basic
+AuthName "Private zone. Only for administrator!"
+AuthUserFile  /opt/lampp/htdocs/aviamap/.htpasswd
+require valid-user
+</Files>
+<Files *.php>
+AuthType Basic
+AuthName "Private zone. Only for administrator!"
+AuthUserFile  /opt/lampp/htdocs/aviamap/.htpasswd
+require valid-user
+</Files>
+<Files load_markers.php>
+order allow,deny
+allow from all
+</Files>
+<Files panel.php>
+order allow,deny
+allow from all
+</Files>
+
+<IfModule mod_gzip.c>
+mod_gzip_on Yes
+mod_gzip_dechunk Yes
+mod_gzip_item_include file \.(html?|txt|css|js|php|pl)$ 
+mod_gzip_item_include handler ^cgi-script$
+mod_gzip_item_include mime ^text\.*
+mod_gzip_item_include mime ^application/x-javascript.*
+mod_gzip_item_exclude mime ^image\.*
+mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.* 
+</IfModule>
+<FilesMatch ".(gif|jpg|jpeg|png|ico|js|css)$">
+Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+
+#Блокируем плохих ботов и роботов
+SetEnvIfNoCase user-Agent ^FrontPage [NC,OR]
+SetEnvIfNoCase user-Agent ^Java.* [NC,OR]
+SetEnvIfNoCase user-Agent ^Microsoft.URL [NC,OR]
+SetEnvIfNoCase user-Agent ^MSFrontPage [NC,OR]
+SetEnvIfNoCase user-Agent ^Offline.Explorer [NC,OR]
+SetEnvIfNoCase user-Agent ^[Ww]eb[Bb]andit [NC,OR]
+SetEnvIfNoCase user-Agent ^Zeus [NC]
+<limit get="" post="" head="">
+Order Allow,Deny
+Allow from all
+Deny from env=bad_bot
+</limit>

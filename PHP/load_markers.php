@@ -6,7 +6,7 @@ $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
 
 $type = $_GET['type'];
-$code = "";
+//$code = "";
 //if(isset($_GET['code'])) $code = isset($_GET['code']);
 
 // Select all the rows in the marker table
@@ -28,7 +28,7 @@ $result = mysql_query($query) or die('Invalid query: ' . mysql_error()); //'SET 
 die('Invalid query: '.mysql_error());
 }*/
 
-header("Content-type: text/xml");
+header("Content-type: text/xml; charset=utf-8");
 
 // Iterate through the rows, adding XML nodes for each
 

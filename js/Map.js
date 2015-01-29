@@ -56,7 +56,7 @@ function markers_load(type, code){
   markers_arr = [];
   //infowindow = new google.maps.InfoWindow();
   //if(free!= "-1") не брати з бази тип
-      downloadUrl("/aviamap/PHP/load_markers.php?type="+ type +"&code=" + code, function(data) {
+      downloadUrl("/aviamap/PHP/load_markers.php?type="+ type, function(data) {
         //var xml = data.responseXML;
         if (navigator.appName == 'Microsoft Internet Explorer')var markers = data.responseXML.childNodes[1].childNodes;
         else 

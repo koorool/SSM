@@ -41,9 +41,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 //Global Variables
 var customIcons = {
-      0: {icon: './images/freeware.png'},
-      1: {icon: './images/payware.png'},
-      2: {icon: './images/free-pay.png'}
+      0: {icon: '../images/freeware.png'},
+      1: {icon: '../images/payware.png'},
+      2: {icon: '../images/free-pay.png'}
     },
 markers_arr = [], source = [],
 infowindow = new google.maps.InfoWindow();
@@ -56,7 +56,7 @@ function markers_load(type, code){
   markers_arr = [];
   //infowindow = new google.maps.InfoWindow();
   //if(free!= "-1") не брати з бази тип
-      downloadUrl("/aviamap/PHP/load_markers.php?type="+ type +"&code=" + code, function(data) {
+      downloadUrl("/aviamap/PHP/load_markers.php?type="+ type, function(data) {
         //var xml = data.responseXML;
         var markers = data.responseXML.childNodes[0].childNodes;
         for (var i = 0; i < markers.length; i++) {
@@ -254,7 +254,7 @@ function mew_marker_clicked(marker) {
     document.getElementById('form').action ="/aviamap/PHP/insert.php";
     document.getElementById('form').onsubmit = function(){reload()};
     document.getElementById('reset_btn').disabled = false;
-    document.getElementById('galery0').src = './images/2.png';
+    document.getElementById('galery0').src = '../images/2.png';
     $('.placeholder').remove();
     if(document.getElementById('scenery_free_label')!==null){
       document.getElementById('scenery_free_label').parentNode.removeChild(document.getElementById('scenery_free_label'));

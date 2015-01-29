@@ -1,4 +1,4 @@
-	setTimeout(function() {
+	/*setTimeout(function() {
 	document.getElementById('frame').onload = function(){
 		if(document.getElementById('frame').contentWindow.document.body.innerHTML!="" && admin)
 		{
@@ -7,7 +7,7 @@
 	    panelinformation(document.getElementById('code').value);
 		}
 	};
-	}, 4000);
+	}, 4000);*/
 	
 
 $(document).ready(function(){
