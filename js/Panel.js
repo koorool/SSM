@@ -98,7 +98,7 @@ function panelinformation(code, type){
 					else{
 					document.getElementById("scenery_free").href= markers.getAttribute("scenery_free");
 					if(markers.getAttribute("scenery_free_label")!==null && markers.getAttribute("scenery_free_label").length)
-					document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free_label").substring(11, 40);
+					document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free_label")//.substring(11, 40);
 					else document.getElementById("scenery_free").textContent = markers.getAttribute("scenery_free").substring(11, 40);
 					document.getElementById('scenery_free1').textContent = null;
 					//document.getElementById('form').removeChild(document.getElementById('scenery_free1'));
