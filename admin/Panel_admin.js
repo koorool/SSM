@@ -57,7 +57,7 @@ function formReset() {
 
 function delete_marker(marker){
 	$.ajax({
-            url: '/aviamap/PHP/delete.php',
+            url: '../PHP/delete.php',
             data: "code=" + marker.get('code'),
             type: 'POST',
             dataType: "html",            
@@ -96,7 +96,7 @@ function loadDataInfoPanel(marker)
 		 	//addcity();
 		 	//document.getElementById('country').value = country;
 
-			document.getElementById('form').action = '/aviamap/PHP/update.php';
+			document.getElementById('form').action = '../PHP/update.php';
 			/*document.getElementById('form').onsubmit = function(){ // rewrite
 				alert("marker with id: " + marker.get('code')+ " Updated!");
            		//marker.setMap(null);
@@ -263,7 +263,7 @@ function panelinformation(code, type){
 				
 	});*/
 	
-	downloadUrl("/aviamap/PHP/panel.php?code=" + code + "&type=" + type, function(data) {
+	downloadUrl("../PHP/panel.php?code=" + code + "&type=" + type, function(data) {
 		//var xml = data.responseXML;
 		var markers = data.responseXML.firstChild; //documentElement.getElementsByTagName("marker")[0];
 			//переробити, враховуючи залежність між type and scenery			

@@ -56,7 +56,7 @@ function markers_load(type){
   markers_arr = [];
   //infowindow = new google.maps.InfoWindow();
   //if(free!= "-1") не брати з бази тип
-      downloadUrl("/aviamap/PHP/load_markers.php?type="+ type, function(data) {
+      downloadUrl("../PHP/load_markers.php?type="+ type, function(data) {
         //var xml = data.responseXML;
         var markers = data.responseXML.childNodes[0].childNodes;
         for (var i = 0; i < markers.length; i++) {
@@ -246,7 +246,7 @@ function mew_marker_clicked(marker) {
       
     document.getElementById('submit').value = "save";
     document.getElementById('del').disabled = true;
-    document.getElementById('form').action ="/aviamap/PHP/insert.php";
+    document.getElementById('form').action ="../PHP/insert.php";
     //document.getElementById('form').onsubmit = function(){reload()};
     document.getElementById('reset_btn').disabled = false;
     document.getElementById('galery0').src = '../images/2.png';

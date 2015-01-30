@@ -78,7 +78,7 @@ var empty_galery = false;
 //переробити
 function panelinformation(code, type){
 	
-	downloadUrl("/aviamap/PHP/panel.php?code=" + code + "&type=" + type, function(data) {
+	downloadUrl("./PHP/panel.php?code=" + code + "&type=" + type, function(data) {
 		//var xml = data.responseXML;
 		if (navigator.appName == 'Microsoft Internet Explorer') var markers = data.responseXML.childNodes[1];
         else 

@@ -62,7 +62,7 @@ $('#galery0').click(function(){
 });
 $('#deleteArrow').click(function(e){
 				$.ajax({
-						url:'/aviamap/PHP/delete_image.php?name=' + array[index],
+						url:'../PHP/delete_image.php?name=' + array[index],
 						success: function(){								
 								array.splice(index-1,1);
 								alert("Photo deleted");
@@ -110,7 +110,7 @@ $("#form").submit(function(e)
         processData:false,
     success: function(data, textStatus, jqXHR)
     {
-    	if(formURL == '/aviamap/PHP/update.php'){
+    	if(formURL == '../PHP/update.php'){
     		alert("marker with id: " + document.getElementById('code').value+ " Updated!");
            		//marker.setMap(null);
            		//window.infowindow.setMap(null);

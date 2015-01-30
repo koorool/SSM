@@ -21,7 +21,7 @@ $query = "SELECT code,name,lat,lng,type FROM marker WHERE code='" . $_GET['code'
 //$query  = "SELECT name,lat,lng,Freeware FROM marker";
 $connection = mysql_connect($host, $username, $password) or die("Не могу соединиться с MySQLI.");
 
-$db_selected = mysql_select_db($database) or die("Не могу соединиться с MySQLI.");
+$db_selected = mysql_select_db($database) or die("Соединение установлено. Не могу подключиться к базе "+$database);
 mysql_query("SET NAMES 'utf8'");
 $result = mysql_query($query) or die('Invalid query: ' . mysql_error()); //'SET NAMES "utf8"'
 /*if (!$result) {
