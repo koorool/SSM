@@ -1,2 +1,0 @@
-SELECT marker.code, marker.name, marker.lat, marker.lng,marker.city, marker.type, markerinfo.description, markerinfo.scenery, markerinfo.scenery_free, markerinfo.scenery_free_label, markerinfo.scenery_label 
-FROM marker,markerinfo WHERE markerinfo.code = marker.code
