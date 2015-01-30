@@ -160,8 +160,7 @@ function loadDataInfoPanel(marker)
 				else document.getElementById("type").textContent="nonfree";*/						
 		//}		
 	}
-		/*var city;
-		var conuntry;*/
+		var city;
 		geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       if (results[0]) {
@@ -178,18 +177,21 @@ function loadDataInfoPanel(marker)
             }*/
 
             if(components[component].types[0]=="locality"){
+            	city = components[component].long_name;
             	//alert(components[component].long_name);
-            	if(marker.get('city') != "null"){
-            		/*if(admin)*/ document.getElementById('city').value = marker.get('city');
+            	/*if(marker.get('city') !== "null"){
+            		 document.getElementById('city').value = marker.get('city');
 		 			//else document.getElementById('city').textContent = marker.get('city');
-		 		}
+		 		}*/
 		 		//else if(typeof components[component].long_name === undefined && admin) document.getElementById('city').placeholder ="City is null!";
-		 		else /*if(admin)*/ document.getElementById('city').placeholder ="City is set by geocoding";//document.getElementById('city').value = components[component].long_name;
+		 		//else /*if(admin)*/ document.getElementById('city').placeholder ="City is set by geocoding";//document.getElementById('city').value = components[component].long_name;
 		 		//else document.getElementById('city').textContent = components[component].long_name;
                 //city=components[component].long_name;
             }
         }
-        if(!document.getElementById('city').value.length && !document.getElementById('city').placeholder.length) document.getElementById('city').placeholder ="City is null!";
+        if(marker.get('city') !== "null") document.getElementById('city').value = marker.get('city');            
+		else document.getElementById('city').value = city;
+        //if(!document.getElementById('city').value.length && !document.getElementById('city').placeholder.length) document.getElementById('city').placeholder ="City is null!";
         /*if(typeof city === 'undefined'){          
             
         }*/

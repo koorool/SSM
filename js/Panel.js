@@ -27,6 +27,7 @@
 
 function loadDataInfoPanel(marker)
 	{
+		var city;
 		if(document.getElementById("marker_name").textContent != marker.title ){
 			document.getElementById('city').textContent = "";
 			panelinformation(marker.get('code'), marker.get('type'));
@@ -51,14 +52,10 @@ function loadDataInfoPanel(marker)
 
             if(components[component].types[0]=="locality"){
             	//alert(components[component].long_name);
-            	if(marker.get('city') != "null"){
-            		//if(admin) document.getElementById('city').value = marker.get('city');
-		 			/*else*/ document.getElementById('city').textContent = marker.get('city');
-		 		}
-		 		//else if(typeof components[component].long_name === undefined && admin) document.getElementById('city').placeholder ="City is null!";
-		 		//else if(admin) document.getElementById('city').placeholder ="City is set by geocoding";//document.getElementById('city').value = components[component].long_name;
-		 		else document.getElementById('city').textContent = components[component].long_name;
-                //city=components[component].long_name;
+            	//if(marker.get('city') !== "null") document.getElementById('city').textContent = marker.get('city');
+            
+		 		//else document.getElementById('city').textContent = components[component].long_name;
+		 		city = components[component].long_name;
             }
         }
       } else {
@@ -70,6 +67,9 @@ function loadDataInfoPanel(marker)
       infowindow.open(map, marker); 
     }
   });
+	if(marker.get('city') !== "null") document.getElementById('city').textContent = marker.get('city');
+            
+	else document.getElementById('city').textContent = city;
 	}
 	//if(admin && document.getElementById('city').value==="") document.getElementById('city').placeholder ="City is null!";
 }
