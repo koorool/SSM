@@ -24,9 +24,9 @@
 
 		<!--SEO-->
     	<Title>Simscenerymap - all sceneries for flight simulation on the one map</Title>
-		<meta name='description' content='A modern, open coworking environment for free-range humans. From collaborative space to private conference rooms, Grind has everything you need to work liquid.'>
+		<!--meta name='description' content='A modern, open coworking environment for free-range humans. From collaborative space to private conference rooms, Grind has everything you need to work liquid.'>
 		<meta name='keywords' content='ICAO, scenery, simulator, microsoft flight simulator, АЫЧ, FSX Scenery, prepar3d, p3d, fsx, сценарий, симулятор'>
-		<link rel="canonical" href="www.simscenerymap.com">
+		<link rel="canonical" href="www.simscenerymap.com"-->
 		<meta name="author" content="CupOfCode">
     	<!--meta name="copyright" content="All rights reserved by CupOfCode 2014-2015 ©"--> 
 		<!--SEO-->		
@@ -105,7 +105,7 @@
 	    overflow-y: auto;
 	    overflow-x: hidden;
 	    height: 91%;
-	    width: 305px;
+	    width: 23.5%;
 	    /*max-width: 300px;*/
 	    border-left:7px solid #303030;
 	    box-shadow:0 1px 3px rgba(0,0,0,0.5);
@@ -120,13 +120,13 @@
 		}
 		#galery0{ /*.thumbs img*/
 		  /*width:275px;*/
-		  width:100%;
-		  max-width:280px;
-		  height:180px;
+		  width:98%;
+		  /*max-width:280px;*/
+		  max-height:180px;
 		  position:relative;
 		  display:inline-block;
 		  border:3px solid #303030;
-		  margin: 2px;
+		  margin: 4px;
 		  box-shadow:0 1px 3px rgba(0,0,0,0.5);
 		  border-radius:4px;
 		  /*margin: 6px 6px 40px;*/
@@ -219,22 +219,21 @@
 				</div-->
 				<div class="btn-group" data-toggle="buttons">
 				  <label class="btn btn-primary active" id="CheckAll">
-				    <input type="radio" name="options" autocomplete="off"> All
+				    <input type="radio" name="options"> All
 				  </label>
 				  <label class="btn btn-primary" id="CheckFree">
-				    <input type="radio" name="options" autocomplete="off"> Free
+				    <input type="radio" name="options"> Free
 				  </label>
 				  <label class="btn btn-primary" id="CheckPaid">
-				    <input type="radio" name="options" autocomplete="off"> Paid
+				    <input type="radio" name="options"> Paid
 				  </label>
 				  <label class="btn btn-primary" id="CheckPaidAndFree">
-				  	<input type="radio" name="options" autocomplete="off"> Free&amp;Paid
+				  	<input type="radio" name="options"> Free&amp;Paid
 				  </label>
 				  <label class="btn btn-primary" id="tmp">
-				  	<input type="radio" name="options" autocomplete="off"> Tmp
+				  	<input type="radio" name="options"> Tmp
 				  </label>
 				</div>
-				<!--div id="checkbox"></div-->
 				<div id="panel_content">
 					<form action="../PHP/insert.php" name="form" method="post" id="form" enctype="multipart/form-data" >                        
                     <!--div class="form-group" target="frame" -->
@@ -244,10 +243,10 @@
                     	<input id="marker_name" name="name" required="required" placeholder="Name" class="form-control"><br>
                     <!--/div-->
                     <!--div class="form-group"-->
-                    	<input type="number" id="lat" name="lat" min="-90" max="90" step="any" required="required" title="Здесь должно быть число!" class="form-control"><br> <!--step="any" pattern="\d{2}+(\,\d{15})?"-->
+                    	<input type="number" id="lat" tabindex="-1" name="lat" min="-90" max="90" step="any" required="required" title="Здесь должно быть число!" class="form-control"><br> <!--step="any" pattern="\d{2}+(\,\d{15})?"-->
                     <!--/div-->
                     <div class="form-group">
-                    	<input type="number" id="lng" name="lng" min="-90" max="90" step="any" required="required" title="Здесь должно быть число!" class="form-control"><br>
+                    	<input type="number" id="lng" tabindex="-1" name="lng" min="-180" max="180" step="any" required="required" title="Здесь должно быть число!" class="form-control"><br>
                     </div> <!--step="any" pattern="\d{2}+(\,\d{15})?"-->
                     <div id="scenery_box" class="form-group">
                     	<b>scenery:</b><input id="scenery_chbs" type="checkbox">2 sceneries<br>
@@ -257,13 +256,13 @@
                     	<b>free scenery:</b><input id="scenery_free_chbs" type="checkbox">2 sceneries<br>
                     	<input id="scenery_free" name="scenery_free" placeholder="Free scenery" class="form-control"><!-- //onblur="createfield(scenery_free)"-->
                     </div>
-                    <div class="form-group">
+                    <!--div class="form-group"-->
                     	<b>City:</b><br>
                     	<input id="city" name="city" class="form-control"><br>
-                    </div>                        
-                    <div class="form-group">
+                    <!--/div-->
+                    <!--div class="form-group"-->
                     	<input id="description" name="description" placeholder="Compatibility" class="form-control"><br>
-                    </div>
+                    <!--/div-->
                     <div id="files">
                     	<input id="filesend" type="file" name="filename[]" multiple="multiple" accept="image/*">
                     </div>

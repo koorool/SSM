@@ -32,7 +32,7 @@ var styles = [
     }
 ];
       map = new google.maps.Map(document.getElementById("map"), {
-       center: new google.maps.LatLng(49.0630692517165, 31.201171875),
+       center: new google.maps.LatLng(47.960278, 24.188056),
        zoom: 6,
        mapTypeId: 'terrain',
        streetViewControl: false,
