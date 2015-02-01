@@ -157,6 +157,18 @@
 			});
 			/*if(admin)*/ overlay.append(deleteArrow);
 			//a function to delete the image from site
+			$('#deleteArrow').click(function(e){
+				$.ajax({
+						url:'../PHP/delete_image.php?name=' + array[index],
+						success: function(){								
+								array.splice(index-1,1);
+								alert("Photo deleted");
+								$("#touchtouch" + index).remove();
+								if(index+1 < window.length1)showNext();							
+								else showPrevious();								
+						}
+				});
+			});
 		}
 
 		// Listen for arrow keys

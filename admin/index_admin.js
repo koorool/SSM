@@ -33,7 +33,17 @@
 	}, 4000);*/
 	
 $(document).ready(function(){
-    $("#search").autocomplete({ source: source });
+    $("#search").autocomplete({ source: source,
+    	select: function (event, ui) {
+                search_func(ui.item.label.split(',')[0]);
+                
+                // On enter key
+                // if (event.keyCode == 13) {}
+                
+                // On button click
+                //$(#'zip-form').submit()
+            }
+     });
 //filter free/non-free/all markers//
 	$('#tmp').click(function(){
 		hide_markers(3);
@@ -60,25 +70,14 @@ $(document).ready(function(){
 $('#galery0').click(function(){
 	$("#deleteArrow").show();
 });
-$('#deleteArrow').click(function(e){
-				$.ajax({
-						url:'../PHP/delete_image.php?name=' + array[index],
-						success: function(){								
-								array.splice(index-1,1);
-								alert("Photo deleted");
-								$("touchtouch" + index).remove();
-								if(index+1 < window.length1)showNext();							
-								else showPrevious();								
-						}
-				});
-			});
-$(document).on('click', ".ui-menu-item" ,  function(){    	
+
+/*$(document).on('click', ".ui-menu-item" ,  function(){    	
     
     //function search(){
 	  	//var arr_split;
 	  	search_func($(this).text().split(',')[0]);
 	//}
-	})
+	})*/
 /*$("#searchbutton").click(function(e){
     search_func($("#search").text().split(',')[0]);
 })*/
@@ -127,7 +126,7 @@ $("#form").submit(function(e)
            		//window.infowindow.setMap(null);
            	var marker = search_marker();
     		set_icon(marker);
-		    document.getElementById("files").innerHTML = document.getElementById("files").innerHTML;
+		    document.getElementById("filesend").innerHTML = document.getElementById("filesend").innerHTML;
     	}
     	else{
  		$('.placeholder').remove();

@@ -164,15 +164,17 @@ google.maps.event.addListener(map, 'zoom_changed', function() {
         relativePixelSize = maxPixelSize;
       for (var i = 0; i < markers_arr.length; i++){
         //change the size of the icon
-        markers_arr[i].setIcon(
-        new google.maps.MarkerImage(
+        if(markers_arr[i].get('type')!== 3){
+          markers_arr[i].setIcon(
+            new google.maps.MarkerImage(
             markers_arr[i].getIcon().url, //marker's same icon graphic
             null,//size
             null,//origin
             null, //anchor
             new google.maps.Size(relativePixelSize, relativePixelSize) //changes the scale
-        )
-    );
+            )
+          );
+        }
     }
   //}
 
@@ -251,7 +253,7 @@ function mew_marker_clicked(marker) {
     document.getElementById('reset_btn').disabled = false;
     document.getElementById('galery0').src = '../images/2.png';
     $('.placeholder').remove();
-    if(document.getElementById('scenery_free_label')!==null){
+    /*if(document.getElementById('scenery_free_label')!==null){
       document.getElementById('scenery_free_label').parentNode.removeChild(document.getElementById('scenery_free_label'));
       if(document.getElementById('scenery_free_label1')){
         document.getElementById('scenery_free_label1').parentNode.removeChild(document.getElementById('scenery_free_label1'));
@@ -270,6 +272,6 @@ function mew_marker_clicked(marker) {
     };
     document.getElementById("scenery_free").onblur = function(){
                     createfield("scenery_free");
-    };
+    };*/
     
 }
