@@ -90,6 +90,19 @@
 		  z-index: 2;
 		  width:200px;
 		}
+		#Deocoding{
+			/*z-index: 2;*/
+			/*float:right;*/
+			/*box-sizing: border-box;*/
+			position: absolute;
+			right: 58%;
+			/*right: 5%;*/
+			border-collapse: separate;
+			width:200px;
+		}
+		/*#address{
+			width:200px;
+		}*/
    		#map{
 		width: 76.5%;
 		position: absolute;
@@ -186,6 +199,12 @@
 		<!--div--><!--wrap!-->
 			<div id="Menu">
 				<img src="../images/2.png" id = "Logo" alt="simscenerymap">
+				<div class = "input-group" id="Geocoding">
+    				<input id="address" value="Ukraine" class="form-control">
+    				<span class = "input-group-btn">
+    				<button onclick="codeAddress()" class="btn btn-default">Go!</button>
+    				</span>
+  				</div>
 				<!--iframe class="hidden" name="frame" id="frame" srcdoc=""  width="120" height="40"></iframe-->
 			<!--img src="./advertisment.jpg" class="Logo"-->
 				<!--form id="LoginForm" class="form-inline pull-right" onsubmit="return false"--><!--style="display: none"  action="JavaScript: return false"-->
@@ -204,7 +223,7 @@
 			<div class = "input-group" id="SearchBlock">
 				<input type="search" id="search" placeholder="Search for..." class="form-control"/> 
 				<span class = "input-group-btn">
-					<button class="btn btn-default" onclick="search()" type="button">Go!</button>
+					<button class="btn btn-default" id="searchbutton" type="button">Go!</button>
 				</span>
 			</div>
 			<noscript>Turn on JavaScripts to load the map</noscript>
@@ -237,7 +256,7 @@
 				<div id="panel_content">
 					<form action="../PHP/insert.php" name="form" method="post" id="form" enctype="multipart/form-data" >                        
                     <!--div class="form-group" target="frame" -->
-                    	<input id="code" name="code" required="required" placeholder="code" pattern="[A-Za-z]{4}" class="form-control">
+                    	<input id="code" name="code" required="required" placeholder="code" pattern="[A-Za-z0-9]{4}" class="form-control">
                     <!--/div--> 
                     <!--div class="form-group"-->
                     	<input id="marker_name" name="name" required="required" placeholder="Name" class="form-control"><br>
