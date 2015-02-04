@@ -32,8 +32,8 @@ var styles = [
     }
 ];
       map = new google.maps.Map(document.getElementById("map"), {
-       center: new google.maps.LatLng(49.0630692517165, 31.201171875),
-       zoom: 6,
+       center: new google.maps.LatLng(51.0137546571882, 20.6103515625),
+       zoom: 5,
        mapTypeId: 'terrain',
        streetViewControl: false,
        minZoom: 3,
@@ -75,10 +75,10 @@ function markers_load(type){
               parseFloat(markers[i].getAttribute("lat")),
               parseFloat(markers[i].getAttribute("lng"))),
             icon: new google.maps.MarkerImage(customIcons[markers[i].getAttribute("type")].icon,
-            new google.maps.Size(20, 20),
+            new google.maps.Size(15, 15),
             null,//new google.maps.Point(0, 0),
             null,//new google.maps.Point(0, 0),
-            new google.maps.Size(20, 20)),
+            new google.maps.Size(15, 15)),
             //draggable: admin,
 	          title: markers[i].getAttribute("name")
           });
