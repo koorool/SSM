@@ -14,7 +14,7 @@
 		slider = $('<div id="gallerySlider">'),
 		prevArrow = $('<a id="prevArrow"></a>'),
 		nextArrow = $('<a id="nextArrow"></a>'),
-		deleteArrow = $('<a id="deleteArrow" style="display: none;"></a>'),
+		deleteArrow = $('<a id="deleteArrow"></a>'),
 		overlayVisible = false;
 
 
