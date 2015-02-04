@@ -34,7 +34,7 @@
 	
 $(document).ready(function(){
     $("#search").autocomplete({ source: source,
-    	select: function (event, ui) {
+      select: function (event, ui) {
                 search_func(ui.item.label.split(',')[0]);
                 
                 // On enter key
@@ -43,7 +43,7 @@ $(document).ready(function(){
                 // On button click
                 //$(#'zip-form').submit()
             }
-     });
+    });
 //filter free/non-free/all markers//
 	$('#tmp').click(function(){
 		hide_markers(3);
@@ -70,7 +70,6 @@ $(document).ready(function(){
 $('#galery0').click(function(){
 	$("#deleteArrow").show();
 });
-
 /*$(document).on('click', ".ui-menu-item" ,  function(){    	
     
     //function search(){
@@ -126,7 +125,7 @@ $("#form").submit(function(e)
            		//window.infowindow.setMap(null);
            	var marker = search_marker();
     		set_icon(marker);
-		    document.getElementById("filesend").innerHTML = document.getElementById("filesend").innerHTML;
+		    document.getElementById("files").innerHTML = document.getElementById("files").innerHTML;
     	}
     	else{
  		$('.placeholder').remove();

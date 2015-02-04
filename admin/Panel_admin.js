@@ -292,8 +292,10 @@ function panelinformation(code, type){
 				switch(type){
 					case '0':
 					if(markers.getAttribute("scenery_free").indexOf(';')+1){					
-					load_admin('scenery_free',markers.getAttribute("scenery_free").split(';'));					
-					load_admin('scenery_free_label',markers.getAttribute("scenery_free_label").split(';'));
+					//load_admin('scenery_free',markers.getAttribute("scenery_free").split(';'));
+					load_admin('scenery_free',markers.getAttribute("scenery_free").split(';'), markers.getAttribute("scenery_free_label").split(';'));
+					//load_admin('scenery_free_label',markers.getAttribute("scenery_free_label").split(';'));
+					document.getElementById("scenery_free_label").onblur = null;
 					}
 					else{
 						document.getElementById("scenery_free").value = markers.getAttribute("scenery_free");
@@ -322,11 +324,12 @@ function panelinformation(code, type){
 					/*var arr_scenery = markers.getAttribute("scenery_free").split(';');
 					document.getElementById("scenery_free").value= arr_scenery[0];
 					document.getElementById("scenery_free1").value= arr_scenery[1];*/
-					load_admin('scenery',markers.getAttribute("scenery").split(';'));
+					load_admin('scenery',markers.getAttribute("scenery").split(';'), markers.getAttribute("scenery_label").split(';'));
 					/*arr_scenery = markers.getAttribute("scenery_free_label").split(';');
 					document.getElementById("scenery_free_label").value= arr_scenery[0];
 					document.getElementById("scenery_free_label1").value= arr_scenery[1];*/
-					load_admin('scenery_label',markers.getAttribute("scenery_label").split(';'));
+					//load_admin('scenery_label',markers.getAttribute("scenery_label").split(';'));
+					document.getElementById("scenery_label").onblur = null;
 					}
 					else{
 						document.getElementById("scenery").value= markers.getAttribute("scenery");
@@ -352,8 +355,9 @@ function panelinformation(code, type){
 					break;
 					case '2':
 					if(markers.getAttribute("scenery_free").indexOf(';')+1){					
-					load_admin('scenery_free',markers.getAttribute("scenery_free").split(';'));					
-					load_admin('scenery_free_label',markers.getAttribute("scenery_free_label").split(';'));
+					load_admin('scenery_free',markers.getAttribute("scenery_free").split(';'), markers.getAttribute("scenery_free_label").split(';'));					
+					//load_admin('scenery_free_label',markers.getAttribute("scenery_free_label").split(';'));
+					document.getElementById("scenery_free_label").onblur = null;
 					}
 					else{
 						document.getElementById("scenery_free").value= markers.getAttribute("scenery_free");
@@ -370,8 +374,9 @@ function panelinformation(code, type){
 						document.getElementById('scenery_label1').parentNode.removeChild(document.getElementById('scenery_label1'));
 					}*/					
 					if(markers.getAttribute("scenery").indexOf(';')+1){					
-					load_admin('scenery',markers.getAttribute("scenery").split(';'));					
-					load_admin('scenery_label',markers.getAttribute("scenery_label").split(';'));
+					load_admin('scenery',markers.getAttribute("scenery").split(';'), markers.getAttribute("scenery_label").split(';'));					
+					//load_admin('scenery_label',markers.getAttribute("scenery_label").split(';'));
+					document.getElementById("scenery_label").onblur = null;
 					}
 					else{
 						document.getElementById("scenery").value= markers.getAttribute("scenery");
@@ -639,11 +644,15 @@ function load_text(field, array){
 	document.getElementById(field).textContent= array[0];
 	document.getElementById(field + "1").textContent= array[1];
 }*/
-function load_admin(field, array){
-	if(document.getElementById(field)===null) create_onefield(field);
-	document.getElementById(field).value= array[0];
+function load_admin(field, sceneries, labels){
+	//if(document.getElementById(field)===null) create_onefield(field);
+	document.getElementById(field).value= sceneries[0];
+	if(document.getElementById(field+"_label")===null) create_onefield(field+"_label");
+	document.getElementById(field+"_label").value= labels[0];
 	if(document.getElementById(field + "1")===null) create_onefield(field+'1');
-	document.getElementById(field + "1").value= array[1];
+	document.getElementById(field + "1").value= sceneries[1];
+	if(document.getElementById(field+"_label1")===null) create_onefield(field+"_label1");
+	document.getElementById(field+"_label1").value= labels[1];
 }
 function create_onefield(field){
 	//if(document.getElementById(field).value && !document.getElementById(field + "_label")){//.id
